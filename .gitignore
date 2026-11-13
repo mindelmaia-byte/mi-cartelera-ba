@@ -1,0 +1,20 @@
+# Datos personales: exportaciones de Letterboxd (carpeta o zip). Nunca al repo.
+letterboxd-*/
+letterboxd-*.zip
+
+# Secretos
+.env
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Base local de desarrollo (la de producción se decide en el hito 8)
+data/*.db
+data/*.db-journal
+
+# Sistema
+.DS_Store
+Thumbs.db

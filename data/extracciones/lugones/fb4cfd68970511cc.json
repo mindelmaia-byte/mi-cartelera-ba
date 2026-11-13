@@ -1,0 +1,60 @@
+{
+ "cine": "lugones",
+ "hash": "fb4cfd68970511cc",
+ "fuente_url": "https://complejoteatral.gob.ar/wp-content/uploads/2026/10/Prog-2026-Museo-de-la-subversion.pdf",
+ "titulo_fuente": "Museo de la subversión",
+ "extraido_por": "claude-opus-5-5 (sesion de Claude Code, sin API)",
+ "extraido_en": "2026-11-13T16:12:26-03:00",
+ "resultado": {
+  "periodo_desde": "2026-11-05",
+  "periodo_hasta": null,
+  "peliculas": [
+   {
+    "titulo": "Museo de la subversión",
+    "titulo_original": null,
+    "pais": "Argentina",
+    "anio": 2025,
+    "director": "Francisco D’Eufemia",
+    "duracion_min": 70,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-05",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "viernes",
+      "fecha": "2026-11-06",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "sábado",
+      "fecha": "2026-11-07",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-08",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "jueves",
+      "fecha": "2026-11-12",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-13",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-17",
+      "hora": "21:00"
+     }
+    ]
+   }
+  ]
+ }
+}

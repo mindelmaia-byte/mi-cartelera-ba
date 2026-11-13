@@ -1,0 +1,140 @@
+{
+ "cine": "lugones",
+ "hash": "7b4cc668cc916500",
+ "fuente_url": "https://complejoteatral.gob.ar/wp-content/uploads/2026/10/Prog-2026-Herzog-Kinski-1.pdf",
+ "titulo_fuente": "Herzog-Kinski: enemigo mío",
+ "extraido_por": "claude-opus-5-5 (sesion de Claude Code, sin API)",
+ "extraido_en": "2026-11-13T16:12:27-03:00",
+ "resultado": {
+  "periodo_desde": "2026-11-12",
+  "periodo_hasta": "2026-11-25",
+  "peliculas": [
+   {
+    "titulo": "Aguirre, la ira de Dios",
+    "titulo_original": "Aguirre, der Zorn Gottes",
+    "pais": "República Federal de Alemania",
+    "anio": 1972,
+    "director": "Werner Herzog",
+    "duracion_min": 93,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-12",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-14",
+      "hora": "17:30"
+     }
+    ]
+   },
+   {
+    "titulo": "Cobra verde",
+    "titulo_original": null,
+    "pais": "República Federal de Alemania/Ghana",
+    "anio": 1987,
+    "director": "Werner Herzog",
+    "duracion_min": 110,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-13",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "21:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Woyzeck",
+    "titulo_original": null,
+    "pais": "República Federal de Alemania",
+    "anio": 1979,
+    "director": "Werner Herzog",
+    "duracion_min": 81,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-13",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Fitzcarraldo",
+    "titulo_original": null,
+    "pais": "República Federal de Alemania/Perú",
+    "anio": 1982,
+    "director": "Werner Herzog",
+    "duracion_min": 157,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-14",
+      "hora": "20:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "17:30"
+     }
+    ]
+   },
+   {
+    "titulo": "Mi mejor enemigo",
+    "titulo_original": "Mein liebster Feind",
+    "pais": "República Federal de Alemania",
+    "anio": 1999,
+    "director": "Werner Herzog",
+    "duracion_min": 99,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-15",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "21:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Nosferatu, el vampiro",
+    "titulo_original": "Nosferatu - Phantom der Nacht",
+    "pais": "República Federal de Alemania/Francia",
+    "anio": 1978,
+    "director": "Werner Herzog",
+    "duracion_min": 107,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-15",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "21:00"
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,60 @@
+# Registro de cines. La interfaz y el ingest leen de acá; nada de esto se hardcodea en otro lado.
+#
+# Campos:
+#   id            identificador estable (slug), se usa en la DB y en la URL
+#   nombre        nombre a mostrar (los de la lista original del proyecto)
+#   direccion     null si todavía no se confirmó contra la web oficial
+#   verificada    true cuando la dirección se confirmó contra la fuente oficial del cine
+#   tanda         1..4 (orden de implementación)
+#   es_comercial  true solo para la tanda 4
+#   adaptador     módulo en cartelera/adapters/, o null si todavía no existe
+
+cines:
+  # ---- Tanda 1 ----
+  - {id: gaumont, nombre: Gaumont, direccion: "Av. Rivadavia 1635", verificada: true, tanda: 1, es_comercial: false, adaptador: gaumont}
+  - {id: cosmos, nombre: Cosmos, direccion: "Av. Corrientes 2046", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
+  - {id: lorca, nombre: Lorca, direccion: "Av. Corrientes 1428", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
+  - {id: malba, nombre: MALBA, direccion: "Av. Figueroa Alcorta 3415", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
+  - {id: lugones, nombre: Sala Lugones, direccion: "Av. Corrientes 1530 (Teatro San Martín)", verificada: true, tanda: 1, es_comercial: false, adaptador: lugones}
+
+  # ---- Tanda 2 ----
+  - {id: cacodelphia, nombre: Cacodelphia, direccion: "Av. Roque Sáenz Peña 1150", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: york, nombre: York, direccion: "Juan Bautista Alberdi 895, Olivos", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: munro, nombre: Munro, direccion: null, verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: lumiton, nombre: Lumiton, direccion: null, verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: cck, nombre: CCK, direccion: "Sarmiento 151", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: arthaus, nombre: Arthaus, direccion: "Bartolomé Mitre 434", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: el-recoleta, nombre: El Recoleta, direccion: "Junín 1930", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: amorina, nombre: Amorina, direccion: null, verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: filo-cine, nombre: Filo Cine, direccion: null, verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: cc-25-de-mayo, nombre: CC 25 de Mayo, direccion: "Av. Triunvirato 4444", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: la-cooperacion, nombre: La Cooperación, direccion: "Av. Corrientes 1543", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: borges, nombre: Borges, direccion: "Viamonte 525", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: sala-lucida, nombre: Sala Lúcida, direccion: null, verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: hasta-trilce, nombre: Hasta Trilce, direccion: "Maza 177", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: museo-del-cine, nombre: Museo del Cine, direccion: "Av. Agustín R. Caffarena 51, La Boca", verificada: true, tanda: 2, es_comercial: false, adaptador: null}
+
+  # ---- Tanda 3 (funciones ocasionales: hay que filtrar qué es cine) ----
+  - {id: sala-dac, nombre: Sala DAC, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: cea, nombre: CEA, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: fadu, nombre: FADU, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: club-lucero, nombre: Club Lucero, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: da-vinci, nombre: Da Vinci, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: biblioteca-nacional, nombre: Biblioteca Nacional, direccion: "Agüero 2502", verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: casa-bicentenario, nombre: Casa Bicentenario, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: biblioteca-congreso, nombre: Biblioteca del Congreso, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: archivo-general, nombre: Archivo General, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: bellas-artes, nombre: Bellas Artes, direccion: "Av. del Libertador 1473", verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: museo-moderno, nombre: Museo Moderno, direccion: "Av. San Juan 350", verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: cineclub-farus, nombre: Cineclub Farus, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+  - {id: marechal, nombre: Marechal, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
+
+  # ---- Tanda 4 (comerciales: solo estos complejos) ----
+  - {id: cinemark-palermo, nombre: Cinemark Palermo, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: cinemark-abasto, nombre: Cinemark Abasto, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: cinemark-dot, nombre: Cinemark Dot, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: cinepolis-recoleta, nombre: Cinépolis Recoleta, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: cinepolis-houssay, nombre: Cinépolis Houssay, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: showcase-belgrano, nombre: Showcase Belgrano, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: multiplex-belgrano, nombre: Multiplex Belgrano, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: multiplex-lavalle, nombre: Multiplex Lavalle, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}

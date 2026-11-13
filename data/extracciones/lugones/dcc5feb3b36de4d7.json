@@ -1,0 +1,352 @@
+{
+ "cine": "lugones",
+ "hash": "dcc5feb3b36de4d7",
+ "fuente_url": "https://complejoteatral.gob.ar/wp-content/uploads/2026/10/Prog-2026Homenaje-a-John-Huston.pdf",
+ "titulo_fuente": "Homenaje a John Huston",
+ "extraido_por": "claude-opus-5-5 (sesion de Claude Code, sin API)",
+ "extraido_en": "2026-11-13T16:12:28-03:00",
+ "resultado": {
+  "periodo_desde": "2026-11-06",
+  "periodo_hasta": "2026-12-04",
+  "peliculas": [
+   {
+    "titulo": "Esta, nuestra vida",
+    "titulo_original": "In This Our Life",
+    "pais": "EE.UU",
+    "anio": 1942,
+    "director": "John Huston",
+    "duracion_min": 97,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-06",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-17",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-28",
+      "hora": "15:00"
+     }
+    ]
+   },
+   {
+    "titulo": "La reina africana",
+    "titulo_original": "The African Queen",
+    "pais": "EE.UU/Reino Unido",
+    "anio": 1951,
+    "director": "John Huston",
+    "duracion_min": 105,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-07",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-12-04",
+      "hora": "21:00"
+     }
+    ]
+   },
+   {
+    "titulo": "El halcón maltés",
+    "titulo_original": "The Maltese Falcon",
+    "pais": "EE.UU",
+    "anio": 1941,
+    "director": "John Huston",
+    "duracion_min": 99,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-08",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-18",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-27",
+      "hora": "15:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Huracán de pasiones",
+    "titulo_original": "Key Largo",
+    "pais": "EE.UU",
+    "anio": 1948,
+    "director": "John Huston",
+    "duracion_min": 100,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-12",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-17",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-18",
+      "hora": "15:00"
+     }
+    ]
+   },
+   {
+    "titulo": "La burla del diablo",
+    "titulo_original": "Beat the Devil",
+    "pais": "EE.UU/Reino Unido/Italia",
+    "anio": 1953,
+    "director": "John Huston",
+    "duracion_min": 89,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-14",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "El tesoro de la Sierra Madre",
+    "titulo_original": "The Treasure of the Sierra Madre",
+    "pais": "EE.UU",
+    "anio": 1948,
+    "director": "John Huston",
+    "duracion_min": 126,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-15",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-12-04",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Ciudad dorada",
+    "titulo_original": "Fat City",
+    "pais": "EE.UU",
+    "anio": 1972,
+    "director": "John Huston",
+    "duracion_min": 100,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-18",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-29",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Mientras la ciudad duerme",
+    "titulo_original": "The Asphalt Jungle",
+    "pais": "EE.UU",
+    "anio": 1950,
+    "director": "John Huston",
+    "duracion_min": 112,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-26",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-12-01",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Los inadaptados",
+    "titulo_original": "The Misfits",
+    "pais": "EE.UU",
+    "anio": 1961,
+    "director": "John Huston",
+    "duracion_min": 124,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-12-02",
+      "hora": "18:00"
+     }
+    ]
+   },
+   {
+    "titulo": "El juez del patíbulo",
+    "titulo_original": "The Life and Times of Judge Roy Bean",
+    "pais": "EE.UU",
+    "anio": 1972,
+    "director": "John Huston",
+    "duracion_min": 100,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "15:00"
+     }
+    ]
+   },
+   {
+    "titulo": "La noche de la iguana",
+    "titulo_original": "The Night of the Iguana",
+    "pais": "EE.UU",
+    "anio": 1964,
+    "director": "John Huston",
+    "duracion_min": 118,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-29",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-12-01",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-12-01",
+      "hora": "21:00"
+     }
+    ]
+   },
+   {
+    "titulo": "Freud, pasión secreta",
+    "titulo_original": "Freud",
+    "pais": "EE.UU",
+    "anio": 1962,
+    "director": "John Huston",
+    "duracion_min": 140,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-29",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-12-03",
+      "hora": "14:30"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-12-03",
+      "hora": "20:30"
+     }
+    ]
+   },
+   {
+    "titulo": "Desde ahora y para siempre",
+    "titulo_original": "The Dead",
+    "pais": "Reino Unido/EE.UU",
+    "anio": 1987,
+    "director": "John Huston",
+    "duracion_min": 83,
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-12-02",
+      "hora": "15:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-12-02",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-12-03",
+      "hora": "18:00"
+     }
+    ]
+   }
+  ]
+ }
+}
