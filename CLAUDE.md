@@ -1,4 +1,4 @@
-# Cartelera de cines de Buenos Aires
+# Mi Cartelera BA: cartelera de cines de Buenos Aires
 
 App web con la cartelera de los próximos 10 días de cines de Buenos Aires. Se filtra por horarios y se puede cruzar, de forma opcional, con Google Calendar y con Letterboxd. Es para una clase y la usan otras personas, así que la cartelera tiene que funcionar completa sin login ni conexiones.
 El plan aprobado, con la arquitectura y los hitos, está en `docs/plan.md`.

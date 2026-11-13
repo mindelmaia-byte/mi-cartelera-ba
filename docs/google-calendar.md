@@ -13,7 +13,7 @@ Necesitás una cuenta de Google. Lleva unos 10 minutos.
 
 1. Entrá a https://console.cloud.google.com/ con tu cuenta.
 2. En el selector de proyectos (arriba a la izquierda), elegí **Proyecto nuevo**.
-3. Nombre: `Cartelera BA`. **Crear**, y asegurate de que quede seleccionado.
+3. Nombre: `Mi Cartelera BA`. **Crear**, y asegurate de que quede seleccionado.
 
 ## 2. Activar la API de Google Calendar
 
@@ -23,7 +23,7 @@ Necesitás una cuenta de Google. Lleva unos 10 minutos.
 ## 3. Pantalla de consentimiento (Google Auth Platform)
 
 1. Menú ☰ → **APIs y servicios** → **Pantalla de consentimiento de OAuth**. En consolas nuevas se llama **Google Auth Platform**. Tocá **Comenzar**.
-2. **Información de la app:** nombre `Cartelera BA` y tu mail como correo de asistencia.
+2. **Información de la app:** nombre `Mi Cartelera BA` y tu mail como correo de asistencia.
 3. **Público:** elegí **Externo**.
 4. **Información de contacto:** tu mail.
 5. Aceptá la política de datos de usuario de Google y tocá **Crear**.
@@ -50,7 +50,7 @@ En modo prueba, **solo pueden conectar su calendario las cuentas que agregues ac
 ## 6. Crear el ID de cliente
 
 1. Google Auth Platform → **Clientes** → **Crear cliente**.
-2. Tipo de aplicación: **Aplicación web**. Nombre: `Cartelera BA web`.
+2. Tipo de aplicación: **Aplicación web**. Nombre: `Mi Cartelera BA web`.
 3. **Orígenes autorizados de JavaScript:** agregá
    - `http://localhost:8765`, para probar en tu compu;
    - más adelante, la URL pública, por ejemplo `https://cartelera-ba.pages.dev` (hito 8).
