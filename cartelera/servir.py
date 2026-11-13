@@ -1,9 +1,9 @@
-"""Servidor local de desarrollo: sirve public/ e imita las funciones de Cloudflare.
+"""Servidor local de desarrollo: sirve public/ e imita la función de Vercel.
 
   /                    -> public/
-  /api/letterboxd      -> mismo JSON que functions/api/letterboxd.js
+  /api/letterboxd      -> mismo JSON que api/letterboxd.mjs (Vercel)
   /pruebas/            -> tests/ (tests de la interfaz en el navegador: /pruebas/js/; no se publican)
-  /_functions/         -> functions/ (para testear el parser JS del proxy contra el fixture)
+  /_api/               -> api/ (para testear el parser JS del proxy contra el fixture)
 """
 
 import json
@@ -21,11 +21,11 @@ from cartelera.registro import RAIZ
 
 log = logging.getLogger(__name__)
 PUBLIC = RAIZ / "public"
-MONTAJES = {"/pruebas/": RAIZ / "tests", "/_functions/": RAIZ / "functions"}
+MONTAJES = {"/pruebas/": RAIZ / "tests", "/_api/": RAIZ / "api"}
 
 
 class Manejador(SimpleHTTPRequestHandler):
-    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".js": "text/javascript"}
+    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".js": "text/javascript", ".mjs": "text/javascript"}
 
     def translate_path(self, path: str) -> str:
         ruta = unquote(urlparse(path).path)

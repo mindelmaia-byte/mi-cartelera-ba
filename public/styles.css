@@ -1,17 +1,42 @@
+/* Estética: sala de cine antigua. Fondo de cortina bordó, marquesina con lamparitas, botones con forma
+   de entrada (tipografía Limelight) y la cartelera como papel blanco con rayas negras.
+   La página usa la paleta "cortina"; .papel redefine las mismas variables para letra oscura sobre blanco,
+   así todo lo que está adentro de la tabla o de una tarjeta se adapta solo. */
+
 :root {
-  --fondo: #111214;
-  --superficie: #1a1c1f;
-  --superficie-2: #23262a;
-  --borde: #2e3237;
-  --texto: #e7e6e3;
-  --texto-2: #9ea3a8;
-  --texto-3: #6f757b;
+  --fondo: #4f0d12;
+  --superficie: rgba(24, 5, 8, 0.58);
+  --superficie-2: rgba(0, 0, 0, 0.32);
+  --borde: rgba(240, 196, 130, 0.3);
+  --texto: #f7eddb;
+  --texto-2: #e6cfb2;
+  --texto-3: #c9a58a;
   --acento: #e0b35a;
-  --acento-texto: #17130a;
-  --alerta: #e58e6d;
+  --acento-texto: #2a0b05;
+  --alerta: #ffb39a;
+  --ok: #9fe0ae;
+  --dorado: #f2c98a;
+  --entrada: #f3e6c8;
+  --entrada-texto: #4a0d10;
   --radio: 8px;
   --fuente: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-deco: "Limelight", Georgia, serif;
+  --fuente-cartel: "Bebas Neue", "Arial Narrow", sans-serif;
   color-scheme: dark;
+}
+
+.papel {
+  --superficie: #fbf8f1;
+  --superficie-2: #efe9dc;
+  --borde: #141212;
+  --texto: #141212;
+  --texto-2: #4c4743;
+  --texto-3: #6e6862;
+  --acento: #7a1218;
+  --acento-texto: #fbf8f1;
+  --alerta: #a32d2d;
+  --ok: #2f7a43;
+  color: var(--texto);
 }
 
 * { box-sizing: border-box; }
@@ -20,9 +45,14 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--fondo);
   color: var(--texto);
   font: 15px/1.45 var(--fuente);
+  background-color: var(--fondo);
+  /* pliegues de la cortina + un poco de sombra arriba y abajo */
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0, rgba(0, 0, 0, 0) 160px, rgba(0, 0, 0, 0) calc(100% - 200px), rgba(0, 0, 0, 0.4) 100%),
+    repeating-linear-gradient(90deg, #5a0f14 0 22px, #701519 22px 46px, #4a0b10 46px 62px);
+  background-attachment: fixed;
 }
 
 .envoltura { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
@@ -32,20 +62,151 @@ a:hover { color: var(--acento); }
 
 button { font: inherit; color: inherit; }
 
-:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--dorado); outline-offset: 2px; }
 
 /* ---------- cabecera ---------- */
 
-.cabecera { border-bottom: 1px solid var(--borde); padding: 20px 0 16px; margin-bottom: 8px; }
-.cabecera h1 { margin: 0; font-size: 22px; letter-spacing: 0.01em; font-weight: 650; }
-.bajada { margin: 2px 0 0; color: var(--texto-2); }
+.cabecera { border-bottom: 1px solid var(--borde); padding: 26px 0 22px; margin-bottom: 8px; background: rgba(0, 0, 0, 0.18); }
+/* Marquesina al centro; a los costados, carteles verticales con lamparitas y tiras de luces. */
+.cabecera-fila {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end; gap: 0 18px;
+}
+.adorno { margin-bottom: 52px; } /* alinea carteles y tiras con el tablero, no con la cresta */
+.como-funciona { position: absolute; top: -14px; right: 16px; font-size: 13px; }
+
+.adorno { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.adorno.izquierda { justify-content: flex-end; }
+.adorno.derecha { justify-content: flex-start; }
+
+/* Tira de lamparitas que "corre" hacia el logo. */
+.tira {
+  flex: 1 1 auto; max-width: 300px; height: 14px; border-top: 2px solid #4b3721; border-bottom: 2px solid #4b3721;
+  background:
+    radial-gradient(circle, #ffe3a3 0 2.4px, rgba(255, 200, 110, 0.45) 3px, transparent 4px) 0 50% / 15px 14px repeat-x,
+    #160e07;
+  box-shadow: 0 0 14px rgba(255, 180, 80, 0.25);
+  animation: correr 1.1s steps(3) infinite;
+}
+.izquierda .tira { animation-direction: normal; }
+.derecha .tira { animation-direction: reverse; }
+@keyframes correr { to { background-position: 15px 50%, 0 0; } }
+
+/* Cartel vertical con letras una debajo de otra y anillo de lamparitas, como el de la foto. */
+.aspa {
+  position: relative; flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+  writing-mode: vertical-rl; text-orientation: upright; letter-spacing: -0.05em;
+  padding: 16px 9px; border-radius: 8px; border: 2px solid #4b3721;
+  background: radial-gradient(ellipse at 50% 40%, #2c1d10 0%, #160e07 80%);
+  box-shadow: 0 0 0 3px #1b120a, 0 0 22px rgba(255, 180, 80, 0.2);
+  font-family: var(--fuente-deco); font-size: 22px; line-height: 1; text-transform: uppercase; color: #fff7e4;
+  text-shadow: 0 0 2px #fff, 0 0 8px #ffd890, 0 0 18px rgba(255, 170, 60, 0.7);
+}
+.aspa::before {
+  content: ""; position: absolute; inset: 3px; border-radius: 6px; padding: 5px; pointer-events: none;
+  background: radial-gradient(circle, #ffe3a3 0 1.8px, rgba(255, 200, 110, 0.4) 2.3px, transparent 3.2px) 0 0 / 11px 11px;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: titilar 2.4s steps(2, jump-none) infinite 1.2s;
+}
+@media (prefers-reduced-motion: reduce) { .tira, .aspa::before { animation: none; } }
+
+/* Pantallas angostas: solo la marquesina, centrada. */
+@media (max-width: 760px) {
+  .cabecera { padding-top: 34px; }
+  .cabecera-fila { grid-template-columns: 1fr; justify-items: center; }
+  .adorno { display: none; }
+  .como-funciona { top: -26px; }
+}
+@media (min-width: 761px) and (max-width: 960px) {
+  .tira { display: none; }
+}
+
+/* Logo: cresta art déco (SVG) + tablero con neón y lamparitas + cartel de letras + alero de luces. */
+.logo { display: flex; flex-direction: column; align-items: center; max-width: 100%; position: relative; z-index: 0; }
+
+.cresta { width: min(380px, 92vw); height: auto; display: block; margin-bottom: -14px; overflow: visible; position: relative; z-index: -1; }
+.cresta .bombita { fill: #ffe3a3; filter: drop-shadow(0 0 2.5px rgba(255, 210, 120, 0.95)); animation: alternar 1.2s steps(1) infinite; }
+.cresta .bombita:nth-of-type(even) { animation-delay: 0.6s; }
+.cresta .bombita.grande { fill: #fff6d8; filter: drop-shadow(0 0 5px #ffe3a3); animation: none; }
+@keyframes alternar { 50% { fill: #a7733a; filter: none; } }
+
+/* Marquesina de cine antiguo: lamparitas alrededor, tubo de neón, letras iluminadas y cartel blanco. */
+.marquesina {
+  --lampara: #ffe3a3;
+  --neon: #ff5a86;
+  position: relative; margin: 0; display: inline-flex; flex-direction: column; align-items: center;
+  max-width: 100%; padding: 16px clamp(16px, 5vw, 30px) 14px; border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 30%, #2c1d10 0%, #160e07 75%);
+  border: 2px solid #4b3721;
+  box-shadow:
+    0 0 0 4px #1b120a,
+    0 0 0 6px var(--neon), 0 0 12px 6px rgba(255, 90, 134, 0.55), 0 0 34px 8px rgba(255, 90, 134, 0.25),
+    inset 0 0 18px rgba(255, 90, 134, 0.18);
+  font-weight: 400; line-height: 1;
+  animation: neon 7s infinite;
+}
+@keyframes neon { /* un parpadeo cada tanto, como un tubo viejo */
+  0%, 91%, 93%, 95%, 100% { box-shadow: 0 0 0 4px #1b120a, 0 0 0 6px var(--neon), 0 0 12px 6px rgba(255, 90, 134, 0.55), 0 0 34px 8px rgba(255, 90, 134, 0.25), inset 0 0 18px rgba(255, 90, 134, 0.18); }
+  92%, 94% { box-shadow: 0 0 0 4px #1b120a, 0 0 0 6px #7a2a3d, 0 0 0 6px transparent, 0 0 0 0 transparent, inset 0 0 0 transparent; }
+}
+
+/* Alero: dos filas de lamparitas que corren, más ancho que el tablero (como el techito de las marquesinas). */
+.dosel {
+  width: calc(100% + 56px); max-width: 96vw; height: 24px; margin-top: 10px;
+  clip-path: polygon(5% 0, 95% 0, 100% 100%, 0 100%);
+  background:
+    radial-gradient(circle, #ffe3a3 0 2.2px, rgba(255, 200, 110, 0.4) 2.8px, transparent 3.8px) 0 30% / 12px 12px repeat-x,
+    radial-gradient(circle, #ffe3a3 0 2.2px, rgba(255, 200, 110, 0.4) 2.8px, transparent 3.8px) 6px 85% / 12px 12px repeat-x,
+    linear-gradient(#2a1a0c, #120b05);
+  border-top: 2px solid #f2c14e;
+  animation: alero 0.9s steps(2) infinite;
+  filter: drop-shadow(0 6px 10px rgba(255, 190, 90, 0.25));
+}
+@keyframes alero { to { background-position: 12px 30%, 18px 85%, 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cresta .bombita, .marquesina, .dosel { animation: none; }
+}
+.marquesina::before { /* anillo de lamparitas */
+  content: ""; position: absolute; inset: 5px; border-radius: 10px; padding: 6px; pointer-events: none;
+  background:
+    radial-gradient(circle, var(--lampara) 0 2.1px, rgba(255, 200, 110, 0.45) 2.6px, transparent 3.6px) 0 0 / 13px 13px;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: titilar 2.4s steps(2, jump-none) infinite;
+}
+@keyframes titilar { 50% { filter: brightness(0.78); } }
+@media (prefers-reduced-motion: reduce) { .marquesina::before { animation: none; } }
+
+.marq-mi {
+  font-family: var(--fuente-deco); font-size: 19px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #ffcf7a; text-shadow: 0 0 6px rgba(255, 190, 90, 0.7); margin-bottom: 6px; padding-left: 0.3em;
+}
+.marq-letras {
+  font-family: var(--fuente-deco); font-size: clamp(21px, 7.2vw, 42px); letter-spacing: 0.06em;
+  white-space: nowrap; text-transform: uppercase; color: #fff7e4;
+  text-shadow: 0 0 2px #fff, 0 0 8px #ffd890, 0 0 20px rgba(255, 170, 60, 0.75), 0 0 34px rgba(255, 140, 40, 0.35);
+}
+/* Cartel de letras negras sobre paneles blancos iluminados desde atrás, con rieles arriba y abajo. */
+.marq-cartel {
+  margin-top: 12px; padding: 6px 16px 4px; border-radius: 2px;
+  font-family: var(--fuente-cartel); font-size: clamp(13px, 2.6vw, 17px); letter-spacing: 0.14em;
+  text-transform: uppercase; color: #15100b;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(120, 100, 70, 0.35) calc(25% - 1px) 25%),
+    linear-gradient(#fffaf0, #f1e7d2);
+  border-top: 3px solid #2a1a0c; border-bottom: 3px solid #2a1a0c;
+  box-shadow: 0 0 0 2px #f2c14e, 0 0 16px rgba(255, 235, 180, 0.55);
+}
 
 /* ---------- bloques ---------- */
 
 .bloque { margin: 18px 0; }
 .rotulo {
-  margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--texto-3);
+  margin: 0 0 8px; font-family: var(--fuente-cartel); font-size: 16px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--dorado);
 }
 .rotulo-fila { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .rotulo-fila .rotulo { margin-bottom: 8px; }
@@ -63,17 +224,33 @@ button { font: inherit; color: inherit; }
 .ayuda, .nota { color: var(--texto-2); font-size: 13px; }
 .nota { align-self: center; margin-left: 4px; }
 
-/* ---------- chips ---------- */
+/* ---------- botones con forma de entrada de cine ---------- */
 
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; }
 
-.chip {
-  border: 1px solid var(--borde); background: var(--superficie); border-radius: 999px;
-  padding: 6px 13px; cursor: pointer; font-size: 14px; line-height: 1.2;
-  transition: background 0.12s, border-color 0.12s;
+.entrada {
+  position: relative; display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  border: 0; border-radius: 0; cursor: pointer; text-align: left; line-height: 1.15;
+  padding: 8px 24px 7px 17px; background: var(--entrada); color: var(--entrada-texto);
+  font-family: var(--fuente-deco); font-size: 15px; letter-spacing: 0.02em;
+  /* muescas semicirculares a los costados */
+  -webkit-mask:
+    radial-gradient(circle 6px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 6px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle 6px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 6px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+  opacity: 0.82; transition: background 0.12s, opacity 0.12s;
 }
-.chip:hover { border-color: var(--texto-3); }
-.chip[aria-pressed="true"] { background: var(--acento); border-color: var(--acento); color: var(--acento-texto); font-weight: 600; }
+.entrada::after { /* línea troquelada del talón */
+  content: ""; position: absolute; top: 6px; bottom: 6px; right: 12px;
+  border-right: 1.5px dashed rgba(74, 13, 16, 0.45);
+}
+.entrada:hover { opacity: 1; background: #fff3d6; }
+.entrada[aria-pressed="true"] { opacity: 1; background: var(--acento); color: var(--acento-texto); }
+.entrada:focus-visible { outline: 0; box-shadow: inset 0 0 0 3px var(--entrada-texto); } /* la máscara recorta el outline */
+.entrada-detalle { font-family: var(--fuente); font-size: 11px; letter-spacing: 0; opacity: 0.75; margin-top: 2px; }
+.entrada.chica { font-size: 13px; padding: 6px 22px 5px 15px; }
 
 /* ---------- personalizado ---------- */
 
@@ -87,9 +264,9 @@ button { font: inherit; color: inherit; }
 .fila-dia label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .fila-dia input[type="checkbox"] { accent-color: var(--acento); }
 .rango { color: var(--texto-2); font-size: 13px; white-space: nowrap; }
-.rango input {
+.rango input, .margen input, #letterboxd input[type="text"] {
   background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
-  border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 13px;
+  border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 13px; color-scheme: dark;
 }
 .rango input:disabled { opacity: 0.4; }
 
@@ -104,159 +281,162 @@ button { font: inherit; color: inherit; }
   background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
   padding: 8px 6px; cursor: pointer;
 }
-.dia:hover { border-color: var(--texto-3); }
-.dia[aria-pressed="true"] { border-color: var(--acento); background: var(--superficie-2); }
-.dia-nombre { font-size: 12px; color: var(--texto-2); text-transform: uppercase; letter-spacing: 0.05em; }
-.dia-numero { font-weight: 600; white-space: nowrap; }
+.dia:hover { border-color: var(--dorado); }
+.dia[aria-pressed="true"] { background: var(--entrada); border-color: var(--entrada); color: var(--entrada-texto); }
+.dia-nombre { font-family: var(--fuente-cartel); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-2); }
+.dia[aria-pressed="true"] .dia-nombre { color: var(--entrada-texto); }
+.dia-numero { font-family: var(--fuente-deco); font-size: 15px; white-space: nowrap; }
 .cuenta {
-  margin-top: 3px; font-size: 12px; font-variant-numeric: tabular-nums;
+  margin-top: 4px; font-size: 12px; font-variant-numeric: tabular-nums;
   background: var(--superficie-2); border-radius: 999px; padding: 0 8px; color: var(--texto);
 }
 .dia[aria-pressed="true"] .cuenta { background: var(--acento); color: var(--acento-texto); font-weight: 600; }
 .cuenta.cero { color: var(--texto-3); }
 
-/* ---------- tabla ---------- */
+/* ---------- la cartelera: papel blanco con rayas negras ---------- */
 
 .resumen { color: var(--texto-2); margin: 0 0 10px; }
 .vacio { color: var(--texto-2); padding: 24px 0; text-align: center; }
 
-.tabla-contenedor { overflow-x: auto; border: 1px solid var(--borde); border-radius: var(--radio); }
-.tabla { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabla-contenedor {
+  overflow-x: auto; background: var(--superficie); border: 3px solid var(--borde); border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.tabla { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--superficie); }
 .tabla th {
-  position: sticky; top: 0; background: var(--superficie); text-align: left;
-  border-bottom: 1px solid var(--borde); padding: 0; white-space: nowrap;
+  position: sticky; top: 0; background: var(--texto); text-align: left; padding: 0; white-space: nowrap;
 }
 .orden {
-  background: none; border: 0; width: 100%; text-align: left; cursor: pointer;
-  padding: 9px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--texto-2);
+  background: none; border: 0; width: 100%; text-align: left; cursor: pointer; padding: 9px 10px 7px;
+  font-family: var(--fuente-cartel); font-size: 16px; font-weight: 400; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--superficie);
 }
-.orden:hover { color: var(--texto); }
-th[aria-sort="ascending"] .orden, th[aria-sort="descending"] .orden { color: var(--acento); }
+.orden:hover, th[aria-sort="ascending"] .orden, th[aria-sort="descending"] .orden { color: #e0b35a; }
 .flecha { margin-left: 4px; font-size: 9px; }
 
-.tabla td { padding: 9px 10px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+.tabla td { padding: 9px 10px; border-bottom: 2px solid var(--borde); vertical-align: top; }
+.tabla tbody tr:nth-child(even) td { background: var(--superficie-2); }
 .tabla tbody tr:last-child td { border-bottom: 0; }
-.tabla tbody tr:hover td { background: #16181b; }
+.tabla tbody tr:hover td { background: #fff3d6; }
 
 .hora { font-variant-numeric: tabular-nums; font-size: 15px; }
+.fin { display: block; color: var(--texto-3); font-size: 11.5px; font-variant-numeric: tabular-nums; white-space: nowrap; cursor: help; }
 .fecha { color: var(--texto-2); font-size: 13px; white-space: nowrap; }
-.cine { display: block; font-weight: 550; }
-.titulo { display: block; font-weight: 600; }
+.cine { display: block; font-weight: 600; }
+.titulo { display: block; font-weight: 650; }
 .secundario { display: block; color: var(--texto-3); font-size: 12.5px; }
 .marca {
   display: inline-block; margin-top: 3px; font-size: 11px; color: var(--texto-3);
-  border: 1px dashed var(--borde); border-radius: 4px; padding: 0 5px; cursor: help;
+  border: 1px dashed var(--texto-3); border-radius: 4px; padding: 0 5px; cursor: help;
 }
 td[data-col="Año"], td[data-col="Duración"] { white-space: nowrap; font-variant-numeric: tabular-nums; }
 td[data-col="Hora"] { white-space: nowrap; }
 
 .boton-entradas {
-  display: inline-block; border: 1px solid var(--acento); color: var(--acento); border-radius: 6px;
-  padding: 2px 10px; text-decoration: none; font-weight: 600; font-size: 13px; white-space: nowrap;
+  display: inline-block; border: 1.5px solid var(--acento); color: var(--acento); border-radius: 4px;
+  padding: 2px 10px; text-decoration: none; font-weight: 650; font-size: 13px; white-space: nowrap;
 }
 .boton-entradas:hover { background: var(--acento); color: var(--acento-texto); }
 .venta { color: var(--texto-2); font-size: 13px; }
 .venta.gratis { color: var(--texto); }
 .externo { font-size: 13px; color: var(--texto-2); }
+.agendar { display: block; margin-top: 4px; font-size: 12px; color: var(--texto-3); }
 
-/* ---------- cabecera y bienvenida ---------- */
+.tu-puntaje { display: block; margin-top: 3px; color: var(--ok); font-size: 13px; letter-spacing: 0.04em; cursor: help; white-space: nowrap; }
+.tu-puntaje .secundario { display: inline; margin-left: 5px; letter-spacing: 0; }
 
-.cabecera-fila { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.vista { font-size: 12px; color: var(--texto-3); white-space: nowrap; cursor: help; }
+.vista.reciente { color: var(--texto); border: 1px solid var(--texto); border-radius: 4px; padding: 0 5px; }
+
+.cal { font-size: 13px; font-weight: 650; white-space: nowrap; }
+.cal .secundario { font-weight: 400; white-space: nowrap; }
+.cal.entra { color: var(--ok); }
+.cal.justo { color: #8a5a00; }
+.cal.no-entra { color: var(--alerta); }
+
+/* ---------- Para vos: tarjetas de papel ---------- */
+
+.para-vos { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.recomendada {
+  background: var(--superficie); border: 2px solid var(--borde); border-left: 6px solid var(--acento);
+  border-radius: 0; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+.recomendada .titulo { font-family: var(--fuente-deco); font-weight: 400; font-size: 16px; }
+.rec-cuando { font-size: 13px; color: var(--texto); font-variant-numeric: tabular-nums; }
+.rec-motivo { font-size: 12.5px; color: var(--texto-2); }
+.rec-acciones { margin-top: 4px; }
+
+/* ---------- capas opcionales (Calendar, Letterboxd) ---------- */
+
+.capa {
+  padding: 12px 14px; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
+}
+.capa .ayuda { margin: 8px 0 0; }
+.capa + .capa { margin-top: 8px; }
+.cal-fila { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
+.cal-opciones { justify-content: flex-start; margin-top: 10px; font-size: 13px; color: var(--texto-2); }
+.cal-estado { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fuente-deco); font-size: 15px; font-weight: 400; }
+.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--texto-3); }
+.cal-estado.conectado .punto { background: var(--ok); box-shadow: 0 0 6px var(--ok); }
+.cal-acciones { display: inline-flex; gap: 8px; min-width: 0; }
+.cal-error { color: var(--alerta); margin: 8px 0 0; font-size: 13px; }
+.margen input { width: 56px; }
+.interruptor-linea { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; color: var(--texto); }
+.interruptor-linea input { accent-color: var(--acento); }
+
+#letterboxd input[type="text"] { padding: 6px 9px; font-size: 14px; width: 160px; min-width: 0; flex: 1 1 120px; }
+.lb-form .cal-acciones { flex: 1 1 220px; max-width: 320px; }
+.lb-detalle { font-family: var(--fuente); font-size: 13px; color: var(--texto-2); }
+
+.boton {
+  background: var(--acento); color: var(--acento-texto); border: 1px solid var(--acento); border-radius: 6px;
+  padding: 6px 12px; font-weight: 650; cursor: pointer;
+}
+.boton.secundario { background: none; color: var(--texto); border-color: var(--borde); font-weight: 500; }
+.boton:disabled { opacity: 0.6; cursor: progress; }
+
+/* ---------- bienvenida ---------- */
 
 dialog#bienvenida {
-  max-width: 560px; width: calc(100% - 32px); background: var(--superficie); color: var(--texto);
-  border: 1px solid var(--borde); border-radius: 12px; padding: 20px 22px;
+  max-width: 560px; width: calc(100% - 32px); background: #2a0a0d; color: var(--texto);
+  border: 2px solid var(--acento); border-radius: 12px; padding: 20px 22px;
 }
-dialog#bienvenida::backdrop { background: rgba(0, 0, 0, 0.6); }
-dialog#bienvenida h2 { margin: 0 0 8px; font-size: 18px; }
+dialog#bienvenida::backdrop { background: rgba(0, 0, 0, 0.65); }
+dialog#bienvenida h2 { margin: 0 0 8px; font-family: var(--fuente-deco); font-weight: 400; font-size: 22px; color: var(--dorado); }
 dialog#bienvenida p, .pasos { color: var(--texto-2); }
 .pasos { padding-left: 20px; display: grid; gap: 10px; }
 .pasos strong { color: var(--texto); }
 dialog#bienvenida form { text-align: right; margin-top: 8px; }
 
-/* ---------- Letterboxd y Para vos ---------- */
-
-#letterboxd input[type="text"] {
-  background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
-  border-radius: 6px; padding: 6px 9px; font: inherit; width: 160px;
-}
-.lb-detalle { font-weight: 400; color: var(--texto-2); font-size: 13px; }
-
-.para-vos { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.recomendada {
-  background: var(--superficie); border: 1px solid var(--borde); border-left: 3px solid var(--acento);
-  border-radius: var(--radio); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px;
-}
-.rec-cuando { font-size: 13px; color: var(--texto); font-variant-numeric: tabular-nums; }
-.rec-motivo { font-size: 12.5px; color: var(--texto-2); }
-.rec-acciones { margin-top: 4px; }
-
-.vista { font-size: 12px; color: var(--texto-3); white-space: nowrap; cursor: help; }
-.vista.reciente { color: var(--texto); border: 1px solid var(--borde); border-radius: 4px; padding: 0 5px; }
-
-/* ---------- calendario ---------- */
-
-.capa {
-  padding: 12px 14px; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
-}
-
-.capa .ayuda { margin: 8px 0 0; }
-.capa + .capa { margin-top: 8px; }
-.cal-fila { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
-.cal-opciones { justify-content: flex-start; margin-top: 10px; font-size: 13px; color: var(--texto-2); }
-.cal-estado { display: inline-flex; align-items: center; gap: 8px; font-weight: 550; }
-.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--texto-3); }
-.cal-estado.conectado .punto { background: #7cc48f; }
-.cal-acciones { display: inline-flex; gap: 8px; }
-.cal-error { color: var(--alerta); margin: 8px 0 0; font-size: 13px; }
-.margen input {
-  width: 56px; background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
-  border-radius: 6px; padding: 3px 6px; font: inherit;
-}
-.interruptor-linea { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; color: var(--texto); }
-.interruptor-linea input { accent-color: var(--acento); }
-
-.boton {
-  background: var(--acento); color: var(--acento-texto); border: 1px solid var(--acento); border-radius: 6px;
-  padding: 6px 12px; font-weight: 600; cursor: pointer;
-}
-.boton.secundario { background: none; color: var(--texto); border-color: var(--borde); font-weight: 500; }
-.boton:disabled { opacity: 0.6; cursor: progress; }
-
-.cal { font-size: 13px; font-weight: 600; white-space: nowrap; }
-.cal .secundario { font-weight: 400; white-space: nowrap; }
-.cal.entra { color: #7cc48f; }
-.cal.justo { color: var(--acento); }
-.cal.no-entra { color: var(--alerta); }
-
-.agendar { display: block; margin-top: 4px; font-size: 12px; color: var(--texto-3); }
-
 /* ---------- pie ---------- */
 
-.pie { border-top: 1px solid var(--borde); margin-top: 32px; padding: 16px 0 32px; color: var(--texto-2); font-size: 13px; }
+.pie { border-top: 1px solid var(--borde); margin-top: 32px; padding: 16px 0 32px; color: var(--texto-2); font-size: 13px; background: rgba(0, 0, 0, 0.2); }
 .pie summary { cursor: pointer; color: var(--texto); }
 .estado { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 4px; }
 .estado .secundario { display: inline; }
 .alerta { color: var(--alerta); }
 .fuentes { color: var(--texto-3); }
 
-/* ---------- celular: la tabla pasa a tarjetas ---------- */
+/* ---------- celular: la tabla pasa a tarjetas de papel ---------- */
 
 @media (max-width: 760px) {
-  .tabla-contenedor { border: 0; overflow: visible; }
+  .tabla-contenedor { border: 0; overflow: visible; background: none; box-shadow: none; }
+  .tabla { background: none; }
   .tabla thead { display: none; }
   .tabla, .tabla tbody, .tabla tr, .tabla td { display: block; width: 100%; }
   /* Tarjeta: hora a la izquierda; a la derecha película / cine / ciclo / datos / botones. */
   .tabla tr {
     position: relative; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px;
-    background: var(--superficie); border: 1px solid var(--borde);
-    border-radius: var(--radio); padding: 10px 12px 10px 76px; margin-bottom: 8px;
+    background: var(--superficie); border: 2px solid var(--borde);
+    border-radius: 0; padding: 10px 12px 10px 76px; margin-bottom: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   }
+  .tabla tbody tr:nth-child(even) td, .tabla tbody tr:hover td { background: none; }
   .tabla tr::before { content: ""; flex-basis: 100%; order: 5; height: 6px; } /* salto antes de los botones */
-  .tabla tbody tr:hover td { background: none; }
   .tabla td { border: 0; padding: 0; width: auto; }
+  .tabla tbody tr td { border-bottom: 0; }
   .tabla td:empty { display: none; }
   td[data-col="Hora"] { position: absolute; left: 12px; top: 10px; width: 56px; }
   td[data-col="Hora"] .hora { font-size: 18px; display: block; }

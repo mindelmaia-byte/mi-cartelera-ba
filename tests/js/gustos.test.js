@@ -3,7 +3,7 @@
 import * as G from "/js/gustos.js";
 import * as H from "/js/horarios.js";
 import { evaluarIntervalo } from "/js/calendario.js";
-import { parsearRss } from "/_functions/api/letterboxd.js";
+import { parsearRss } from "/_api/_letterboxd-rss.mjs";
 
 const FIX = "/pruebas/fixtures/letterboxd/";
 const resultados = [];
@@ -54,7 +54,7 @@ await test("zip que no es de Letterboxd: error claro", async () => {
   esperar(error !== null, "tenía que fallar");
 });
 
-await test("parser del proxy (functions/api/letterboxd.js) igual al de Python", async () => {
+await test("parser del proxy de Vercel (api/_letterboxd-rss.mjs) igual al de Python", async () => {
   const e = parsearRss(await texto("rss.xml"));
   esperar(e.length === 2, "ignora listas", e);
   esperar(igual(e[0], { titulo: "Fitzcarraldo", anio: 1982, tmdb_id: 9343, fecha_vista: "2026-11-03", puntaje: 4.5, rewatch: false }), "campos", e[0]);
@@ -88,6 +88,8 @@ await test("cruce: watchlist, vistas (RSS por tmdb, diario por título) y direct
   esperar(g.get("p3").vista === "2026-11-03", "Fitzcarraldo vista por tmdb_id del RSS", g.get("p3"));
   esperar(g.get("p4").vista === "2026-10-19" && g.get("p4").directores.length === 0, "Fat City vista; Huston no es favorito (3 estrellas)", g.get("p4"));
   esperar(!g.has("p5"), "sin match no se cruza");
+  esperar(g.get("p3").puntaje === 4.5 && g.get("p4").puntaje === 3, "tu puntaje: RSS (Fitzcarraldo) y ratings.csv (Fat City)", [g.get("p3"), g.get("p4")]);
+  esperar(G.estrellas(4.5) === "★★★★½" && G.estrellas(3) === "★★★" && G.estrellas(null) === "", "estrellas");
 });
 
 await test("puntaje y motivos", () => {
@@ -100,14 +102,29 @@ await test("puntaje y motivos", () => {
   esperar(G.esReciente("2026-06-01", 6, ahora) && !G.esReciente("2026-05-01", 6, ahora), "umbral de 6 meses");
 });
 
-await test("filtro de horarios: unión de presets y personalizado", () => {
-  const e = H.sanear({ presets: ["semana18"], personalizado: { activo: true, dias: [null, null, null, null, null, { desde: "14:00", hasta: "16:00" }, null] } });
+await test("filtro de horarios: presets y personalizado (unión)", () => {
   const f = (dia_semana, hora) => ({ dia_semana, hora });
-  esperar(H.coincide(e, f(0, "18:00")) && !H.coincide(e, f(0, "17:59")), "lunes desde las 18");
-  esperar(H.coincide(e, f(5, "15:00")) && !H.coincide(e, f(5, "17:00")), "sábado personalizado 14 a 16");
-  esperar(!H.coincide(e, f(4, "20:00")), "viernes no está");
+  const trabajo = H.sanear({ presets: ["trabajo"] });
+  esperar(H.coincide(trabajo, f(0, "18:00")) && !H.coincide(trabajo, f(0, "17:59")), "lunes desde las 18");
+  esperar(H.coincide(trabajo, f(4, "19:00")) && !H.coincide(trabajo, f(4, "16:00")), "viernes desde las 18");
+  esperar(!H.coincide(trabajo, f(5, "20:00")), "después del trabajo no incluye el sábado");
+  const finde = H.sanear({ presets: ["finde"] });
+  esperar(H.coincide(finde, f(5, "11:00")) && H.coincide(finde, f(6, "23:00")) && !H.coincide(finde, f(4, "21:00")), "sábado y domingo completos");
+  const ambos = H.sanear({ presets: ["trabajo", "finde"] });
+  esperar(H.coincide(ambos, f(2, "20:00")) && H.coincide(ambos, f(6, "10:00")) && !H.coincide(ambos, f(2, "15:00")), "los dos juntos se suman");
+  const mezcla = H.sanear({ presets: ["finde"], personalizado: { activo: true, dias: [null, null, { desde: "14:00", hasta: "16:00" }, null, null, null, null] } });
+  esperar(H.coincide(mezcla, f(2, "15:00")) && !H.coincide(mezcla, f(2, "17:00")) && H.coincide(mezcla, f(6, "10:00")), "finde + miércoles 14 a 16");
   esperar(H.coincide(H.estadoInicial(), f(4, "03:00")), "sin filtros = todos");
-  esperar(igual(H.sanear({ presets: ["inventado"] }).presets, []), "sanea basura de localStorage");
+  esperar(igual(H.sanear({ presets: ["semana18", "tardes", "inventado"] }).presets, []), "descarta presets viejos o basura de localStorage");
+});
+
+await test("fin estimado redondeado a 15 minutos", () => {
+  esperar(H.finEstimado("19:00", 106) === "20:45", "20:46 -> 20:45");
+  esperar(H.finEstimado("19:00", 98) === "20:45", "20:38 -> 20:45");
+  esperar(H.finEstimado("18:10", 82) === "19:30", "19:32 -> 19:30");
+  esperar(H.finEstimado("22:15", 120) === "00:15", "pasa la medianoche");
+  esperar(H.finEstimado("17:52", 0) === null && H.finEstimado("17:52", null) === null, "sin duración, nada");
+  esperar(H.finEstimado("14:00", 7) === "14:00", "redondea al más cercano aunque sea el mismo cuarto");
 });
 
 await test("calendario: entra / justo / no entra", () => {

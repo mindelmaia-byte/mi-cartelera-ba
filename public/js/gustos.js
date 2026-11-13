@@ -141,7 +141,7 @@ export function analizar(datos, perfil) {
   const indice = indiceCartelera(datos);
   const porPid = new Map();
   const obtener = (pid) => {
-    if (!porPid.has(pid)) porPid.set(pid, { watchlist: false, vista: null, directores: [] });
+    if (!porPid.has(pid)) porPid.set(pid, { watchlist: false, vista: null, puntaje: null, directores: [] });
     return porPid.get(pid);
   };
   const marcarVista = (pid, fecha) => {
@@ -156,10 +156,16 @@ export function analizar(datos, perfil) {
   if (zip) {
     for (const [nombre, a] of zip.watchlist) for (const pid of buscar(indice, datos, nombre, a)) obtener(pid).watchlist = true;
     for (const [nombre, a, fecha] of zip.vistas) for (const pid of buscar(indice, datos, nombre, a)) marcarVista(pid, fecha);
+    // Tu puntaje (ratings.csv tiene el último que pusiste a cada película).
+    for (const [nombre, a, p] of zip.ratings) for (const pid of buscar(indice, datos, nombre, a)) obtener(pid).puntaje = p;
   }
-  for (const e of rss) {
+  // El RSS es más reciente que el export: sus puntajes pisan los del zip (el más nuevo primero en el feed).
+  for (const e of [...rss].reverse()) {
     const pids = e.tmdb_id ? indice.porTmdb.get(e.tmdb_id) ?? [] : buscar(indice, datos, e.titulo, e.anio);
-    for (const pid of pids) marcarVista(pid, e.fecha_vista);
+    for (const pid of pids) {
+      marcarVista(pid, e.fecha_vista);
+      if (e.puntaje) obtener(pid).puntaje = e.puntaje;
+    }
   }
 
   // Directores que te gustan: N películas con >= X estrellas en su filmografía.
@@ -180,6 +186,12 @@ export function analizar(datos, perfil) {
     if (dirs.length) obtener(pid).directores = dirs;
   }
   return porPid;
+}
+
+// 4.5 -> "★★★★½"
+export function estrellas(p) {
+  if (!p) return "";
+  return "★".repeat(Math.floor(p)) + (p % 1 >= 0.5 ? "½" : "");
 }
 
 export function esReciente(fecha, meses, ahora = new Date()) {

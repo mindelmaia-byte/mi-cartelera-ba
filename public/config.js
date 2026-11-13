@@ -3,5 +3,5 @@
 // Vacío = el bloque de Google Calendar no se muestra y la cartelera funciona igual.
 export const GOOGLE_CLIENT_ID = "";
 
-// Proxy del RSS de Letterboxd (Cloudflare Pages Function en producción; `cartelera servir` en local).
+// Proxy del RSS de Letterboxd (función de Vercel api/letterboxd.mjs en producción; `cartelera servir` en local).
 export const URL_LETTERBOXD = "api/letterboxd";

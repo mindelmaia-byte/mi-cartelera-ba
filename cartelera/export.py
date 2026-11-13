@@ -99,14 +99,49 @@ def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
 
 
 def titulo_a_mostrar(titulo_fuente: str, titulo_tmdb: str | None) -> str:
-    """Se muestra el título del cine. Si el cine lo publica TODO EN MAYÚSCULAS y TMDB tiene exactamente
-    las mismas palabras, se usa la grafía de TMDB ("4 HISTORIAS INCREIBLES" -> "4 historias increíbles").
-    Si las palabras difieren (títulos de otros países: "Cayo Largo"), queda el del cine."""
+    """Se muestra el título del cine, pero nunca TODO EN MAYÚSCULAS:
+      1. si TMDB tiene exactamente las mismas palabras, su grafía (trae tildes: "4 historias increíbles");
+      2. si no, el mismo título en formato título ("TIERRA DE MI PADRE" -> "Tierra de Mi Padre").
+    Si el cine ya lo publica con mayúsculas y minúsculas, queda como está (aunque TMDB use otro título
+    de otro país, como "Cayo Largo")."""
     letras = [c for c in titulo_fuente if c.isalpha()]
     en_mayusculas = bool(letras) and all(c.isupper() for c in letras)
-    if en_mayusculas and titulo_tmdb and normalizar(titulo_tmdb) == normalizar(titulo_fuente):
+    if not en_mayusculas:
+        return titulo_fuente
+    if titulo_tmdb and normalizar(titulo_tmdb) == normalizar(titulo_fuente):
         return titulo_tmdb
-    return titulo_fuente
+    return formato_titulo(titulo_fuente)
+
+
+# Palabras que van en minúscula salvo al principio del título o después de ":".
+MENORES = {"a", "al", "de", "del", "e", "el", "en", "la", "las", "lo", "los", "o", "u", "y", "un", "una",
+           "unos", "unas", "con", "por", "para", "sin", "sobre", "que", "se", "the", "of", "and"}
+ROMANOS = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"}
+
+
+def formato_titulo(titulo: str) -> str:
+    def palabra(p: str, primera: bool) -> str:
+        if "-" in p:  # "HERZOG-KINSKI" -> "Herzog-Kinski"
+            return "-".join(palabra(x, primera or i > 0) for i, x in enumerate(p.split("-")))
+        inicio = 0
+        while inicio < len(p) and not p[inicio].isalnum():
+            inicio += 1  # signos de apertura: "¿", "¡", comillas
+        cuerpo = p[inicio:]
+        nucleo = "".join(c for c in cuerpo if c.isalpha()).lower()
+        if any(c.isdigit() for c in cuerpo) or nucleo in ROMANOS:
+            return p  # "LS83", "II"
+        if not primera and nucleo in MENORES:
+            return p.lower()
+        return p[:inicio] + cuerpo[:1].upper() + cuerpo[1:].lower()
+
+    partes = titulo.split(" ")
+    resultado, primera = [], True
+    for p in partes:
+        if not p:
+            continue
+        resultado.append(palabra(p, primera))
+        primera = p.endswith((":", ".", "?", "!"))
+    return " ".join(resultado)
 
 
 def _cine(c: Cine, fila: sqlite3.Row | None) -> dict:

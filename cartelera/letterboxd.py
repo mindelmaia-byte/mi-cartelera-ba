@@ -3,7 +3,7 @@
 Campos verificados el 2026-11-13: cada entrada de diario trae letterboxd:filmTitle, filmYear,
 watchedDate, memberRating (opcional), rewatch, memberLike y tmdb:movieId. El feed tiene solo las
 ~50 entradas más recientes (más algunas listas, que se ignoran). Letterboxd no habilita CORS, por
-eso el navegador lo pide a través de un proxy (functions/api/letterboxd.js en producción; esta
+eso el navegador lo pide a través de un proxy (api/letterboxd.mjs en Vercel; esta
 misma lógica en `cartelera servir` para desarrollo).
 """
 

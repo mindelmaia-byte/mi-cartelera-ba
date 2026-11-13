@@ -331,14 +331,23 @@ function pintarParaVos() {
       ? el("ol", { class: "para-vos" }, ...top.map(({ f, motivos }) => {
           const cine = estado.cines.get(f.cine);
           const e = etiquetaDia(f.fecha);
-          return el("li", { class: "recomendada" },
+          return el("li", { class: "recomendada papel" },
             el("span", { class: "titulo" }, f.titulo),
-            el("span", { class: "rec-cuando" }, `${e.corto} ${e.numero} · ${f.hora} · ${cine.nombre}`),
+            el("span", { class: "rec-cuando" },
+              `${e.corto} ${e.numero} · ${f.hora}${H.finEstimado(f.hora, f.duracion_aprox) ? ` a ${H.finEstimado(f.hora, f.duracion_aprox)}` : ""} · ${cine.nombre}`),
             el("span", { class: "rec-motivo" }, motivos.join(" · ")),
+            tuPuntaje(f),
             el("span", { class: "rec-acciones" }, entradas(f)));
         }))
       : el("p", { class: "ayuda" }, "Con estos filtros no encontramos funciones de tu watchlist ni de directores que te gustan. Probá con otros horarios o cines."),
   );
+}
+
+function tuPuntaje(f) {
+  const p = estado.gustos.get(f.pelicula)?.puntaje;
+  if (!p) return null;
+  return el("span", { class: "tu-puntaje", title: `Tu puntaje en Letterboxd: ${String(p).replace(".", ",")} de 5` },
+    G.estrellas(p), el("span", { class: "secundario" }, "tu puntaje"));
 }
 
 function celdaVista(f) {
@@ -358,10 +367,12 @@ function contarDia(dia) {
 function pintarHorarios() {
   const cont = $("#chips-horario");
   const e = estado.horario;
-  const chip = (texto, activo, onclick) =>
-    el("button", { type: "button", class: "chip", "aria-pressed": String(activo), onclick }, texto);
+  const chip = (texto, activo, onclick, detalle = null) =>
+    el("button", { type: "button", class: "chip entrada", "aria-pressed": String(activo), onclick },
+      el("span", { class: "entrada-texto" }, texto),
+      detalle ? el("span", { class: "entrada-detalle" }, detalle) : null);
 
-  reemplazar(cont, 
+  reemplazar(cont,
     chip("Todos", H.esTodos(e), () => {
       e.presets = [];
       e.personalizado.activo = false;
@@ -371,7 +382,7 @@ function pintarHorarios() {
       chip(p.etiqueta, e.presets.includes(id), () => {
         e.presets = e.presets.includes(id) ? e.presets.filter((x) => x !== id) : [...e.presets, id];
         cambioHorario();
-      })),
+      }, p.detalle)),
     chip("Personalizar", e.personalizado.activo, () => {
       e.personalizado.activo = !e.personalizado.activo;
       if (e.personalizado.activo && e.personalizado.dias.every((d) => d === null)) {
@@ -445,12 +456,12 @@ function pintarCines() {
   const visibles = estado.datos.cines.filter((c) => conDatos.has(c.id) && (!c.es_comercial || estado.comerciales));
   reemplazar($("#chips-cines"), ...visibles.map((c) =>
     el("button", {
-      type: "button", class: "chip", "aria-pressed": String(!estado.cinesExcluidos.has(c.id)),
+      type: "button", class: "chip entrada chica", "aria-pressed": String(!estado.cinesExcluidos.has(c.id)),
       onclick: () => {
         estado.cinesExcluidos.has(c.id) ? estado.cinesExcluidos.delete(c.id) : estado.cinesExcluidos.add(c.id);
         cambioCines();
       },
-    }, c.nombre)));
+    }, el("span", { class: "entrada-texto" }, c.nombre))));
   if (estado.comerciales && !estado.datos.cines.some((c) => c.es_comercial && conDatos.has(c.id))) {
     $("#chips-cines").append(el("span", { class: "nota" }, "Los complejos comerciales todavía no tienen datos."));
   }
@@ -557,7 +568,8 @@ function fila(f, conFecha) {
   return el("tr", {},
     td("Hora",
       conFecha ? el("span", { class: "fecha" }, `${e.corto} ${e.numero} `) : null,
-      el("strong", { class: "hora" }, f.hora)),
+      el("strong", { class: "hora" }, f.hora),
+      finCelda(f)),
     td("Cine",
       el("span", { class: "cine" }, cine.nombre),
       cine.direccion ? el("span", { class: "secundario" }, cine.direccion) : null),
@@ -572,12 +584,20 @@ function fila(f, conFecha) {
     td("Entradas", entradas(f),
       el("a", { href: Cal.linkAgendar(f, cine, f.duracion_aprox), target: "_blank", rel: "noopener", class: "agendar",
                 title: "Abre Google Calendar con la función cargada" }, "+ agendar")),
-    td("Letterboxd", p.letterboxd
-      ? el("a", { href: p.letterboxd, target: "_blank", rel: "noopener", class: "externo" }, "Letterboxd")
-      : ""),
+    td("Letterboxd",
+      p.letterboxd ? el("a", { href: p.letterboxd, target: "_blank", rel: "noopener", class: "externo" }, "Letterboxd") : null,
+      tuPuntaje(f)),
     hayGustos() ? td("Vista", celdaVista(f)) : null,
     Cal.conectado() ? td("Calendario", celdaCalendario(f)) : null,
   );
+}
+
+// "termina 20:45" debajo de la hora de inicio (estimado, redondeado a 15 minutos).
+function finCelda(f) {
+  const fin = H.finEstimado(f.hora, f.duracion_aprox);
+  if (!fin) return null;
+  return el("span", { class: "fin", title: `Fin estimado: inicio + ${f.duracion_aprox} min de película, redondeado al cuarto de hora. Puede haber cortos o presentación antes.` },
+    `termina ${fin}`);
 }
 
 function entradas(f) {

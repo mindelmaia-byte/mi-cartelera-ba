@@ -1,5 +1,11 @@
 # Cartelera de cines de Buenos Aires: arquitectura y stack
 
+> **Cambios posteriores al plan aprobado:**
+> - **Publicación (2026-11-13):** la app se publica en **Vercel**, no en Cloudflare Pages. El repo va a GitHub, el ingest diario sigue en GitHub Actions y Vercel se vuelve a publicar con cada push. El proxy de Letterboxd es una función de Vercel (`api/letterboxd.mjs`).
+> - **TMDB:** no hace falta una función `/api/tmdb/resolve`. El export publica las filmografías de los directores en cartelera y el cruce se hace en el navegador.
+> - **Extracciones con LLM:** se guardan en `data/extracciones/` (archivos versionados) en lugar de una tabla de SQLite.
+> - **Nombre:** la app se llama **Mi Cartelera BA**.
+
 ## Contexto
 App web para una clase: cartelera de los próximos 10 días de unos 40 cines de Buenos Aires. Se filtra por horarios y se puede cruzar con Google Calendar (disponibilidad) y con Letterboxd (gustos) para recomendar funciones. La usan varias personas, incluida la profesora, así que la cartelera tiene que funcionar completa sin login ni conexiones. Calendario y Letterboxd son capas opcionales e independientes. La carpeta del proyecto hoy solo tiene la exportación personal de Letterboxd (carpeta y zip). No hay código ni repositorio git.
 

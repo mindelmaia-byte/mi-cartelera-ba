@@ -5,9 +5,10 @@ El plan aprobado, con la arquitectura y los hitos, está en `docs/plan.md`.
 
 ## Arquitectura
 - **Ingest (Python, una vez por día):** un adaptador por cine lee la web oficial y el resultado se guarda en SQLite (`data/cartelera.db`). Desde el hito 5, `export` genera un JSON estático para el sitio.
-- **Sitio (desde el hito 5):** HTML y JS sin build en `public/`, con dos funciones chicas en `functions/` para Cloudflare Pages:
-  - el proxy del RSS de Letterboxd;
-  - la resolución de títulos con TMDB.
+- **Sitio (desde el hito 5):** HTML y JS sin build en `public/`, publicado en **Vercel** (`vercel.json`: `outputDirectory: public`).
+  - Hay una sola función: el proxy del RSS de Letterboxd, en `api/letterboxd.mjs`. El parser está en `api/_letterboxd-rss.mjs`; los archivos que empiezan con `_` Vercel no los publica como función.
+  - No hace falta una función de TMDB: el export ya trae lo necesario.
+- **Publicación (hito 8):** el repo va a GitHub, el ingest diario corre en GitHub Actions y commitea el JSON, y Vercel se vuelve a publicar con cada push.
 - **Datos personales:** todo lo personal se queda en el navegador:
   - filtros y usuario de Letterboxd → `localStorage`;
   - token de Google → solo en memoria;
@@ -77,8 +78,22 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 ## Sitio (`public/`)
 - **Datos:** el sitio lee solo `data/cartelera.json`. Cada función trae `fecha`, `hora` y `dia_semana` ya calculados en hora de Buenos Aires, para que el navegador no haga cuentas de zona horaria. `inicio` (ISO) se usa para ocultar lo que ya empezó.
 - **Datos sin match:** director, año, duración y Letterboxd salen **solo de TMDB con match `ok`**. Si no hay match, las celdas quedan vacías y se muestra la marca "sin datos de TMDB".
-- **Título:** se muestra el del cine. Solo se reemplaza por la grafía de TMDB si el cine lo publica todo en mayúsculas y las palabras son exactamente las mismas (`export.titulo_a_mostrar`).
-- **Filtro de horarios:** filtra por hora de inicio. Los presets y el personalizado se suman (unión); sin ninguno activo, se muestra todo.
+- **Título:** se muestra el del cine, pero **nunca todo en mayúsculas**. Si viene en mayúsculas y TMDB tiene exactamente las mismas palabras, se usa la grafía de TMDB, que trae las tildes. Si no, va en formato título ("Tierra de Mi Padre"). Ver `export.titulo_a_mostrar` y `formato_titulo`.
+- **Filtro de horarios:** filtra por hora de inicio.
+  - Presets: "Todos", "Después del trabajo" (lun a vie desde las 18) y "Fin de semana" (sáb y dom, todo el día). Además está "Personalizar".
+  - Los presets y el personalizado se suman (unión); sin ninguno activo, se muestra todo.
+- **Fin estimado:** debajo de la hora de inicio va "termina HH:MM": inicio + `duracion_aprox` (TMDB o el cine), redondeado al cuarto de hora más cercano (`horarios.finEstimado`). Sin duración conocida no se muestra.
+- **Puntaje de Letterboxd:** se muestra **solo el tuyo**, de tu RSS o export. El promedio de Letterboxd no se usa: sus términos (6.11) prohíben scrapers, y su robots.txt bloquea a los bots de IA.
+- **Logo:** una marquesina de cine en CSS (lamparitas con `mask`), con las fuentes Limelight y Bebas Neue de Google Fonts.
+  - Arriba lleva una cresta art déco en SVG, embebida en `index.html` y generada con un script: abanico de rayos de colores, aguja y lamparitas que alternan.
+  - El tablero tiene un tubo de neón rosa que parpadea cada tanto, y el cartel de letras negras va sobre paneles iluminados.
+  - Abajo hay un alero con dos filas de luces que corren.
+  - A los costados, carteles verticales "CINE" y tiras de luces, que se ocultan en celular.
+  - Todas las animaciones se apagan si el sistema pide reducir el movimiento.
+- **Estética de sala antigua** (`styles.css`):
+  - El fondo es una cortina bordó, y los botones de horario y de cines tienen forma de entrada (`.entrada`, con muescas hechas con `mask`) y tipografía Limelight.
+  - Los rótulos van en Bebas Neue dorada.
+  - La tabla y las tarjetas de "Para vos" llevan la clase `.papel`: blanco con rayas negras y letra oscura. `.papel` redefine las mismas variables de color, así que todo lo de adentro se adapta solo; los colores nuevos van como variables, no fijos en cada regla.
 - **Preferencias:** en localStorage, con prefijo `cartelera-ba:`, siempre a través de `js/almacen.js` (con try/catch).
 - **Celular:** por debajo de 760 px, la tabla pasa a tarjetas (CSS).
 - **Tests de la interfaz:** están en `tests/js/` y corren en el navegador con `cartelera servir`, en http://localhost:8765/pruebas/js/. Todos tienen que pasar; usan datos inventados de `tests/fixtures/letterboxd/`.
@@ -89,7 +104,7 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
   - "Solo las que me entran" oculta las que no entran.
   - El fin de la función se calcula con `duracion_aprox`, o 120 min si no se conoce.
 - **Letterboxd** (`js/gustos.js`):
-  - El RSS se pide por el proxy: `functions/api/letterboxd.js` en Cloudflare y `cartelera/letterboxd.py` en local, con la misma salida.
+  - El RSS se pide por el proxy: `api/letterboxd.mjs` en Vercel y `cartelera/letterboxd.py` en local, con la misma salida.
   - El zip o la carpeta se leen en el navegador: solo los CSV de la raíz, nunca los de `deleted/`, `orphaned/`, etc.
   - El cruce con la cartelera es por `tmdb_id` (RSS) o por título + año ±1 contra los títulos de TMDB en castellano, original e inglés (zip).
   - "Director que te gusta": el export publica la filmografía de cada director en cartelera y el navegador cruza ahí tus puntajes. Nada personal sale del navegador.

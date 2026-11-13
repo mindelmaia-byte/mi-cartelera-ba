@@ -53,7 +53,7 @@ En modo prueba, **solo pueden conectar su calendario las cuentas que agregues ac
 2. Tipo de aplicación: **Aplicación web**. Nombre: `Mi Cartelera BA web`.
 3. **Orígenes autorizados de JavaScript:** agregá
    - `http://localhost:8765`, para probar en tu compu;
-   - más adelante, la URL pública, por ejemplo `https://cartelera-ba.pages.dev` (hito 8).
+   - más adelante, la URL pública de Vercel, por ejemplo `https://mi-cartelera-ba.vercel.app` (hito 8). Las URLs de *preview* que Vercel genera para cada cambio son otras: Calendar solo va a andar en la URL principal.
 4. **URIs de redireccionamiento autorizados:** dejalo vacío, porque el flujo de token no los usa.
 5. **Crear**. Copiá el **ID de cliente**, que termina en `.apps.googleusercontent.com`.
 

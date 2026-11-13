@@ -6,16 +6,32 @@
   <meta name="color-scheme" content="dark">
   <title>Mi Cartelera BA</title>
   <meta name="description" content="Cartelera de cines de Buenos Aires para los próximos 10 días, filtrable por horario.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Limelight&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="cabecera">
     <div class="envoltura cabecera-fila">
-      <div>
-        <h1>Mi Cartelera BA</h1>
-        <p class="bajada">Cines de Buenos Aires, próximos 10 días</p>
+      <div class="adorno izquierda" aria-hidden="true">
+        <span class="aspa">Cine</span>
+        <span class="tira"></span>
       </div>
-      <button type="button" class="enlace" id="abrir-bienvenida">¿Cómo funciona?</button>
+      <div class="logo">
+        <svg class="cresta" viewBox="0 0 320 104" aria-hidden="true" focusable="false"><path d="M 58.0 104 A 102 102 0 0 1 262.0 104 Z" fill="#160e07" stroke="#4b3721" stroke-width="2"/><path d="M 130.0 104.0 L 68.0 104.0 A 92 92 0 0 1 70.7 82.0 L 130.9 96.8 A 30 30 0 0 0 130.0 104.0 Z" fill="#c8202a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 130.9 96.8 L 70.7 82.0 A 92 92 0 0 1 78.5 61.2 L 133.4 90.1 A 30 30 0 0 0 130.9 96.8 Z" fill="#f2c14e" stroke="#f7d58a" stroke-width="1.6"/><path d="M 133.4 90.1 L 78.5 61.2 A 92 92 0 0 1 91.1 43.0 L 137.5 84.1 A 30 30 0 0 0 133.4 90.1 Z" fill="#1f6fa8" stroke="#f7d58a" stroke-width="1.6"/><path d="M 137.5 84.1 L 91.1 43.0 A 92 92 0 0 1 107.7 28.3 L 143.0 79.3 A 30 30 0 0 0 137.5 84.1 Z" fill="#2f8f5a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 143.0 79.3 L 107.7 28.3 A 92 92 0 0 1 127.4 18.0 L 149.4 75.9 A 30 30 0 0 0 143.0 79.3 Z" fill="#c8202a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 149.4 75.9 L 127.4 18.0 A 92 92 0 0 1 148.9 12.7 L 156.4 74.2 A 30 30 0 0 0 149.4 75.9 Z" fill="#f2c14e" stroke="#f7d58a" stroke-width="1.6"/><path d="M 156.4 74.2 L 148.9 12.7 A 92 92 0 0 1 171.1 12.7 L 163.6 74.2 A 30 30 0 0 0 156.4 74.2 Z" fill="#1f6fa8" stroke="#f7d58a" stroke-width="1.6"/><path d="M 163.6 74.2 L 171.1 12.7 A 92 92 0 0 1 192.6 18.0 L 170.6 75.9 A 30 30 0 0 0 163.6 74.2 Z" fill="#2f8f5a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 170.6 75.9 L 192.6 18.0 A 92 92 0 0 1 212.3 28.3 L 177.0 79.3 A 30 30 0 0 0 170.6 75.9 Z" fill="#c8202a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 177.0 79.3 L 212.3 28.3 A 92 92 0 0 1 228.9 43.0 L 182.5 84.1 A 30 30 0 0 0 177.0 79.3 Z" fill="#f2c14e" stroke="#f7d58a" stroke-width="1.6"/><path d="M 182.5 84.1 L 228.9 43.0 A 92 92 0 0 1 241.5 61.2 L 186.6 90.1 A 30 30 0 0 0 182.5 84.1 Z" fill="#1f6fa8" stroke="#f7d58a" stroke-width="1.6"/><path d="M 186.6 90.1 L 241.5 61.2 A 92 92 0 0 1 249.3 82.0 L 189.1 96.8 A 30 30 0 0 0 186.6 90.1 Z" fill="#2f8f5a" stroke="#f7d58a" stroke-width="1.6"/><path d="M 189.1 96.8 L 249.3 82.0 A 92 92 0 0 1 252.0 104.0 L 190.0 104.0 A 30 30 0 0 0 189.1 96.8 Z" fill="#c8202a" stroke="#f7d58a" stroke-width="1.6"/><circle class="bombita" cx="63.0" cy="104.0" r="2.6"/><circle class="bombita" cx="63.9" cy="90.8" r="2.6"/><circle class="bombita" cx="66.6" cy="77.8" r="2.6"/><circle class="bombita" cx="71.0" cy="65.4" r="2.6"/><circle class="bombita" cx="77.1" cy="53.6" r="2.6"/><circle class="bombita" cx="84.8" cy="42.8" r="2.6"/><circle class="bombita" cx="93.8" cy="33.1" r="2.6"/><circle class="bombita" cx="104.1" cy="24.8" r="2.6"/><circle class="bombita" cx="115.4" cy="17.9" r="2.6"/><circle class="bombita" cx="127.5" cy="12.6" r="2.6"/><circle class="bombita" cx="140.3" cy="9.0" r="2.6"/><circle class="bombita" cx="153.4" cy="7.2" r="2.6"/><circle class="bombita" cx="166.6" cy="7.2" r="2.6"/><circle class="bombita" cx="179.7" cy="9.0" r="2.6"/><circle class="bombita" cx="192.5" cy="12.6" r="2.6"/><circle class="bombita" cx="204.6" cy="17.9" r="2.6"/><circle class="bombita" cx="215.9" cy="24.8" r="2.6"/><circle class="bombita" cx="226.2" cy="33.1" r="2.6"/><circle class="bombita" cx="235.2" cy="42.8" r="2.6"/><circle class="bombita" cx="242.9" cy="53.6" r="2.6"/><circle class="bombita" cx="249.0" cy="65.4" r="2.6"/><circle class="bombita" cx="253.4" cy="77.8" r="2.6"/><circle class="bombita" cx="256.1" cy="90.8" r="2.6"/><circle class="bombita" cx="257.0" cy="104.0" r="2.6"/><path d="M 130.0 104 A 30 30 0 0 1 190.0 104 Z" fill="#160e07" stroke="#f7d58a" stroke-width="2"/><path d="M 160.0 6 L 171.0 74 L 167.0 104 L 153.0 104 L 149.0 74 Z" fill="#f2c14e" stroke="#c8202a" stroke-width="2.4" stroke-linejoin="round"/><path d="M 160.0 20 L 164.5 74 L 160.0 98 L 155.5 74 Z" fill="#fff4cf"/><circle class="bombita grande" cx="160.0" cy="7" r="4.2"/></svg>
+        <h1 class="marquesina" aria-label="Mi Cartelera BA: cines de Buenos Aires, próximos 10 días">
+          <span class="marq-mi" aria-hidden="true">Mi</span>
+          <span class="marq-letras" aria-hidden="true">Cartelera BA</span>
+          <span class="marq-cartel" aria-hidden="true">Cines de Buenos Aires · próximos 10 días</span>
+        </h1>
+        <div class="dosel" aria-hidden="true"></div>
+      </div>
+      <div class="adorno derecha" aria-hidden="true">
+        <span class="tira"></span>
+        <span class="aspa">Cine</span>
+      </div>
+      <button type="button" class="enlace como-funciona" id="abrir-bienvenida">¿Cómo funciona?</button>
     </div>
   </header>
 
@@ -66,7 +82,7 @@
 
     <section class="bloque" aria-live="polite">
       <p id="resumen" class="resumen"></p>
-      <div class="tabla-contenedor">
+      <div class="tabla-contenedor papel">
         <table id="tabla" class="tabla">
           <thead><tr></tr></thead>
           <tbody></tbody>

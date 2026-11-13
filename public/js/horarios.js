@@ -4,9 +4,12 @@
 export const DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 export const DIAS_CORTOS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 
+// Se pueden elegir los dos: se suman.
 export const PRESETS = {
-  semana18: { etiqueta: "Lun a jue desde las 18", coincide: (f) => f.dia_semana <= 3 && f.hora >= "18:00" },
-  finde: { etiqueta: "Vie, sáb y dom", coincide: (f) => f.dia_semana >= 4 },
+  trabajo: { etiqueta: "Después del trabajo", detalle: "lun a vie, desde las 18",
+             coincide: (f) => f.dia_semana <= 4 && f.hora >= "18:00" },
+  finde: { etiqueta: "Fin de semana", detalle: "sáb y dom",
+           coincide: (f) => f.dia_semana >= 5 },
 };
 
 export function estadoInicial() {
@@ -37,6 +40,16 @@ function esHora(h) {
 
 export function esTodos(e) {
   return e.presets.length === 0 && !e.personalizado.activo;
+}
+
+// Hora estimada de fin: inicio + duración, redondeada al cuarto de hora más cercano
+// ("19:00" + 106 min = 20:46 -> "20:45"). Sin duración conocida no se estima nada.
+export function finEstimado(hora, duracionMin) {
+  if (!duracionMin || !/^\d{2}:\d{2}$/.test(hora)) return null;
+  const [h, m] = hora.split(":").map(Number);
+  const total = Math.round((h * 60 + m + duracionMin) / 15) * 15;
+  const enElDia = ((total % 1440) + 1440) % 1440;
+  return `${String(Math.floor(enElDia / 60)).padStart(2, "0")}:${String(enElDia % 60).padStart(2, "0")}`;
 }
 
 export function coincide(e, funcion) {
