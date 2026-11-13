@@ -3,9 +3,11 @@
 Regla de aceptación (nunca inventar datos):
   1. El título normalizado tiene que coincidir con el título original de TMDB o con alguna de
      sus traducciones o títulos alternativos.
-  2. Si la fuente trae año: el año de TMDB tiene que estar a ±1.
+  2. Si la fuente trae año: el año de TMDB tiene que estar a ±1 (±3 si además coincide el director).
      Si no trae año: tiene que coincidir el director.
-     Sin año y sin director no hay forma de confirmar -> sin_match.
+     Sin año ni director (p. ej. la grilla del Lorca), solo si coinciden LAS TRES señales:
+     duración ±5 min, idioma original y estreno reciente (año de TMDB entre anio_ref-2 y
+     anio_ref+1). Si falta alguna -> sin_match.
   3. Si las dos duraciones se conocen y difieren en más de 20 minutos, se descarta.
   4. Si sobrevive más de un candidato y el director no desempata -> ambiguo.
 Si no hay match confiable los campos quedan vacíos y el motivo queda registrado.
@@ -23,7 +25,10 @@ BASE = "https://api.themoviedb.org/3"
 IDIOMA = "es-MX"
 MAX_CANDIDATOS = 8
 TOLERANCIA_ANIO = 1
+TOLERANCIA_ANIO_CON_DIRECTOR = 3  # si además coincide el director
 TOLERANCIA_DURACION = 20
+TOLERANCIA_DURACION_ESTRICTA = 5  # regla sin año ni director
+ANIOS_ESTRENO_RECIENTE = 2
 PREFERENCIA_TITULO = [("es", "AR"), ("es", "MX"), ("es", "ES")]
 
 
@@ -69,6 +74,8 @@ class Pistas:
     anio: int | None = None
     director: str | None = None
     duracion: int | None = None
+    idioma: str | None = None      # ISO 639-1 del idioma original, si la fuente lo da
+    anio_ref: int | None = None    # año en que se consulta (para la regla de estreno reciente)
 
 
 @dataclass
@@ -108,10 +115,10 @@ def resolver(tmdb: ClienteTMDB, p: Pistas) -> Match:
         if con_director:
             aprobados = con_director
     if len(aprobados) == 1:
-        det, directores = aprobados[0]
+        det, directores, motivo = aprobados[0]
         return Match(
             "ok",
-            "año" if p.anio is not None else "director",
+            motivo,
             tmdb_id=det["id"],
             titulo=_titulo_preferido(det),
             titulo_original=det.get("original_title"),
@@ -148,7 +155,7 @@ def _ronda(tmdb: ClienteTMDB, p: Pistas, consultas: list[str], buscados: set[str
 
 def _revisar(tmdb: ClienteTMDB, p: Pistas, ids: list[int], buscados: set[str], revisados: set[int],
              descartes: list[str]) -> list[tuple[dict, list[str]]]:
-    aprobados: list[tuple[dict, list[str]]] = []
+    aprobados: list[tuple[dict, list[str], str]] = []  # (detalle, directores, motivo)
     for tmdb_id in ids:
         revisados.add(tmdb_id)
         det = tmdb.detalle(tmdb_id)
@@ -156,22 +163,41 @@ def _revisar(tmdb: ClienteTMDB, p: Pistas, ids: list[int], buscados: set[str], r
             continue
         directores = _directores(det)
         anio = _anio(det)
+        dur = det.get("runtime") or None
         if p.anio is not None:
-            if anio is None or abs(anio - p.anio) > TOLERANCIA_ANIO:
+            if anio is not None and abs(anio - p.anio) <= TOLERANCIA_ANIO:
+                motivo = "año"
+            elif (anio is not None and abs(anio - p.anio) <= TOLERANCIA_ANIO_CON_DIRECTOR
+                  and p.director and algun_director_coincide(p.director, directores)):
+                # Producción vs. estreno: frecuente en cine latinoamericano (Frida, naturaleza viva: 1983 / 1986).
+                motivo = "director+año±3"
+            else:
                 descartes.append(f"{tmdb_id}: año {anio} vs {p.anio}")
                 continue
         elif p.director:
             if not algun_director_coincide(p.director, directores):
                 descartes.append(f"{tmdb_id}: director {directores} vs {p.director!r}")
                 continue
+            motivo = "director"
+        elif p.duracion and p.idioma and p.anio_ref:
+            idioma = det.get("original_language")
+            if not dur or abs(dur - p.duracion) > TOLERANCIA_DURACION_ESTRICTA:
+                descartes.append(f"{tmdb_id}: duración {dur} vs {p.duracion}")
+                continue
+            if idioma != p.idioma:
+                descartes.append(f"{tmdb_id}: idioma {idioma} vs {p.idioma}")
+                continue
+            if anio is None or not (p.anio_ref - ANIOS_ESTRENO_RECIENTE <= anio <= p.anio_ref + 1):
+                descartes.append(f"{tmdb_id}: año {anio}, no es estreno reciente")
+                continue
+            motivo = "duración+idioma+reciente"
         else:
             descartes.append(f"{tmdb_id}: sin año ni director para confirmar")
             continue
-        dur = det.get("runtime") or None
         if p.duracion and dur and abs(dur - p.duracion) > TOLERANCIA_DURACION:
             descartes.append(f"{tmdb_id}: duración {dur} vs {p.duracion}")
             continue
-        aprobados.append((det, directores))
+        aprobados.append((det, directores, motivo))
     return aprobados
 
 

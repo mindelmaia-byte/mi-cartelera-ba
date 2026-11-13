@@ -42,7 +42,7 @@ def main(argv: list[str] | None = None) -> int:
     sx = px.add_subparsers(dest="accion", required=True)
     sx.add_parser("pendientes", help="lista los textos sin extraer")
     sg = sx.add_parser("guardar", help="valida y guarda una extracción hecha a mano o por Claude")
-    sg.add_argument("texto", type=Path, help="el .txt pendiente (data/extracciones/<cine>/pendientes/<hash>.txt)")
+    sg.add_argument("texto", type=Path, help="el pendiente (data/extracciones/<cine>/pendientes/<hash>.txt o .jpg)")
     sg.add_argument("resultado", type=Path, help="JSON con el esquema ResultadoExtraccion")
     sg.add_argument("--por", required=True, help="quién extrajo, p. ej. 'claude-opus-5-5 (sesión de Claude Code)'")
 
@@ -89,13 +89,14 @@ def _extracciones(args) -> int:
         return 0
 
     meta = json.loads(args.texto.with_suffix(".meta.json").read_text(encoding="utf-8"))
-    texto = args.texto.read_text(encoding="utf-8")
+    original = extraccion.leer_original(args.texto)
     resultado = extraccion.ResultadoExtraccion.model_validate_json(args.resultado.read_text(encoding="utf-8"))
     validas, errores = extraccion.validar(resultado)
     for e in errores:
         print(f"  descartada: {e}")
-    ruta = extraccion.guardar(meta["cine"], texto, resultado, fuente_url=meta["fuente_url"],
-                              titulo_fuente=meta["titulo_fuente"], extraido_por=args.por)
+    ruta = extraccion.guardar(meta["cine"], original, resultado, fuente_url=meta["fuente_url"],
+                              titulo_fuente=meta["titulo_fuente"], extraido_por=args.por,
+                              ext=args.texto.suffix)
     print(f"Guardado {ruta.relative_to(RAIZ)}: {len(resultado.peliculas)} películas, "
           f"{len(validas)} funciones válidas, {len(errores)} descartadas.")
     return 0

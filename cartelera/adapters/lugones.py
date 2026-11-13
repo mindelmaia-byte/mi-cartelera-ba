@@ -89,6 +89,7 @@ class Lugones:
                     director_fuente=peli.director,
                     anio_fuente=peli.anio,
                     duracion_fuente=peli.duracion_min,
+                    idioma_fuente=peli.idioma,
                 ))
         return funciones
 

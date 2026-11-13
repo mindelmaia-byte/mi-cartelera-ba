@@ -102,6 +102,49 @@ def test_duracion_muy_distinta_descarta():
     assert m.estado == "sin_match" and "duración" in m.motivo
 
 
+def _detalle_idioma(id_, fecha, runtime, idioma):
+    d = _detalle(id_, "Ebenezer", "Ebenezer", fecha, ["Ti West"], runtime=runtime)
+    next(iter(d.values()))["original_language"] = idioma
+    return d
+
+
+@pytest.mark.parametrize("fecha,runtime,idioma,estado", [
+    ("2026-11-11", 113, "en", "ok"),         # las tres señales coinciden
+    ("2026-11-11", 125, "en", "sin_match"),  # duración a más de 5 min
+    ("2026-11-11", 115, "fr", "sin_match"),  # otro idioma
+    ("1998-10-13", 115, "en", "sin_match"),  # no es estreno reciente
+])
+def test_regla_sin_anio_ni_director(fecha, runtime, idioma, estado):
+    r = {**_busqueda("EBENEZER", {"id": 7, "title": "Ebenezer", "original_title": "Ebenezer"}),
+         **_detalle_idioma(7, fecha, runtime, idioma)}
+    m = resolver(_cliente_desde(r), Pistas("EBENEZER", duracion=115, idioma="en", anio_ref=2026))
+    assert m.estado == estado
+    if estado == "ok":
+        assert m.motivo == "duración+idioma+reciente" and m.director == "Ti West"
+
+
+@pytest.mark.parametrize("director,fecha,estado", [
+    ("Paul Leduc", "1986-03-01", "ok"),          # producción 1983, estreno 1986, mismo director
+    ("Otro Nombre", "1986-03-01", "sin_match"),  # 3 años sin director que coincida: no
+    ("Paul Leduc", "1988-03-01", "sin_match"),   # más de 3 años: no
+])
+def test_anio_con_tolerancia_si_coincide_director(director, fecha, estado):
+    r = {**_busqueda("Frida, naturaleza viva", {"id": 3, "title": "Frida, naturaleza viva", "original_title": "Frida, naturaleza viva"}),
+         **_busqueda("Frida, naturaleza viva", anio=1983),
+         **_detalle(3, "Frida, naturaleza viva", "Frida, naturaleza viva", fecha, ["Paul Leduc"])}
+    m = resolver(_cliente_desde(r), Pistas("Frida, naturaleza viva", anio=1983, director=director))
+    assert m.estado == estado
+    if estado == "ok":
+        assert m.motivo == "director+año±3"
+
+
+def test_sin_idioma_sigue_sin_confirmar():
+    r = {**_busqueda("EBENEZER", {"id": 7, "title": "Ebenezer", "original_title": "Ebenezer"}),
+         **_detalle_idioma(7, "2026-11-11", 115, "en")}
+    m = resolver(_cliente_desde(r), Pistas("EBENEZER", duracion=115, anio_ref=2026))
+    assert m.estado == "sin_match" and "sin año ni director" in m.motivo
+
+
 def test_nombres():
     assert normalizar("¿QUERES SER MI HIJO?") == normalizar("¿Querés ser mi hijo?") == "queres ser mi hijo"
     assert algun_director_coincide("Enrique Fernández y César Charlone", ["César Charlone"])

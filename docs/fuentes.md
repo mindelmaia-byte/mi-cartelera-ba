@@ -50,3 +50,57 @@ Se completa **antes** de escribir cada adaptador.
   - `url_entradas` = el link de entradasba de la tarjeta, que es el mismo para todo el ciclo; `modo_venta = online`.
   - `titulo_original`, año, director y duración salen de la ficha del PDF.
 - **Dirección:** "Av. Corrientes 1530 (Teatro San Martín)", tomada del texto de los programas.
+
+## Lorca: `cartelera/adapters/lorca.py`
+
+- **Revisado:** 2026-11-13
+- **Sitio oficial:** https://cinelorca.wixsite.com/cine-lorca, de "Cine Lorca S.A." (sitio Wix). No hay un dominio propio: probé cinelorca.com.ar, .com y .ar y ninguno existe.
+- **Formato:** **una imagen** por semana en la sección "HORARIOS" (`/current-production`).
+  - La imagen dice "Programación válida desde el 12/11 al 18/11 2026". Los horarios son los mismos todos los días.
+  - De cada película trae sala, duración, calificación e idioma (ING/SUBT, ESP, etc.). **No trae ni director ni año.**
+  - La URL de la imagen (`static.wixstatic.com/media/<id>~mv2.jpg`) viene en el HTML del servidor.
+- **robots.txt** (cinelorca.wixsite.com): `Allow: /`, salvo `?lightbox=`. No bloquea a bots de IA.
+- **Términos:** el sitio no tiene página de términos.
+- **Uso que hacemos:** un pedido a la página y uno a la imagen, una vez por día.
+- **Estructuración:**
+  - Se hace igual que en la Lugones, pero sobre la imagen. La imagen original se guarda en `data/extracciones/lorca/<hash>.jpg`, junto al resultado.
+  - La grilla se expande a una función por día del período y por horario.
+  - Hoy la extracción la hace Claude en la sesión, leyendo la imagen.
+- **Campos:**
+  - `modo_venta = boleteria`, porque no hay venta online; la imagen solo lista los precios de boletería.
+  - `url_entradas = null`.
+  - De las pistas para TMDB solo hay duración.
+- **TMDB:** como no hay año ni director, se usa la regla de tres señales que aprobó la usuaria: duración ±5 min, idioma original (el de la grilla, pasado a ISO 639-1) y estreno de los últimos 2 años. Con esa regla cruzaron 4 de 6.
+- **Dirección:** "Av. Corrientes 1428", tal como figura en la imagen oficial.
+
+## Cosmos: sin adaptador todavía
+
+- **Revisado:** 2026-11-13
+- **Sitio oficial:** https://cosmos.uba.ar (cinecosmos.uba.ar redirige ahí). **Ese día respondía 503 "Sitio en mantenimiento"**, incluido robots.txt.
+- **Otras fuentes:** www.uba.ar/cosmos es una página vacía ("seguinos!!!!"). Las demás fuentes que aparecen (La Nación, agregadores, X) no son la web oficial del cine.
+- **Pendiente:** reintentar cuando vuelva el sitio. Según búsquedas anteriores, publicaba horarios por día de la semana en `?c=main&a=Detalle&idPelicula=...`.
+
+## MALBA: `cartelera/adapters/malba.py` (parser sin IA)
+
+- **Revisado:** 2026-11-13
+- **robots.txt de malba.org.ar:** **bloquea explícitamente a bots de IA**: `GPTBot`, `ChatGPT-User`, `ClaudeBot`, `anthropic-ai`, `CCBot`, `Google-Extended`, entre otros, con `Disallow: /`. A `*` solo le bloquea `/wp-admin/`.
+- **Decisión de la usuaria (2026-11-13):** parser determinístico, sin IA. Así queda:
+  - Nada de MALBA pasa por una extracción con Claude.
+  - El ingest lee con el User-Agent del proyecto, que entra en `*`.
+  - No se vuelve a inspeccionar malba.org.ar con el navegador del asistente.
+- **Fuente 1, las funciones:** el catálogo JSON de la **boletería oficial**, `https://ticketsmalba.liit.ar/api/catalog`. Es la plataforma Liit, enlazada desde cada "Comprar entradas".
+  - Los `items` con `vertical == "cine"` traen `title`, `sourceId` (id de película) y `sessions` (`date`, `time`, `sourceId` de la función, `sourceRoom`).
+  - **La fecha es la calendario real**: el Bazofi anuncia "VIERNES 13 — 24:00" y el catálogo dice `2026-11-14 00:00`, así que acá **no** se aplica la regla de trasnoche.
+  - El catálogo también trae precios y ocupación, que no guardamos.
+  - **robots.txt de liit.ar:** es la plantilla de "content signals" de Cloudflare, **sin ninguna señal ni directiva**, o sea que no restringe nada.
+- **Fuente 2, las pistas para TMDB:** las páginas `/evento/<slug>/` listadas en https://malba.org.ar/cine/, después del link a la grilla mensual. De cada una se usa:
+  - el h1 (título bien escrito);
+  - la "Ficha técnica" ("Dirección: …" / "Dirección y guion: …", y "País, AAAA. NN′");
+  - el link de compra, cuyo `m=<id>` cruza la ficha con el catálogo. Hay dos boleterías, la nueva `ticketsmalba.liit.ar` y la vieja `malba.liit.com.ar/decidir`.
+  - Los festivales y cineclubes (Bazofi, Nocturna) tienen varias películas en una misma página: de su bloque "Programación" ("19:00 / La prisionera / , de Henri-Georges Clouzot") sale el director, y se cruza por título.
+- **Uso que hacemos:** 1 pedido al catálogo, 1 a /cine/ y unos 12 a eventos, con 1,5 s de pausa, una vez por día.
+- **Campos:**
+  - `modo_venta = online` y `url_entradas = https://ticketsmalba.liit.ar/?cine=1&m=<película>&e=<función>`.
+  - `ciclo` sale del prefijo del título del catálogo ("nocturna: …" → "Nocturna").
+- **Otros datos:** la API REST de WordPress responde 401. Hay un PDF mensual con la grilla, que no se usa.
+- **Dirección:** "Av. Figueroa Alcorta 3415", tal como figura en el sitio oficial.

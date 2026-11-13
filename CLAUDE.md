@@ -48,18 +48,22 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
   - es idempotente: reemplaza las funciones futuras de cada cine en una transacción;
   - si un adaptador falla, conserva lo anterior, registra el error y sigue con el resto;
   - 0 funciones cuando antes había → estado `sin_funciones` y no se borra nada.
-- **Trasnoche:** una hora antes de las 06:00 se pasa al día siguiente (`tiempo.combinar`).
+- **Trasnoche:** una hora antes de las 06:00 se pasa al día siguiente (`tiempo.combinar`), **siempre que la fuente publique el día de la grilla**. Si publica la fecha calendario real, como el catálogo de MALBA, se usa `datetime.combine`. Confirmalo con un caso de medianoche contra otra fuente del mismo cine.
 - **Nunca inventar datos.** Si no hay un match confiable (TMDB, LLM), los campos quedan vacíos y marcados.
 - **TMDB** (`cartelera/tmdb.py`, `cartelera/enriquecer.py`):
   - Cada función apunta a una fila de `peliculas`. La clave es título + título original + año + director de la fuente.
-  - Para aceptar un match, el título normalizado tiene que coincidir con el original, una traducción o un título alternativo. Además tiene que coincidir el año (±1) o, si la fuente no trae año, el director. Sin año ni director no se acepta.
+  - Para aceptar un match, el título normalizado tiene que coincidir con el original, una traducción o un título alternativo. Además tiene que coincidir una de estas:
+    - el año (±1, o ±3 si también coincide el director);
+    - si la fuente no trae año, el director;
+    - si no trae ni año ni director, las tres señales: duración ±5, idioma original y estreno reciente (regla aprobada para el Lorca).
+    - Si no, no se acepta.
   - Si las dos duraciones se conocen y difieren en más de 20 minutos, se descarta. Si sobreviven varios candidatos, queda `ambiguo`.
   - Estados posibles: `ok`, `sin_match`, `ambiguo` (con `match_motivo`) o `pendiente`.
   - Las resueltas no se vuelven a consultar. Las `sin_match` y `ambiguo` se reintentan cada 7 días.
   - Los tests reproducen respuestas grabadas sin usar la red. Si cambia el fixture de un cine, hay que volver a grabar con `enriquecer --forzar --grabar`.
   - El link a Letterboxd es `https://letterboxd.com/tmdb/{tmdb_id}/`, que redirige a la película. Lo verifiqué el 2026-11-13.
-- **Extracción de textos libres (Lugones, Museo del Cine)** (`cartelera/extraccion.py`):
-  - Se guarda con clave = hash del texto, en `data/extracciones/<cine>/<hash>.{txt,json}`. Ese directorio **sí se commitea**: guarda el texto original junto al resultado.
+- **Extracción de textos libres o imágenes (Lugones, Lorca, Museo del Cine)** (`cartelera/extraccion.py`):
+  - Se guarda con clave = hash del original (texto o bytes de la imagen), en `data/extracciones/<cine>/<hash>.{txt|jpg,json}`. Ese directorio **sí se commitea**: guarda el original junto al resultado.
   - Un texto nuevo queda en `pendientes/` y el cine conserva sus funciones anteriores.
   - **Hoy no hay crédito de API:** para procesar un pendiente, Claude, en una sesión de Claude Code, lee el `.txt`, arma un JSON con el esquema `ResultadoExtraccion` siguiendo `extraccion.INSTRUCCIONES` y lo guarda con `extracciones guardar ... --por "claude-opus-5-5 (sesion de Claude Code, sin API)"`.
   - **Para la entrega:** automatizarlo con la API de Claude (`claude-opus-5-5` y structured outputs) cuando haya `ANTHROPIC_API_KEY`.
@@ -77,7 +81,7 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 1. Gaumont de punta a punta en consola ✅
 2. TMDB ✅
 3. Lugones ✅ (y la skill `agregar-cine` en `.claude/skills/`)
-4. Resto de la tanda 1
+4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos pendiente (el sitio oficial estaba en mantenimiento el 2026-11-13)
 5. Interfaz con datos reales y filtro de horarios
 6. Calendario
 7. Letterboxd y "Para vos"

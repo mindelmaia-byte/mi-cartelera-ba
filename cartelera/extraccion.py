@@ -40,11 +40,15 @@ Extraé las funciones de cine de este texto (programa de un ciclo o nota de prog
 - La fecha es la del día bajo el que aparece la función, aunque la hora sea de madrugada.
 - titulo: el título en castellano como lo publica el texto. titulo_original: el que aparece
   entre paréntesis si es distinto. pais, anio, director (después de "Dirección:"),
-  duracion_min (p. ej. "(84’; DCP)" -> 84). ciclo: solo si el texto lo indica por película
+  duracion_min (p. ej. "(84’; DCP)" -> 84), idioma original como código ISO 639-1 si la fuente
+  lo indica (p. ej. "ING / SUBT" -> "en", "IT" -> "it", "ESP" -> "es", "ALM" -> "de"). ciclo: solo si el texto lo indica por película
   (p. ej. lo que sigue a la barra en "Sábado 5 de septiembre a las 16 h | Cine argentino").
 - No inventes: si un dato no está en el texto, null. No incluyas actividades que no sean
   proyecciones (charlas, talleres) salvo que se proyecte una película.
 - periodo_desde / periodo_hasta: el rango que declara el texto, si lo declara.
+- Si el original es una IMAGEN de grilla semanal con los mismos horarios todos los días
+  ("Programación válida desde el 12/11 al 18/11"), generá una función por cada día del período
+  y cada horario, con el día de la semana que corresponde a esa fecha.
 """
 
 
@@ -68,6 +72,8 @@ class PeliculaExtraida(BaseModel):
     anio: int | None = None
     director: str | None = None
     duracion_min: int | None = None
+    idioma: str | None = Field(default=None, pattern=r"^[a-z]{2}$",
+                               description="Idioma original hablado, ISO 639-1, solo si la fuente lo indica")
     ciclo: str | None = None
     funciones: list[FuncionExtraida]
 
@@ -92,41 +98,69 @@ class Registro(BaseModel):
     resultado: ResultadoExtraccion
 
 
-def hash_texto(texto: str) -> str:
-    return hashlib.sha256(texto.strip().encode("utf-8")).hexdigest()[:16]
+Original = str | bytes  # texto (PDF, nota) o imagen (grilla publicada como foto)
+
+
+def hash_original(original: Original) -> str:
+    datos = original.strip().encode("utf-8") if isinstance(original, str) else original
+    return hashlib.sha256(datos).hexdigest()[:16]
+
+
+hash_texto = hash_original  # compatibilidad
 
 
 def _dir(cine: str) -> Path:
     return DIR_EXTRACCIONES / cine
 
 
-def cargar(cine: str, texto: str) -> Registro | None:
-    ruta = _dir(cine) / f"{hash_texto(texto)}.json"
+def _escribir(ruta: Path, original: Original) -> None:
+    if isinstance(original, str):
+        ruta.write_text(original, encoding="utf-8")
+    else:
+        ruta.write_bytes(original)
+
+
+def _extension(original: Original, ext: str | None) -> str:
+    if isinstance(original, str):
+        return ".txt"
+    if not ext:
+        raise ValueError("una imagen necesita extensión (.jpg, .png)")
+    return ext
+
+
+def leer_original(ruta: Path) -> Original:
+    return ruta.read_text(encoding="utf-8") if ruta.suffix == ".txt" else ruta.read_bytes()
+
+
+def cargar(cine: str, original: Original) -> Registro | None:
+    ruta = _dir(cine) / f"{hash_original(original)}.json"
     if not ruta.exists():
         return None
     return Registro.model_validate_json(ruta.read_text(encoding="utf-8"))
 
 
-def guardar_pendiente(cine: str, texto: str, fuente_url: str | None, titulo: str | None) -> Path:
-    h = hash_texto(texto)
+def guardar_pendiente(cine: str, original: Original, fuente_url: str | None, titulo: str | None,
+                      ext: str | None = None) -> Path:
+    h = hash_original(original)
     d = _dir(cine) / "pendientes"
     d.mkdir(parents=True, exist_ok=True)
-    (d / f"{h}.txt").write_text(texto, encoding="utf-8")
+    ruta = d / f"{h}{_extension(original, ext)}"
+    _escribir(ruta, original)
     (d / f"{h}.meta.json").write_text(
         json.dumps({"cine": cine, "hash": h, "fuente_url": fuente_url, "titulo_fuente": titulo},
                    ensure_ascii=False, indent=1), encoding="utf-8")
-    return (d / f"{h}.txt").relative_to(RAIZ)
+    return ruta.relative_to(RAIZ)
 
 
-def guardar(cine: str, texto: str, resultado: ResultadoExtraccion, *, fuente_url: str | None,
-            titulo_fuente: str | None, extraido_por: str) -> Path:
-    """Guarda texto original + extracción y borra el pendiente, si había."""
-    h = hash_texto(texto)
+def guardar(cine: str, original: Original, resultado: ResultadoExtraccion, *, fuente_url: str | None,
+            titulo_fuente: str | None, extraido_por: str, ext: str | None = None) -> Path:
+    """Guarda el original (texto o imagen) + la extracción y borra el pendiente, si había."""
+    h = hash_original(original)
     d = _dir(cine)
     d.mkdir(parents=True, exist_ok=True)
     registro = Registro(cine=cine, hash=h, fuente_url=fuente_url, titulo_fuente=titulo_fuente,
                         extraido_por=extraido_por, extraido_en=iso(ahora()), resultado=resultado)
-    (d / f"{h}.txt").write_text(texto, encoding="utf-8")
+    _escribir(d / f"{h}{_extension(original, ext)}", original)
     ruta = d / f"{h}.json"
     ruta.write_text(registro.model_dump_json(indent=1), encoding="utf-8")
     for p in (d / "pendientes").glob(f"{h}.*"):
@@ -136,7 +170,7 @@ def guardar(cine: str, texto: str, resultado: ResultadoExtraccion, *, fuente_url
 
 def pendientes(cine: str | None = None) -> list[Path]:
     base = _dir(cine) if cine else DIR_EXTRACCIONES
-    return sorted(base.glob("**/pendientes/*.txt"))
+    return sorted(p for p in base.glob("**/pendientes/*") if not p.name.endswith(".meta.json"))
 
 
 def validar(r: ResultadoExtraccion) -> tuple[list[tuple[PeliculaExtraida, FuncionExtraida]], list[str]]:

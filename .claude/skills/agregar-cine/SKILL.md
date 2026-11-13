@@ -22,7 +22,11 @@ Usá el navegador integrado (`mcp__Claude_Browser__*`) sobre la web **oficial** 
    - Si el sitio es WordPress, mirá `/wp-json/wp/v2/types` (la Lugones no exponía las producciones) y `/wp-json/wp/v2/media?mime_type=application/pdf`.
    - Si es Next.js, los datos pueden estar en `self.__next_f` o venir de una API aparte.
 3. **Si no hay JSON:** HTML estable (con selectores concretos) antes que PDF. Si hay un PDF o un texto libre con fechas incompletas, usá la extracción estructurada (paso 4b).
+   - **Grilla publicada como imagen** (Lorca): usá la extracción estructurada sobre la imagen, con `extraccion.cargar(cine, bytes)` y `guardar_pendiente(..., ext=".jpg")`. En el fixture, la imagen va en base64. Ver `adapters/lorca.py`.
+   - Si la imagen o el texto no traen ni año ni director, avisale a la usuaria que TMDB no va a poder confirmar ningún match.
 4. **robots.txt:** pedilo en cada host que vas a leer, incluido el host de la API. Un 404 significa que no hay restricciones declaradas.
+   - **Fijate si bloquea a bots de IA**: `ClaudeBot`, `anthropic-ai`, `GPTBot`, etc. MALBA lo hace. En ese caso, aunque `*` esté permitido, **no sigas accediendo al sitio y consultá** a la usuaria.
+   - Si el sitio oficial está caído (Cosmos devolvía 503 por mantenimiento), no lo reemplaces por un agregador de terceros. Documentalo en `docs/fuentes.md` y dejalo pendiente.
 5. **Términos:** buscá "términos", "legal" o "condiciones" en el footer y leé lo que diga sobre acceso automático, scraping o reproducción.
 6. **Dirección:** confirmala con la fuente oficial (`verificada: true` en el registro).
 7. **Reportarle a la usuaria antes de escribir el adaptador:** cómo publica (formato y URL), qué dicen robots.txt y los términos, cuántos pedidos por día vamos a hacer y qué campos se pueden llenar. **Si robots.txt o los términos lo prohíben, frená y consultá.**
@@ -40,6 +44,10 @@ Tomá como modelo `gaumont.py` si hay JSON, o `lugones.py` si hay HTML + PDF o t
 - `fetch` solo usa la red y devuelve algo **serializable a JSON**. Ese resultado es el fixture, así que incluí también el HTML que se usa para descubrir (como `html_sala` en la Lugones). Poné `PAUSA_SEGUNDOS` entre pedidos y usá el cliente que recibís, que ya trae el User-Agent del proyecto.
 - `parse` es una función pura y devuelve `list[FuncionCruda]`:
   - `fecha_hora` con zona horaria, usando `tiempo.combinar(dia, hora)`. Una hora antes de las 06:00 pasa al día siguiente.
+    - **Verificá qué significa la fecha de una función de medianoche.** El catálogo de MALBA pone "Viernes 13 a las 24:00" como `14/11 00:00`, que ya es la fecha real; ahí se usa `datetime.combine` y no `combinar`.
+    - Buscá un caso de medianoche y comparalo con otra publicación del mismo cine.
+  - Si la boletería es otra plataforma, como Cinexo o Liit, buscá su JSON. Suele ser mejor fuente que la página del cine.
+  - Si el catálogo no trae director ni año, sacalos de la ficha de cada película (MALBA) y cruzalos por un id estable (`m=` del link de compra), no solo por el título.
   - `modo_venta`: `online` si hay link de compra, `boleteria` si solo se vende en el lugar, `gratis` si es con entrada libre.
   - `url_entradas`: la página donde se compra. Si no existe, null.
   - `fuente_url`: de dónde salió el dato.
@@ -66,7 +74,7 @@ uv run python -m cartelera fixture <id> --dias 7
 - En `parse`, llamá a `extraccion.cargar(cine, texto)`. Si devuelve `None`, llamá a `extraccion.guardar_pendiente(...)` y sumá un aviso.
 - Para procesar los pendientes (hoy sin API, lo hace Claude en la sesión):
   1. `uv run python -m cartelera extracciones pendientes`
-  2. Leé **todo** el `.txt` y armá el JSON `ResultadoExtraccion` siguiendo `extraccion.INSTRUCCIONES`:
+  2. Leé **todo** el `.txt`, o la imagen con Read, y armá el JSON `ResultadoExtraccion` siguiendo `extraccion.INSTRUCCIONES`. Si la grilla es semanal con los mismos horarios todos los días, conviene generar el JSON con un script chico en el scratchpad (ver el caso del Lorca):
      - el día de la semana tal como aparece en el texto;
      - la fecha completa, con el mes deducido de la introducción;
      - "A las 15 y 21 horas" son dos funciones;

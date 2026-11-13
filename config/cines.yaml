@@ -13,8 +13,8 @@ cines:
   # ---- Tanda 1 ----
   - {id: gaumont, nombre: Gaumont, direccion: "Av. Rivadavia 1635", verificada: true, tanda: 1, es_comercial: false, adaptador: gaumont}
   - {id: cosmos, nombre: Cosmos, direccion: "Av. Corrientes 2046", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
-  - {id: lorca, nombre: Lorca, direccion: "Av. Corrientes 1428", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
-  - {id: malba, nombre: MALBA, direccion: "Av. Figueroa Alcorta 3415", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
+  - {id: lorca, nombre: Lorca, direccion: "Av. Corrientes 1428", verificada: true, tanda: 1, es_comercial: false, adaptador: lorca}
+  - {id: malba, nombre: MALBA, direccion: "Av. Figueroa Alcorta 3415", verificada: true, tanda: 1, es_comercial: false, adaptador: malba}
   - {id: lugones, nombre: Sala Lugones, direccion: "Av. Corrientes 1530 (Teatro San Martín)", verificada: true, tanda: 1, es_comercial: false, adaptador: lugones}
 
   # ---- Tanda 2 ----

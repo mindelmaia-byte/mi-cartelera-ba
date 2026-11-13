@@ -41,6 +41,7 @@ class FuncionCruda(BaseModel):
     director_fuente: str | None = None
     anio_fuente: int | None = None
     duracion_fuente: int | None = None
+    idioma_fuente: str | None = None  # código ISO 639-1 del idioma original ("en", "it"), si la fuente lo da
 
     @field_validator("fecha_hora")
     @classmethod

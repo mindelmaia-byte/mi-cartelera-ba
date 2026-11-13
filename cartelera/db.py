@@ -95,6 +95,8 @@ def _migrar(con: sqlite3.Connection) -> None:
         ("funciones", "pelicula_id", "INTEGER REFERENCES peliculas(id)"),
         ("cines", "ultimos_avisos", "TEXT"),
         ("ingest_runs", "avisos", "TEXT"),
+        ("funciones", "idioma_fuente", "TEXT"),
+        ("peliculas", "idioma_fuente", "TEXT"),
     ]
     for tabla, columna, tipo in agregar:
         columnas = {r["name"] for r in con.execute(f"PRAGMA table_info({tabla})")}
@@ -133,12 +135,12 @@ def reemplazar_futuras(
         con.executemany(
             """INSERT OR IGNORE INTO funciones
                (cine_id, fecha_hora, titulo, titulo_original, ciclo, url_entradas, modo_venta,
-                es_comercial, fuente_url, director_fuente, anio_fuente, duracion_fuente)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                es_comercial, fuente_url, director_fuente, anio_fuente, duracion_fuente, idioma_fuente)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             [
                 (cine.id, iso(f.fecha_hora), f.titulo, f.titulo_original, f.ciclo, f.url_entradas,
                  f.modo_venta, int(cine.es_comercial), f.fuente_url, f.director_fuente,
-                 f.anio_fuente, f.duracion_fuente)
+                 f.anio_fuente, f.duracion_fuente, f.idioma_fuente)
                 for f in futuras
             ],
         )

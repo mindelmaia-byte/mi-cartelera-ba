@@ -36,7 +36,7 @@ def clave_pelicula(titulo: str, titulo_original: str | None, anio: int | None, d
 def vincular(con: sqlite3.Connection) -> int:
     """Asigna pelicula_id a las funciones que no lo tienen (crea la película si hace falta)."""
     filas = con.execute(
-        """SELECT id, titulo, titulo_original, anio_fuente, director_fuente, duracion_fuente
+        """SELECT id, titulo, titulo_original, anio_fuente, director_fuente, duracion_fuente, idioma_fuente
            FROM funciones WHERE pelicula_id IS NULL"""
     ).fetchall()
     with con:
@@ -44,10 +44,15 @@ def vincular(con: sqlite3.Connection) -> int:
             clave = clave_pelicula(f["titulo"], f["titulo_original"], f["anio_fuente"], f["director_fuente"])
             con.execute(
                 """INSERT OR IGNORE INTO peliculas
-                   (clave, titulo_fuente, titulo_original_fuente, anio_fuente, director_fuente, duracion_fuente)
-                   VALUES (?, ?, ?, ?, ?, ?)""",
-                (clave, f["titulo"], f["titulo_original"], f["anio_fuente"], f["director_fuente"], f["duracion_fuente"]),
+                   (clave, titulo_fuente, titulo_original_fuente, anio_fuente, director_fuente, duracion_fuente,
+                    idioma_fuente)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (clave, f["titulo"], f["titulo_original"], f["anio_fuente"], f["director_fuente"],
+                 f["duracion_fuente"], f["idioma_fuente"]),
             )
+            # Una película ya creada sin idioma lo gana si una fuente lo trae después.
+            con.execute("UPDATE peliculas SET idioma_fuente = COALESCE(idioma_fuente, ?) WHERE clave = ?",
+                        (f["idioma_fuente"], clave))
             con.execute("UPDATE funciones SET pelicula_id = (SELECT id FROM peliculas WHERE clave = ?) WHERE id = ?",
                         (clave, f["id"]))
     return len(filas)
@@ -74,7 +79,7 @@ def enriquecer(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: datetime | N
     resumen = Resumen()
     for p in pendientes(con, momento, forzar):
         pistas = Pistas(p["titulo_fuente"], p["titulo_original_fuente"], p["anio_fuente"],
-                        p["director_fuente"], p["duracion_fuente"])
+                        p["director_fuente"], p["duracion_fuente"], p["idioma_fuente"], momento.year)
         try:
             m = resolver(tmdb, pistas)
         except (httpx.HTTPError, KeyError, ValueError) as e:
