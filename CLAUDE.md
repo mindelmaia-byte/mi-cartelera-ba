@@ -22,7 +22,8 @@ uv run python -m cartelera ingest --cine gaumont [--sin-tmdb]   # al final cruza
 uv run python -m cartelera enriquecer [--forzar] [--grabar tests/fixtures/tmdb/respuestas.json]
 uv run python -m cartelera listar [--cine X] [--dias 10]
 uv run python -m cartelera export                      # public/data/cartelera.json (próximos 10 días)
-uv run python -m http.server 8765 --directory public   # ver el sitio en http://localhost:8765 (config "sitio" en .claude/launch.json)
+uv run python -m cartelera servir                      # sitio en http://localhost:8765 + /api/letterboxd + tests JS en /pruebas/js/
+                                                       # (config "sitio" en .claude/launch.json)
 uv run python -m cartelera fixture <cine> [--dias 7]   # guarda lo que publica el cine en tests/fixtures/<cine>/
 uv run python -m cartelera extracciones pendientes     # PDFs/notas nuevos que esperan extracción
 uv run python -m cartelera extracciones guardar <pendiente.txt> <resultado.json> --por "<quién>"
@@ -80,6 +81,20 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 - **Filtro de horarios:** filtra por hora de inicio. Los presets y el personalizado se suman (unión); sin ninguno activo, se muestra todo.
 - **Preferencias:** en localStorage, con prefijo `cartelera-ba:`, siempre a través de `js/almacen.js` (con try/catch).
 - **Celular:** por debajo de 760 px, la tabla pasa a tarjetas (CSS).
+- **Tests de la interfaz:** están en `tests/js/` y corren en el navegador con `cartelera servir`, en http://localhost:8765/pruebas/js/. Todos tienen que pasar; usan datos inventados de `tests/fixtures/letterboxd/`.
+- **Google Calendar** (`js/calendario.js`, guía en `docs/google-calendar.md`):
+  - Token de GIS solo en memoria y scope `calendar.freebusy`, sobre el calendario `primary`.
+  - Sin `GOOGLE_CLIENT_ID` en `public/config.js`, el bloque no aparece.
+  - Estados: "entra", "justo" (choca solo con el margen) y "no entra".
+  - "Solo las que me entran" oculta las que no entran.
+  - El fin de la función se calcula con `duracion_aprox`, o 120 min si no se conoce.
+- **Letterboxd** (`js/gustos.js`):
+  - El RSS se pide por el proxy: `functions/api/letterboxd.js` en Cloudflare y `cartelera/letterboxd.py` en local, con la misma salida.
+  - El zip o la carpeta se leen en el navegador: solo los CSV de la raíz, nunca los de `deleted/`, `orphaned/`, etc.
+  - El cruce con la cartelera es por `tmdb_id` (RSS) o por título + año ±1 contra los títulos de TMDB en castellano, original e inglés (zip).
+  - "Director que te gusta": el export publica la filmografía de cada director en cartelera y el navegador cruza ahí tus puntajes. Nada personal sale del navegador.
+  - "Para vos" necesita al menos una señal de gusto (watchlist o director), porque la escasez sola no recomienda. Muestra una función por película, la más temprana.
+  - Los pesos están en `config/pesos.json` y se publican en el export.
 
 ## Privacidad y secretos
 - **Secretos:** en `.env` (`TMDB_API_KEY`, `ANTHROPIC_API_KEY`), que nunca se commitea. `.env.example` muestra las claves.
@@ -93,8 +108,8 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 3. Lugones ✅ (y la skill `agregar-cine` en `.claude/skills/`)
 4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos pendiente (el sitio oficial estaba en mantenimiento el 2026-11-13)
 5. Interfaz con datos reales y filtro de horarios ✅ (`public/`: HTML + módulos JS sin build; `js/horarios.js` tiene la lógica del filtro)
-6. Calendario
-7. Letterboxd y "Para vos"
+6. Calendario ✅ (falta probar el OAuth real con el Client ID de la usuaria)
+7. Letterboxd y "Para vos" ✅ (probado con el RSS y el export reales de la usuaria, sin guardarlos)
 8. Publicación
 9. Tandas 4, 2 y 3
 

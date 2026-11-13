@@ -67,6 +67,15 @@ CREATE TABLE IF NOT EXISTS peliculas (
     letterboxd_url         TEXT
 );
 
+-- Filmografía (como director) de los directores que están en cartelera. Se publica en el export
+-- para que el navegador detecte "directores que te gustan" sin mandar tus datos a ningún lado.
+CREATE TABLE IF NOT EXISTS directores (
+    persona_id  INTEGER PRIMARY KEY,
+    nombre      TEXT,
+    filmografia TEXT NOT NULL,   -- JSON: [{tmdb_id, anio, titulos: [inglés, original]}]
+    consultado  TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS ingest_runs (
     id          INTEGER PRIMARY KEY,
     inicio      TEXT NOT NULL,
@@ -97,6 +106,8 @@ def _migrar(con: sqlite3.Connection) -> None:
         ("ingest_runs", "avisos", "TEXT"),
         ("funciones", "idioma_fuente", "TEXT"),
         ("peliculas", "idioma_fuente", "TEXT"),
+        ("peliculas", "titulo_en", "TEXT"),
+        ("peliculas", "directores_ids", "TEXT"),  # ids de persona de TMDB separados por coma
     ]
     for tabla, columna, tipo in agregar:
         columnas = {r["name"] for r in con.execute(f"PRAGMA table_info({tabla})")}

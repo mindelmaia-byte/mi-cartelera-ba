@@ -10,15 +10,30 @@
 </head>
 <body>
   <header class="cabecera">
-    <div class="envoltura">
-      <h1>Cartelera BA</h1>
-      <p class="bajada">Cines de Buenos Aires, próximos 10 días</p>
+    <div class="envoltura cabecera-fila">
+      <div>
+        <h1>Cartelera BA</h1>
+        <p class="bajada">Cines de Buenos Aires, próximos 10 días</p>
+      </div>
+      <button type="button" class="enlace" id="abrir-bienvenida">¿Cómo funciona?</button>
     </div>
   </header>
 
+  <dialog id="bienvenida" aria-labelledby="t-bienvenida">
+    <h2 id="t-bienvenida">Bienvenida</h2>
+    <p>La cartelera ya funciona así como está: filtrá por horario, día y cine. Sin cuentas ni login.</p>
+    <p>Hay dos pasos <strong>opcionales</strong> e independientes. Los podés hacer ahora, después o nunca:</p>
+    <ol class="pasos">
+      <li><strong>Letterboxd.</strong> Escribí tu usuario: con tus vistas recientes marcamos lo que ya viste y armamos “Para vos”. Si además subís el zip de tu exportación (Settings → Import &amp; Export), sumamos tu watchlist y tu historial completo. El zip se lee en tu navegador y no se sube a ningún lado.</li>
+      <li id="bienvenida-paso-calendario"><strong>Google Calendar.</strong> Conectalo para ver qué funciones te entran. Solo lee tus horarios ocupados (no títulos ni detalles) y nada se guarda fuera de esta pestaña.</li>
+    </ol>
+    <p class="secundario">Tus preferencias (filtros, cines, usuario) quedan guardadas solo en este navegador.</p>
+    <form method="dialog"><button class="boton" value="ok">Empezar</button></form>
+  </dialog>
+
   <main class="envoltura">
-    <!-- Hito 6: Google Calendar va acá, encima del filtro -->
-    <section id="calendario" class="bloque" hidden></section>
+    <section id="calendario" class="bloque capa" hidden aria-label="Google Calendar"></section>
+    <section id="letterboxd" class="bloque capa" aria-label="Letterboxd"></section>
 
     <section class="bloque" aria-labelledby="t-horarios">
       <h2 id="t-horarios" class="rotulo">Horarios</h2>
@@ -47,8 +62,7 @@
       <div class="chips" id="chips-cines" role="group" aria-label="Cines"></div>
     </section>
 
-    <!-- Hito 7: "Para vos" va acá -->
-    <section id="para-vos" class="bloque" hidden></section>
+    <section id="para-vos" class="bloque" hidden aria-labelledby="t-para-vos"></section>
 
     <section class="bloque" aria-live="polite">
       <p id="resumen" class="resumen"></p>

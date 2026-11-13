@@ -4,7 +4,7 @@
     {
       "name": "sitio",
       "runtimeExecutable": "uv",
-      "runtimeArgs": ["run", "python", "-m", "http.server", "8765", "--directory", "public", "--bind", "127.0.0.1"],
+      "runtimeArgs": ["run", "python", "-m", "cartelera", "servir", "--puerto", "8765"],
       "port": 8765
     }
   ]

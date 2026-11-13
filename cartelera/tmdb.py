@@ -66,6 +66,17 @@ class ClienteTMDB:
         return self._get(f"/movie/{tmdb_id}", language=IDIOMA,
                          append_to_response="credits,translations,alternative_titles")
 
+    def filmografia_director(self, persona_id: int) -> list[dict]:
+        """Películas dirigidas por la persona, con título en inglés (como las nombra Letterboxd) y original."""
+        crew = self._get(f"/person/{persona_id}/movie_credits", language="en-US").get("crew", [])
+        vistas: dict[int, dict] = {}
+        for c in crew:
+            if c.get("job") == "Director" and c["id"] not in vistas:
+                anio = (c.get("release_date") or "")[:4]
+                vistas[c["id"]] = {"tmdb_id": c["id"], "anio": int(anio) if anio.isdigit() else None,
+                                   "titulos": list(dict.fromkeys(t for t in (c.get("title"), c.get("original_title")) if t))}
+        return list(vistas.values())
+
 
 @dataclass
 class Pistas:
@@ -88,6 +99,8 @@ class Match:
     anio: int | None = None
     director: str | None = None
     duracion: int | None = None
+    titulo_en: str | None = None
+    directores_ids: list[int] = field(default_factory=list)
     candidatos: list[int] = field(default_factory=list)
 
     @property
@@ -125,6 +138,8 @@ def resolver(tmdb: ClienteTMDB, p: Pistas) -> Match:
             anio=_anio(det),
             director=", ".join(directores) or None,
             duracion=det.get("runtime") or None,
+            titulo_en=_titulo_en(det),
+            directores_ids=_directores_ids(det),
         )
     if aprobados:
         ids = [a[0]["id"] for a in aprobados]
@@ -214,6 +229,22 @@ def _titulos(det: dict) -> set[str]:
 def _directores(det: dict) -> list[str]:
     crew = (det.get("credits") or {}).get("crew", [])
     return list(dict.fromkeys(c["name"] for c in crew if c.get("job") == "Director"))
+
+
+def _directores_ids(det: dict) -> list[int]:
+    crew = (det.get("credits") or {}).get("crew", [])
+    return list(dict.fromkeys(c["id"] for c in crew if c.get("job") == "Director" and "id" in c))
+
+
+def _titulo_en(det: dict) -> str | None:
+    """Título en inglés (Letterboxd nombra así a las películas extranjeras); si no hay traducción, el original."""
+    traducciones = (det.get("translations") or {}).get("translations", [])
+    for pais in ("US", "GB", None):
+        for tr in traducciones:
+            titulo = (tr.get("data") or {}).get("title")
+            if tr.get("iso_639_1") == "en" and (pais is None or tr.get("iso_3166_1") == pais) and titulo:
+                return titulo
+    return det.get("original_title")
 
 
 def _anio(det: dict) -> int | None:

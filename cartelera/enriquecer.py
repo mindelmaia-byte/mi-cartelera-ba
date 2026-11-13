@@ -4,6 +4,7 @@ Corre después del ingest. Las películas ya resueltas no se vuelven a consultar
 quedaron sin match o ambiguas se reintentan cada REINTENTO_DIAS (TMDB suma estrenos).
 """
 
+import json
 import logging
 import sqlite3
 from dataclasses import dataclass
@@ -18,6 +19,7 @@ from cartelera.tmdb import ClienteTMDB, Pistas, resolver
 log = logging.getLogger(__name__)
 
 REINTENTO_DIAS = 7
+DIRECTORES_DIAS = 30
 
 
 @dataclass
@@ -27,6 +29,7 @@ class Resumen:
     sin_match: int = 0
     ambiguo: int = 0
     errores: int = 0
+    directores: int = 0  # filmografías traídas en esta corrida
 
 
 def clave_pelicula(titulo: str, titulo_original: str | None, anio: int | None, director: str | None) -> str:
@@ -92,10 +95,50 @@ def enriquecer(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: datetime | N
             con.execute(
                 """UPDATE peliculas SET match_estado = ?, match_motivo = ?, candidatos = ?, consultado = ?,
                        tmdb_id = ?, titulo = ?, titulo_original = ?, anio = ?, director = ?,
-                       duracion_min = ?, letterboxd_url = ?
+                       duracion_min = ?, letterboxd_url = ?, titulo_en = ?, directores_ids = ?
                    WHERE id = ?""",
                 (m.estado, m.motivo, ",".join(map(str, m.candidatos)) or None, iso(momento),
                  m.tmdb_id, m.titulo, m.titulo_original, m.anio, m.director, m.duracion, m.letterboxd_url,
-                 p["id"]),
+                 m.titulo_en, ",".join(map(str, m.directores_ids)) or None, p["id"]),
             )
+    if forzar:
+        with con:
+            con.execute("DELETE FROM directores")
+    resumen.directores = actualizar_directores(con, tmdb, momento)
     return resumen
+
+
+def actualizar_directores(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: datetime) -> int:
+    """Filmografías de los directores de las películas en cartelera (con match ok). Se renuevan cada 30 días."""
+    filas = con.execute(
+        """SELECT DISTINCT p.directores_ids, p.director FROM peliculas p
+           WHERE p.match_estado = 'ok' AND p.directores_ids IS NOT NULL
+             AND EXISTS (SELECT 1 FROM funciones f WHERE f.pelicula_id = p.id AND f.fecha_hora >= ?)""",
+        (iso(momento),),
+    ).fetchall()
+    limite = iso(momento - timedelta(days=DIRECTORES_DIAS))
+    nombres: dict[int, str] = {}
+    for f in filas:
+        ids = [int(x) for x in f["directores_ids"].split(",")]
+        partes = (f["director"] or "").split(", ")
+        for i, pid in enumerate(ids):
+            nombres.setdefault(pid, partes[i] if i < len(partes) and len(partes) == len(ids) else None)
+    n = 0
+    for pid, nombre in nombres.items():
+        fila = con.execute("SELECT consultado FROM directores WHERE persona_id = ?", (pid,)).fetchone()
+        if fila and fila["consultado"] >= limite:
+            continue
+        try:
+            filmo = tmdb.filmografia_director(pid)
+        except (httpx.HTTPError, KeyError, ValueError) as e:
+            log.warning("TMDB: no se pudo traer la filmografía de %s: %s", pid, e)
+            continue
+        with con:
+            con.execute(
+                """INSERT INTO directores (persona_id, nombre, filmografia, consultado) VALUES (?, ?, ?, ?)
+                   ON CONFLICT(persona_id) DO UPDATE SET nombre = COALESCE(excluded.nombre, nombre),
+                       filmografia = excluded.filmografia, consultado = excluded.consultado""",
+                (pid, nombre, json.dumps(filmo, ensure_ascii=False), iso(momento)),
+            )
+        n += 1
+    return n

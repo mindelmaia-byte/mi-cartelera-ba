@@ -35,7 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     pi.add_argument("--sin-tmdb", action="store_true", help="no cruzar con TMDB al final")
 
     pe = sub.add_parser("enriquecer", help="cruza las películas con TMDB")
-    pe.add_argument("--forzar", action="store_true", help="vuelve a consultar todas, incluso las resueltas")
+    pe.add_argument("--forzar", action="store_true",
+                    help="vuelve a consultar todas, incluso las resueltas (y todas las filmografías)")
     pe.add_argument("--grabar", type=Path, help="guarda las respuestas de TMDB en este JSON (para fixtures)")
 
     px = sub.add_parser("extracciones", help="textos (PDF/notas) que esperan extracción estructurada")
@@ -48,6 +49,9 @@ def main(argv: list[str] | None = None) -> int:
 
     pexp = sub.add_parser("export", help="genera public/data/cartelera.json para el sitio")
     pexp.add_argument("--dias", type=int, default=DIAS)
+
+    ps = sub.add_parser("servir", help="servidor local: public/ + /api/letterboxd + /pruebas/")
+    ps.add_argument("--puerto", type=int, default=8765)
 
     pl = sub.add_parser("listar", help="muestra la cartelera guardada en consola")
     pl.add_argument("--cine", action="append")
@@ -77,6 +81,11 @@ def main(argv: list[str] | None = None) -> int:
         return _enriquecer(args)
     if args.comando == "extracciones":
         return _extracciones(args)
+    if args.comando == "servir":
+        from cartelera.servir import servir
+
+        servir(args.puerto)
+        return 0
     if args.comando == "export":
         from cartelera.export import RUTA_EXPORT, exportar
 
@@ -142,7 +151,7 @@ def _correr_tmdb(con, forzar: bool = False, grabacion: dict | None = None) -> No
         tmdb = ClienteTMDB(os.environ.get("TMDB_API_KEY", ""), cliente, grabacion=grabacion)
         r = enriquecer(con, tmdb, forzar=forzar)
     print(f"TMDB: {r.consultadas} consultadas · {r.ok} ok · {r.sin_match} sin match · "
-          f"{r.ambiguo} ambiguas · {r.errores} errores")
+          f"{r.ambiguo} ambiguas · {r.errores} errores · {r.directores} filmografías")
 
 
 def _enriquecer(args) -> int:

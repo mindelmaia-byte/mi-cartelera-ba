@@ -160,6 +160,79 @@ td[data-col="Hora"] { white-space: nowrap; }
 .venta.gratis { color: var(--texto); }
 .externo { font-size: 13px; color: var(--texto-2); }
 
+/* ---------- cabecera y bienvenida ---------- */
+
+.cabecera-fila { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+
+dialog#bienvenida {
+  max-width: 560px; width: calc(100% - 32px); background: var(--superficie); color: var(--texto);
+  border: 1px solid var(--borde); border-radius: 12px; padding: 20px 22px;
+}
+dialog#bienvenida::backdrop { background: rgba(0, 0, 0, 0.6); }
+dialog#bienvenida h2 { margin: 0 0 8px; font-size: 18px; }
+dialog#bienvenida p, .pasos { color: var(--texto-2); }
+.pasos { padding-left: 20px; display: grid; gap: 10px; }
+.pasos strong { color: var(--texto); }
+dialog#bienvenida form { text-align: right; margin-top: 8px; }
+
+/* ---------- Letterboxd y Para vos ---------- */
+
+#letterboxd input[type="text"] {
+  background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
+  border-radius: 6px; padding: 6px 9px; font: inherit; width: 160px;
+}
+.lb-detalle { font-weight: 400; color: var(--texto-2); font-size: 13px; }
+
+.para-vos { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.recomendada {
+  background: var(--superficie); border: 1px solid var(--borde); border-left: 3px solid var(--acento);
+  border-radius: var(--radio); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px;
+}
+.rec-cuando { font-size: 13px; color: var(--texto); font-variant-numeric: tabular-nums; }
+.rec-motivo { font-size: 12.5px; color: var(--texto-2); }
+.rec-acciones { margin-top: 4px; }
+
+.vista { font-size: 12px; color: var(--texto-3); white-space: nowrap; cursor: help; }
+.vista.reciente { color: var(--texto); border: 1px solid var(--borde); border-radius: 4px; padding: 0 5px; }
+
+/* ---------- calendario ---------- */
+
+.capa {
+  padding: 12px 14px; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
+}
+
+.capa .ayuda { margin: 8px 0 0; }
+.capa + .capa { margin-top: 8px; }
+.cal-fila { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
+.cal-opciones { justify-content: flex-start; margin-top: 10px; font-size: 13px; color: var(--texto-2); }
+.cal-estado { display: inline-flex; align-items: center; gap: 8px; font-weight: 550; }
+.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--texto-3); }
+.cal-estado.conectado .punto { background: #7cc48f; }
+.cal-acciones { display: inline-flex; gap: 8px; }
+.cal-error { color: var(--alerta); margin: 8px 0 0; font-size: 13px; }
+.margen input {
+  width: 56px; background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
+  border-radius: 6px; padding: 3px 6px; font: inherit;
+}
+.interruptor-linea { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; color: var(--texto); }
+.interruptor-linea input { accent-color: var(--acento); }
+
+.boton {
+  background: var(--acento); color: var(--acento-texto); border: 1px solid var(--acento); border-radius: 6px;
+  padding: 6px 12px; font-weight: 600; cursor: pointer;
+}
+.boton.secundario { background: none; color: var(--texto); border-color: var(--borde); font-weight: 500; }
+.boton:disabled { opacity: 0.6; cursor: progress; }
+
+.cal { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.cal .secundario { font-weight: 400; white-space: nowrap; }
+.cal.entra { color: #7cc48f; }
+.cal.justo { color: var(--acento); }
+.cal.no-entra { color: var(--alerta); }
+
+.agendar { display: block; margin-top: 4px; font-size: 12px; color: var(--texto-3); }
+
 /* ---------- pie ---------- */
 
 .pie { border-top: 1px solid var(--borde); margin-top: 32px; padding: 16px 0 32px; color: var(--texto-2); font-size: 13px; }
@@ -193,5 +266,8 @@ td[data-col="Hora"] { white-space: nowrap; }
   td[data-col="Cine"] .cine, td[data-col="Cine"] .secundario { display: inline; margin-right: 6px; }
   td[data-col="Ciclo"] { order: 3; flex-basis: 100%; color: var(--texto-2); font-size: 13px; }
   td[data-col="Director"], td[data-col="Año"], td[data-col="Duración"] { order: 4; color: var(--texto-2); font-size: 13px; }
-  td[data-col="Entradas"], td[data-col="Letterboxd"] { order: 6; margin-right: 6px; }
+  td[data-col="Entradas"], td[data-col="Letterboxd"], td[data-col="Calendario"] { order: 6; margin-right: 6px; }
+  td[data-col="Calendario"] { order: 3; flex-basis: 100%; }
+  td[data-col="Vista"] { order: 1; }
+  .agendar { display: inline; margin: 0 0 0 10px; }
 }

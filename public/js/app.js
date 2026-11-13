@@ -1,5 +1,7 @@
 import { leer, guardar } from "./almacen.js";
 import * as H from "./horarios.js";
+import * as Cal from "./calendario.js";
+import * as G from "./gustos.js";
 
 const RUTA_DATOS = "data/cartelera.json";
 const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
@@ -12,9 +14,37 @@ const estado = {
   comerciales: !!leer("comerciales", false),
   dia: null, // "AAAA-MM-DD" o "todos"
   orden: { columna: "hora", asc: true },
+  margenes: sanearMargenes(leer("margenes", null)),
+  soloEntran: !!leer("solo-entran", false),
+  calendario: { cargando: false, error: null },
+  // Letterboxd: {usuario, rss: {cargado, entradas}, zip: {cargado, watchlist, ratings, vistas}}
+  perfil: sanearPerfil(leer("letterboxd", null)),
+  letterboxd: { cargando: false, error: null },
+  gustos: new Map(), // pid -> {watchlist, vista, directores}
 };
 
+function sanearPerfil(p) {
+  if (!p || typeof p !== "object") return { usuario: null, rss: null, zip: null };
+  return {
+    usuario: typeof p.usuario === "string" && /^[A-Za-z0-9_]{1,40}$/.test(p.usuario) ? p.usuario : null,
+    rss: p.rss && Array.isArray(p.rss.entradas) ? p.rss : null,
+    zip: p.zip && Array.isArray(p.zip.watchlist) && Array.isArray(p.zip.ratings) && Array.isArray(p.zip.vistas) ? p.zip : null,
+  };
+}
+
+const hayGustos = () => !!(estado.perfil.rss || estado.perfil.zip);
+
+function sanearMargenes(m) {
+  const n = (v, d) => (Number.isFinite(Number(v)) && Number(v) >= 0 && Number(v) <= 240 ? Number(v) : d);
+  return { antes: n(m?.antes, 30), despues: n(m?.despues, 15) };
+}
+
 const $ = (sel) => document.querySelector(sel);
+
+// replaceChildren convierte null en el texto "null": acá se filtran los vacíos.
+function reemplazar(nodo, ...hijos) {
+  nodo.replaceChildren(...hijos.flat().filter((h) => h !== null && h !== undefined && h !== false));
+}
 
 function el(tag, attrs = {}, ...hijos) {
   const n = document.createElement(tag);
@@ -43,7 +73,19 @@ async function cargar() {
   const dias = diasVentana();
   estado.dia = dias.find((d) => contarDia(d) > 0) ?? dias[0];
   pintarTodo();
+  refrescarRssSiHaceFalta();
+  bienvenida();
 }
+
+// Una sola pantalla al primer ingreso; se puede volver a abrir desde "¿Cómo funciona?".
+function bienvenida(forzar = false) {
+  const d = $("#bienvenida");
+  $("#bienvenida-paso-calendario").hidden = !Cal.configurado();
+  if (!forzar && leer("bienvenida-vista", false)) return;
+  d.addEventListener("close", () => guardar("bienvenida-vista", true), { once: true });
+  if (typeof d.showModal === "function") d.showModal();
+}
+$("#abrir-bienvenida").addEventListener("click", () => bienvenida(true));
 
 function diasVentana() {
   const [a, m, d] = estado.datos.desde.split("-").map(Number);
@@ -68,8 +110,243 @@ function funcionesFiltradas() {
     if (!cine) return false;
     if (cine.es_comercial && !estado.comerciales) return false;
     if (estado.cinesExcluidos.has(f.cine)) return false;
-    return H.coincide(estado.horario, f);
+    if (!H.coincide(estado.horario, f)) return false;
+    if (estado.soloEntran && Cal.conectado() && Cal.evaluar(f, estado.margenes).estado === "no-entra") return false;
+    return true;
   });
+}
+
+// ---------- calendario ----------
+
+function ventanaIso() {
+  const desde = new Date(Math.max(Date.now(), Date.parse(estado.datos.desde + "T00:00:00-03:00")));
+  const hasta = new Date(Date.parse(estado.datos.desde + "T00:00:00-03:00") + estado.datos.dias * 86_400_000);
+  return [desde.toISOString(), hasta.toISOString()];
+}
+
+function pintarCalendario() {
+  const sec = $("#calendario");
+  if (!Cal.configurado()) { sec.hidden = true; return; }
+  sec.hidden = false;
+  const con = Cal.conectado();
+  const c = estado.calendario;
+  const margen = (campo, texto) => el("label", { class: "margen" }, texto, " ",
+    el("input", {
+      type: "number", min: "0", max: "240", step: "5", value: String(estado.margenes[campo]),
+      "aria-label": `${texto} (minutos)`,
+      onchange: (ev) => {
+        estado.margenes = sanearMargenes({ ...estado.margenes, [campo]: ev.target.value });
+        guardar("margenes", estado.margenes);
+        pintarDias(); pintarTabla();
+      },
+    }), " min");
+
+  reemplazar(sec, 
+    el("div", { class: "cal-fila" },
+      el("span", { class: con ? "cal-estado conectado" : "cal-estado" },
+        el("span", { class: "punto", "aria-hidden": "true" }),
+        con ? "Google Calendar conectado" : "Google Calendar desconectado"),
+      con
+        ? el("span", { class: "cal-acciones" },
+            el("button", { type: "button", class: "boton", onclick: refrescarCalendario, disabled: c.cargando }, "Actualizar"),
+            el("button", { type: "button", class: "boton secundario", onclick: desconectarCalendario }, "Desconectar"))
+        : el("button", { type: "button", class: "boton", onclick: conectarCalendario, disabled: c.cargando },
+            c.cargando ? "Conectando…" : "Conectar Google Calendar")),
+    con ? el("div", { class: "cal-fila cal-opciones" },
+      margen("antes", "Margen antes"), margen("despues", "después"),
+      el("label", { class: "interruptor-linea" },
+        el("input", { type: "checkbox", checked: estado.soloEntran, onchange: (ev) => {
+          estado.soloEntran = ev.target.checked; guardar("solo-entran", estado.soloEntran);
+          pintarDias(); pintarTabla();
+        } }),
+        " Solo las que me entran")) : null,
+    c.error ? el("p", { class: "cal-error" }, c.error) : null,
+    !con ? el("p", { class: "ayuda" }, "Opcional. Solo lee tus horarios ocupados del calendario principal (no ve títulos ni detalles) y nada se guarda fuera de este navegador.") : null,
+  );
+}
+
+async function conectarCalendario() {
+  estado.calendario = { cargando: true, error: null };
+  pintarCalendario();
+  try {
+    await Cal.conectar(...ventanaIso());
+  } catch (e) {
+    estado.calendario.error = `No se pudo conectar: ${e.message}.`;
+  }
+  estado.calendario.cargando = false;
+  pintarCalendario(); pintarDias(); pintarTabla();
+}
+
+async function refrescarCalendario() {
+  estado.calendario = { cargando: true, error: null };
+  pintarCalendario();
+  try {
+    await Cal.actualizar(...ventanaIso());
+  } catch (e) {
+    estado.calendario.error = `${e.message}.`;
+  }
+  estado.calendario.cargando = false;
+  pintarCalendario(); pintarDias(); pintarTabla();
+}
+
+function desconectarCalendario() {
+  Cal.desconectar();
+  estado.calendario = { cargando: false, error: null };
+  pintarCalendario(); pintarDias(); pintarTabla();
+}
+
+// ---------- Letterboxd ----------
+
+const FECHA = (iso) => {
+  const [a, m, d] = iso.split("-");
+  return `${Number(d)}/${Number(m)}/${a}`;
+};
+
+function recalcularGustos() {
+  estado.gustos = hayGustos() ? G.analizar(estado.datos, estado.perfil) : new Map();
+}
+
+function guardarPerfil() {
+  guardar("letterboxd", estado.perfil);
+  recalcularGustos();
+  pintarLetterboxd(); pintarParaVos(); pintarTabla();
+}
+
+function pintarLetterboxd() {
+  const sec = $("#letterboxd");
+  const p = estado.perfil;
+  const lb = estado.letterboxd;
+  const entradaZip = el("input", { type: "file", accept: ".zip,application/zip", hidden: true, onchange: (ev) => importar(() => G.leerZip(ev.target.files[0])) });
+  const entradaCarpeta = el("input", { type: "file", webkitdirectory: true, multiple: true, hidden: true, onchange: (ev) => importar(() => G.leerCarpeta(ev.target.files)) });
+  const botonesExport = [
+    el("button", { type: "button", class: "boton secundario", onclick: () => entradaZip.click(), disabled: lb.cargando }, p.zip ? "Reemplazar zip" : "Subir zip del export"),
+    el("button", { type: "button", class: "enlace", onclick: () => entradaCarpeta.click(), disabled: lb.cargando }, "o la carpeta descomprimida"),
+    entradaZip, entradaCarpeta,
+  ];
+
+  let cuerpo;
+  if (!p.usuario && !p.zip) {
+    const campo = el("input", { type: "text", id: "lb-usuario", placeholder: "tu usuario", autocomplete: "off", spellcheck: "false",
+      "aria-label": "Usuario de Letterboxd", pattern: "[A-Za-z0-9_]{1,40}" });
+    cuerpo = [
+      el("form", { class: "cal-fila lb-form", onsubmit: (ev) => { ev.preventDefault(); conectarLetterboxd(campo.value.trim()); } },
+        el("span", { class: "cal-estado" }, el("span", { class: "punto", "aria-hidden": "true" }), "Letterboxd"),
+        el("span", { class: "cal-acciones" }, campo,
+          el("button", { type: "submit", class: "boton", disabled: lb.cargando }, lb.cargando ? "Cargando…" : "Cargar"))),
+      el("div", { class: "cal-fila cal-opciones" }, ...botonesExport),
+      el("p", { class: "ayuda" }, "Opcional. Con tu usuario leemos tus vistas recientes (feed público); con el zip, también tu watchlist y tu historial. Todo queda en este navegador."),
+    ];
+  } else {
+    const partes = [];
+    if (p.usuario) partes.push(`@${p.usuario}${p.rss ? ` · ${p.rss.entradas.length} vistas recientes` : ""}`);
+    if (p.zip) partes.push(`export: ${p.zip.watchlist.length} en watchlist, ${p.zip.ratings.length} puntajes, ${p.zip.vistas.length} vistas`);
+    cuerpo = [
+      el("div", { class: "cal-fila" },
+        el("span", { class: "cal-estado conectado" }, el("span", { class: "punto", "aria-hidden": "true" }), "Letterboxd ", el("span", { class: "lb-detalle" }, partes.join(" · "))),
+        el("span", { class: "cal-acciones" },
+          p.usuario ? el("button", { type: "button", class: "boton secundario", onclick: () => conectarLetterboxd(p.usuario), disabled: lb.cargando }, lb.cargando ? "Cargando…" : "Actualizar") : null,
+          el("button", { type: "button", class: "boton secundario", onclick: olvidarLetterboxd }, "Olvidar"))),
+      el("div", { class: "cal-fila cal-opciones" }, ...botonesExport),
+    ];
+  }
+  reemplazar(sec, ...cuerpo, lb.error ? el("p", { class: "cal-error" }, lb.error) : null);
+}
+
+async function conectarLetterboxd(usuario) {
+  if (!/^[A-Za-z0-9_]{1,40}$/.test(usuario)) {
+    estado.letterboxd.error = "Ese usuario no es válido (solo letras, números y _).";
+    pintarLetterboxd();
+    return;
+  }
+  estado.letterboxd = { cargando: true, error: null };
+  pintarLetterboxd();
+  try {
+    const entradas = await G.leerRss(usuario);
+    estado.perfil.usuario = usuario;
+    estado.perfil.rss = { cargado: new Date().toISOString(), entradas };
+  } catch (e) {
+    estado.letterboxd.error = `No se pudo leer el perfil de Letterboxd: ${e.message}.`;
+  }
+  estado.letterboxd.cargando = false;
+  guardarPerfil();
+}
+
+async function importar(leerExport) {
+  estado.letterboxd = { cargando: true, error: null };
+  pintarLetterboxd();
+  try {
+    estado.perfil.zip = { cargado: new Date().toISOString(), ...(await leerExport()) };
+  } catch (e) {
+    estado.letterboxd.error = `No se pudo leer el export: ${e.message}.`;
+  }
+  estado.letterboxd.cargando = false;
+  guardarPerfil();
+}
+
+function olvidarLetterboxd() {
+  estado.perfil = { usuario: null, rss: null, zip: null };
+  estado.letterboxd = { cargando: false, error: null };
+  guardarPerfil();
+}
+
+// RSS de más de una hora: se vuelve a pedir en segundo plano.
+function refrescarRssSiHaceFalta() {
+  const p = estado.perfil;
+  if (p.usuario && (!p.rss || Date.now() - Date.parse(p.rss.cargado) > 3_600_000)) conectarLetterboxd(p.usuario);
+}
+
+// ---------- Para vos ----------
+
+const clavePeli = (f) => {
+  const p = peli(f);
+  return p.tmdb_id ? `t${p.tmdb_id}` : `p${f.pelicula}`;
+};
+
+function pintarParaVos() {
+  const sec = $("#para-vos");
+  if (!hayGustos()) { sec.hidden = true; return; }
+  sec.hidden = false;
+  const pesos = estado.datos.pesos;
+  const ahora = Date.now();
+  const cuantas = new Map();
+  for (const f of estado.datos.funciones) {
+    if (Date.parse(f.inicio) < ahora) continue;
+    cuantas.set(clavePeli(f), (cuantas.get(clavePeli(f)) ?? 0) + 1);
+  }
+  // Candidatas: pasan horario y cines; con el calendario conectado, también tienen que entrar.
+  const mejores = new Map(); // película -> {f, puntaje, motivos}
+  for (const f of funcionesFiltradas()) {
+    if (Cal.conectado() && Cal.evaluar(f, estado.margenes).estado === "no-entra") continue;
+    const r = G.puntuar(estado.gustos.get(f.pelicula), cuantas.get(clavePeli(f)), pesos);
+    if (!r || r.puntaje <= 0) continue;
+    const k = clavePeli(f);
+    if (!mejores.has(k)) mejores.set(k, { f, ...r }); // la más temprana (funcionesFiltradas viene ordenada)
+  }
+  const top = [...mejores.values()].sort((a, b) => b.puntaje - a.puntaje || a.f.inicio.localeCompare(b.f.inicio))
+    .slice(0, pesos.cantidad_para_vos);
+
+  reemplazar(sec, 
+    el("h2", { id: "t-para-vos", class: "rotulo" }, "Para vos"),
+    top.length
+      ? el("ol", { class: "para-vos" }, ...top.map(({ f, motivos }) => {
+          const cine = estado.cines.get(f.cine);
+          const e = etiquetaDia(f.fecha);
+          return el("li", { class: "recomendada" },
+            el("span", { class: "titulo" }, f.titulo),
+            el("span", { class: "rec-cuando" }, `${e.corto} ${e.numero} · ${f.hora} · ${cine.nombre}`),
+            el("span", { class: "rec-motivo" }, motivos.join(" · ")),
+            el("span", { class: "rec-acciones" }, entradas(f)));
+        }))
+      : el("p", { class: "ayuda" }, "Con estos filtros no encontramos funciones de tu watchlist ni de directores que te gustan. Probá con otros horarios o cines."),
+  );
+}
+
+function celdaVista(f) {
+  const g = estado.gustos.get(f.pelicula);
+  if (!g?.vista) return "";
+  const reciente = G.esReciente(g.vista, estado.datos.pesos.meses_vista_reciente);
+  const titulo = g.vista === "sin fecha" ? "La registraste como vista" : `La viste el ${FECHA(g.vista)}`;
+  return el("span", { class: reciente ? "vista reciente" : "vista", title: titulo }, reciente ? "vista hace poco" : "vista");
 }
 
 function contarDia(dia) {
@@ -84,7 +361,7 @@ function pintarHorarios() {
   const chip = (texto, activo, onclick) =>
     el("button", { type: "button", class: "chip", "aria-pressed": String(activo), onclick }, texto);
 
-  cont.replaceChildren(
+  reemplazar(cont, 
     chip("Todos", H.esTodos(e), () => {
       e.presets = [];
       e.personalizado.activo = false;
@@ -107,7 +384,7 @@ function pintarHorarios() {
   const panel = $("#panel-personalizado");
   panel.hidden = !e.personalizado.activo;
   if (!e.personalizado.activo) return;
-  $("#filas-personalizado").replaceChildren(...H.DIAS.map((nombre, i) => {
+  reemplazar($("#filas-personalizado"), ...H.DIAS.map((nombre, i) => {
     const r = e.personalizado.dias[i];
     const id = `dia-${i}`;
     const hora = (campo) => el("input", {
@@ -151,7 +428,7 @@ function pintarDias() {
     el("span", { class: "dia-nombre" }, arriba),
     el("span", { class: "dia-numero" }, abajo),
     el("span", { class: n ? "cuenta" : "cuenta cero" }, String(n)));
-  $("#selector-dias").replaceChildren(
+  reemplazar($("#selector-dias"), 
     boton("todos", "10 días", "Todos", fs.length),
     ...diasVentana().map((d) => {
       const e = etiquetaDia(d);
@@ -166,7 +443,7 @@ function pintarCines() {
   $("#toggle-comerciales").checked = estado.comerciales;
   const conDatos = new Set(estado.datos.funciones.map((f) => f.cine));
   const visibles = estado.datos.cines.filter((c) => conDatos.has(c.id) && (!c.es_comercial || estado.comerciales));
-  $("#chips-cines").replaceChildren(...visibles.map((c) =>
+  reemplazar($("#chips-cines"), ...visibles.map((c) =>
     el("button", {
       type: "button", class: "chip", "aria-pressed": String(!estado.cinesExcluidos.has(c.id)),
       onclick: () => {
@@ -199,13 +476,37 @@ const COLUMNAS = [
   { id: "duracion", titulo: "Duración", clave: (f) => peli(f).duracion ?? null, numerica: true },
   { id: "entradas", titulo: "Entradas", clave: (f) => f.modo_venta },
   { id: "letterboxd", titulo: "Letterboxd", clave: (f) => (peli(f).letterboxd ? 0 : null), numerica: true },
+  { id: "vista", titulo: "Vista", visible: () => hayGustos(),
+    clave: (f) => estado.gustos.get(f.pelicula)?.vista ?? null },
+  { id: "calendario", titulo: "Calendario", visible: () => Cal.conectado(),
+    clave: (f) => ({ entra: 0, justo: 1, "no-entra": 2 })[Cal.evaluar(f, estado.margenes).estado], numerica: true },
 ];
+
+const columnasVisibles = () => COLUMNAS.filter((c) => !c.visible || c.visible());
+
+const HORA = new Intl.DateTimeFormat("es-AR", { timeZone: "America/Argentina/Buenos_Aires", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+const DIA_CORTO = new Intl.DateTimeFormat("es-AR", { timeZone: "America/Argentina/Buenos_Aires", weekday: "short", day: "numeric" });
+
+function textoBloque(b, f) {
+  const mismoDia = DIA_CORTO.format(b.inicio) === DIA_CORTO.format(Date.parse(f.inicio));
+  const prefijo = mismoDia ? "" : `${DIA_CORTO.format(b.inicio)} `;
+  return `ocupado ${prefijo}${HORA.format(b.inicio)}–${HORA.format(b.fin)}`;
+}
+
+function celdaCalendario(f) {
+  const r = Cal.evaluar(f, estado.margenes);
+  const texto = { entra: "entra", justo: "justo", "no-entra": "no entra" }[r.estado];
+  const estimada = !f.duracion_aprox ? ` (duración supuesta: ${Cal.DURACION_SUPUESTA} min)` : "";
+  return el("span", { class: `cal ${r.estado}`, title: (r.bloque ? textoBloque(r.bloque, f) : "sin choques") + estimada },
+    texto, r.bloque ? el("span", { class: "secundario" }, textoBloque(r.bloque, f)) : null);
+}
 
 function peli(f) {
   return (f.pelicula && estado.datos.peliculas[f.pelicula]) || {};
 }
 
 function pintarTabla() {
+  pintarParaVos();
   const todos = estado.dia === "todos";
   const fs = funcionesFiltradas().filter((f) => todos || f.fecha === estado.dia);
   const col = COLUMNAS.find((c) => c.id === estado.orden.columna) ?? COLUMNAS[0];
@@ -218,7 +519,7 @@ function pintarTabla() {
     return c * signo || a.inicio.localeCompare(b.inicio);
   });
 
-  $("#tabla thead tr").replaceChildren(...COLUMNAS.map((c) => {
+  reemplazar($("#tabla thead tr"), ...columnasVisibles().map((c) => {
     const activa = c.id === estado.orden.columna;
     return el("th", { scope: "col", "aria-sort": activa ? (estado.orden.asc ? "ascending" : "descending") : "none" },
       el("button", {
@@ -230,7 +531,7 @@ function pintarTabla() {
       }, c.titulo, el("span", { class: "flecha", "aria-hidden": "true" }, activa ? (estado.orden.asc ? "▲" : "▼") : "")));
   }));
 
-  $("#tabla tbody").replaceChildren(...fs.map((f) => fila(f, todos)));
+  reemplazar($("#tabla tbody"), ...fs.map((f) => fila(f, todos)));
   $("#vacio").hidden = fs.length > 0;
   $("#tabla").hidden = fs.length === 0;
 
@@ -268,10 +569,14 @@ function fila(f, conFecha) {
     td("Director", p.director ?? ""),
     td("Año", p.anio ? String(p.anio) : ""),
     td("Duración", p.duracion ? `${p.duracion} min` : ""),
-    td("Entradas", entradas(f)),
+    td("Entradas", entradas(f),
+      el("a", { href: Cal.linkAgendar(f, cine, f.duracion_aprox), target: "_blank", rel: "noopener", class: "agendar",
+                title: "Abre Google Calendar con la función cargada" }, "+ agendar")),
     td("Letterboxd", p.letterboxd
       ? el("a", { href: p.letterboxd, target: "_blank", rel: "noopener", class: "externo" }, "Letterboxd")
       : ""),
+    hayGustos() ? td("Vista", celdaVista(f)) : null,
+    Cal.conectado() ? td("Calendario", celdaCalendario(f)) : null,
   );
 }
 
@@ -299,7 +604,7 @@ function pintarEstado() {
       problema ? el("span", { class: "alerta" }, " · el último intento falló, se muestran los datos anteriores") : null,
       c.avisos.length ? el("span", { class: "secundario" }, ` · ${c.avisos.length} ${c.avisos.length === 1 ? "aviso" : "avisos"}`) : null);
   }));
-  $("#lista-estado").replaceChildren(
+  reemplazar($("#lista-estado"), 
     lista,
     el("p", { class: "secundario" }, `Cartelera generada el ${formato.format(new Date(estado.datos.generado))}`),
     pendientes.length ? el("p", { class: "secundario" }, `Todavía sin datos: ${pendientes.map((c) => c.nombre).join(", ")}.`) : null,
@@ -309,6 +614,9 @@ function pintarEstado() {
 // ---------- arranque ----------
 
 function pintarTodo() {
+  recalcularGustos();
+  pintarCalendario();
+  pintarLetterboxd();
   pintarHorarios();
   pintarCines();
   pintarDias();

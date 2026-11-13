@@ -15,6 +15,7 @@ from cartelera.texto import normalizar
 from cartelera.tiempo import ahora, iso
 
 RUTA_EXPORT = RAIZ / "public" / "data" / "cartelera.json"
+RUTA_PESOS = RAIZ / "config" / "pesos.json"
 VERSION = 1
 
 
@@ -27,7 +28,8 @@ def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
 
     filas = con.execute(
         """SELECT f.*, p.id AS pid, p.match_estado, p.tmdb_id, p.titulo AS titulo_tmdb, p.director,
-                  p.anio, p.duracion_min, p.letterboxd_url
+                  p.anio, p.duracion_min, p.letterboxd_url, p.titulo_original AS titulo_original_tmdb,
+                  p.titulo_en, p.directores_ids
            FROM funciones f LEFT JOIN peliculas p ON p.id = f.pelicula_id
            WHERE f.fecha_hora >= ? AND f.fecha_hora < ?
            ORDER BY f.fecha_hora, f.cine_id, f.titulo""",
@@ -47,6 +49,10 @@ def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
                 "anio": f["anio"] if ok else None,
                 "duracion": f["duracion_min"] if ok else None,
                 "letterboxd": f["letterboxd_url"] if ok else None,
+                # Para cruzar con el export de Letterboxd (título + año) en el navegador.
+                "titulos": list(dict.fromkeys(t for t in (f["titulo_tmdb"], f["titulo_original_tmdb"], f["titulo_en"]) if t))
+                           if ok else [],
+                "directores_ids": [int(x) for x in (f["directores_ids"] or "").split(",") if x] if ok else [],
             }
         inicio = datetime.fromisoformat(f["fecha_hora"])
         funciones.append({
@@ -63,7 +69,18 @@ def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
             "modo_venta": f["modo_venta"],
             "es_comercial": bool(f["es_comercial"]),
             "pelicula": pid,
+            # Solo para calcular el fin de la función contra el calendario (no se muestra como dato):
+            # TMDB si hay match, si no la que publica el cine.
+            "duracion_aprox": (f["duracion_min"] if f["match_estado"] == "ok" else None) or f["duracion_fuente"],
         })
+
+    ids_directores = {i for p in peliculas.values() for i in p["directores_ids"]}
+    directores = {}
+    for d in con.execute("SELECT * FROM directores"):
+        if d["persona_id"] in ids_directores:
+            # Compacto: [tmdb_id, año, [títulos]]
+            filmo = [[x["tmdb_id"], x["anio"], x["titulos"]] for x in json.loads(d["filmografia"])]
+            directores[str(d["persona_id"])] = {"nombre": d["nombre"], "filmografia": filmo}
 
     datos = {
         "version": VERSION,
@@ -72,6 +89,8 @@ def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
         "dias": dias,
         "cines": [_cine(c, estado.get(c.id)) for c in cines],
         "peliculas": peliculas,
+        "directores": directores,
+        "pesos": json.loads(RUTA_PESOS.read_text(encoding="utf-8")),
         "funciones": funciones,
     }
     ruta.parent.mkdir(parents=True, exist_ok=True)

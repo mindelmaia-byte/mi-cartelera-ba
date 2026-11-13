@@ -1,0 +1,12 @@
+{
+  "_comentario": "Pesos del puntaje de 'Para vos'. Se suman; sin modelos de lenguaje. Se publican en el export.",
+  "watchlist": 3,
+  "director_favorito": 2,
+  "director_favorito_min_peliculas": 2,
+  "director_favorito_min_estrellas": 4,
+  "escasez": { "1": 2, "2": 1, "3": 0.5 },
+  "vista_hace_poco": -3,
+  "vista_antes": 0,
+  "meses_vista_reciente": 6,
+  "cantidad_para_vos": 5
+}
