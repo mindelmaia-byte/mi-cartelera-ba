@@ -21,6 +21,8 @@ uv run python -m cartelera ingest          # todos los cines con adaptador
 uv run python -m cartelera ingest --cine gaumont [--sin-tmdb]   # al final cruza con TMDB si hay TMDB_API_KEY
 uv run python -m cartelera enriquecer [--forzar] [--grabar tests/fixtures/tmdb/respuestas.json]
 uv run python -m cartelera listar [--cine X] [--dias 10]
+uv run python -m cartelera export                      # public/data/cartelera.json (próximos 10 días)
+uv run python -m http.server 8765 --directory public   # ver el sitio en http://localhost:8765 (config "sitio" en .claude/launch.json)
 uv run python -m cartelera fixture <cine> [--dias 7]   # guarda lo que publica el cine en tests/fixtures/<cine>/
 uv run python -m cartelera extracciones pendientes     # PDFs/notas nuevos que esperan extracción
 uv run python -m cartelera extracciones guardar <pendiente.txt> <resultado.json> --por "<quién>"
@@ -71,6 +73,14 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
   - **Título a mostrar:** en la interfaz va el **título del cine**, no el de TMDB. TMDB suele traer el título de España o de México ("Cayo Largo" en lugar de *Huracán de pasiones*).
 - **Comportamiento con los sitios:** pausas entre pedidos y un User-Agent que identifica el proyecto (`adapters/base.py`). Una corrida por día.
 
+## Sitio (`public/`)
+- **Datos:** el sitio lee solo `data/cartelera.json`. Cada función trae `fecha`, `hora` y `dia_semana` ya calculados en hora de Buenos Aires, para que el navegador no haga cuentas de zona horaria. `inicio` (ISO) se usa para ocultar lo que ya empezó.
+- **Datos sin match:** director, año, duración y Letterboxd salen **solo de TMDB con match `ok`**. Si no hay match, las celdas quedan vacías y se muestra la marca "sin datos de TMDB".
+- **Título:** se muestra el del cine. Solo se reemplaza por la grafía de TMDB si el cine lo publica todo en mayúsculas y las palabras son exactamente las mismas (`export.titulo_a_mostrar`).
+- **Filtro de horarios:** filtra por hora de inicio. Los presets y el personalizado se suman (unión); sin ninguno activo, se muestra todo.
+- **Preferencias:** en localStorage, con prefijo `cartelera-ba:`, siempre a través de `js/almacen.js` (con try/catch).
+- **Celular:** por debajo de 760 px, la tabla pasa a tarjetas (CSS).
+
 ## Privacidad y secretos
 - **Secretos:** en `.env` (`TMDB_API_KEY`, `ANTHROPIC_API_KEY`), que nunca se commitea. `.env.example` muestra las claves.
 - **Exportación de Letterboxd:** las carpetas y zips `letterboxd-*` son datos personales. Están en `.gitignore` y nunca se copian a fixtures ni se publican.
@@ -82,7 +92,7 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 2. TMDB ✅
 3. Lugones ✅ (y la skill `agregar-cine` en `.claude/skills/`)
 4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos pendiente (el sitio oficial estaba en mantenimiento el 2026-11-13)
-5. Interfaz con datos reales y filtro de horarios
+5. Interfaz con datos reales y filtro de horarios ✅ (`public/`: HTML + módulos JS sin build; `js/horarios.js` tiene la lógica del filtro)
 6. Calendario
 7. Letterboxd y "Para vos"
 8. Publicación

@@ -1,0 +1,105 @@
+"""Exporta la cartelera de los próximos días a un JSON estático para el sitio (public/data/).
+
+El sitio no hace cuentas de zona horaria: cada función trae su fecha, hora y día de la semana
+en hora de Buenos Aires, además del instante ISO (para comparar con "ahora" y con el calendario).
+"""
+
+import json
+import sqlite3
+from datetime import datetime, timedelta
+from pathlib import Path
+
+from cartelera.registro import RAIZ
+from cartelera.schema import Cine
+from cartelera.texto import normalizar
+from cartelera.tiempo import ahora, iso
+
+RUTA_EXPORT = RAIZ / "public" / "data" / "cartelera.json"
+VERSION = 1
+
+
+def exportar(con: sqlite3.Connection, cines: list[Cine], *, dias: int = 10,
+             momento: datetime | None = None, ruta: Path = RUTA_EXPORT) -> dict:
+    momento = momento or ahora()
+    desde = momento.date()
+    hasta = desde + timedelta(days=dias)
+    estado = {r["id"]: r for r in con.execute("SELECT * FROM cines")}
+
+    filas = con.execute(
+        """SELECT f.*, p.id AS pid, p.match_estado, p.tmdb_id, p.titulo AS titulo_tmdb, p.director,
+                  p.anio, p.duracion_min, p.letterboxd_url
+           FROM funciones f LEFT JOIN peliculas p ON p.id = f.pelicula_id
+           WHERE f.fecha_hora >= ? AND f.fecha_hora < ?
+           ORDER BY f.fecha_hora, f.cine_id, f.titulo""",
+        (iso(momento), hasta.isoformat()),
+    ).fetchall()
+
+    peliculas: dict[str, dict] = {}
+    funciones = []
+    for f in filas:
+        pid = str(f["pid"]) if f["pid"] is not None else None
+        if pid and pid not in peliculas:
+            ok = f["match_estado"] == "ok"
+            peliculas[pid] = {
+                "match": f["match_estado"],
+                "tmdb_id": f["tmdb_id"] if ok else None,
+                "director": f["director"] if ok else None,
+                "anio": f["anio"] if ok else None,
+                "duracion": f["duracion_min"] if ok else None,
+                "letterboxd": f["letterboxd_url"] if ok else None,
+            }
+        inicio = datetime.fromisoformat(f["fecha_hora"])
+        funciones.append({
+            "id": f["id"],
+            "cine": f["cine_id"],
+            "inicio": f["fecha_hora"],
+            "fecha": inicio.date().isoformat(),
+            "hora": inicio.strftime("%H:%M"),
+            "dia_semana": inicio.weekday(),  # 0 = lunes
+            "titulo": titulo_a_mostrar(f["titulo"], f["titulo_tmdb"] if f["match_estado"] == "ok" else None),
+            "titulo_original": f["titulo_original"],
+            "ciclo": f["ciclo"],
+            "url_entradas": f["url_entradas"],
+            "modo_venta": f["modo_venta"],
+            "es_comercial": bool(f["es_comercial"]),
+            "pelicula": pid,
+        })
+
+    datos = {
+        "version": VERSION,
+        "generado": iso(momento),
+        "desde": desde.isoformat(),
+        "dias": dias,
+        "cines": [_cine(c, estado.get(c.id)) for c in cines],
+        "peliculas": peliculas,
+        "funciones": funciones,
+    }
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    ruta.write_text(json.dumps(datos, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    return datos
+
+
+def titulo_a_mostrar(titulo_fuente: str, titulo_tmdb: str | None) -> str:
+    """Se muestra el título del cine. Si el cine lo publica TODO EN MAYÚSCULAS y TMDB tiene exactamente
+    las mismas palabras, se usa la grafía de TMDB ("4 HISTORIAS INCREIBLES" -> "4 historias increíbles").
+    Si las palabras difieren (títulos de otros países: "Cayo Largo"), queda el del cine."""
+    letras = [c for c in titulo_fuente if c.isalpha()]
+    en_mayusculas = bool(letras) and all(c.isupper() for c in letras)
+    if en_mayusculas and titulo_tmdb and normalizar(titulo_tmdb) == normalizar(titulo_fuente):
+        return titulo_tmdb
+    return titulo_fuente
+
+
+def _cine(c: Cine, fila: sqlite3.Row | None) -> dict:
+    return {
+        "id": c.id,
+        "nombre": c.nombre,
+        "direccion": c.direccion,
+        "tanda": c.tanda,
+        "es_comercial": c.es_comercial,
+        "activo": bool(c.adaptador),
+        "ultima_actualizacion": fila["ultima_actualizacion"] if fila else None,
+        "estado": fila["ultimo_estado"] if fila else None,
+        "error": fila["ultimo_error"] if fila else None,
+        "avisos": (fila["ultimos_avisos"] or "").splitlines() if fila and "ultimos_avisos" in fila.keys() else [],
+    }

@@ -1,0 +1,197 @@
+:root {
+  --fondo: #111214;
+  --superficie: #1a1c1f;
+  --superficie-2: #23262a;
+  --borde: #2e3237;
+  --texto: #e7e6e3;
+  --texto-2: #9ea3a8;
+  --texto-3: #6f757b;
+  --acento: #e0b35a;
+  --acento-texto: #17130a;
+  --alerta: #e58e6d;
+  --radio: 8px;
+  --fuente: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 15px/1.45 var(--fuente);
+}
+
+.envoltura { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+
+a { color: var(--texto); text-underline-offset: 3px; }
+a:hover { color: var(--acento); }
+
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+
+/* ---------- cabecera ---------- */
+
+.cabecera { border-bottom: 1px solid var(--borde); padding: 20px 0 16px; margin-bottom: 8px; }
+.cabecera h1 { margin: 0; font-size: 22px; letter-spacing: 0.01em; font-weight: 650; }
+.bajada { margin: 2px 0 0; color: var(--texto-2); }
+
+/* ---------- bloques ---------- */
+
+.bloque { margin: 18px 0; }
+.rotulo {
+  margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--texto-3);
+}
+.rotulo-fila { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.rotulo-fila .rotulo { margin-bottom: 8px; }
+.acciones-cines { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--texto-2); }
+
+.enlace {
+  background: none; border: 0; padding: 0; color: var(--texto-2); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.enlace:hover { color: var(--texto); }
+
+.interruptor { cursor: pointer; margin-left: -8px; }
+.interruptor-caja { accent-color: var(--acento); margin: 0; cursor: pointer; }
+
+.ayuda, .nota { color: var(--texto-2); font-size: 13px; }
+.nota { align-self: center; margin-left: 4px; }
+
+/* ---------- chips ---------- */
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  border: 1px solid var(--borde); background: var(--superficie); border-radius: 999px;
+  padding: 6px 13px; cursor: pointer; font-size: 14px; line-height: 1.2;
+  transition: background 0.12s, border-color 0.12s;
+}
+.chip:hover { border-color: var(--texto-3); }
+.chip[aria-pressed="true"] { background: var(--acento); border-color: var(--acento); color: var(--acento-texto); font-weight: 600; }
+
+/* ---------- personalizado ---------- */
+
+.panel {
+  margin-top: 10px; padding: 12px 14px; background: var(--superficie);
+  border: 1px solid var(--borde); border-radius: var(--radio);
+}
+.panel .ayuda { margin: 0 0 8px; }
+.filas-dias { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 6px 24px; }
+.fila-dia { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 34px; }
+.fila-dia label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.fila-dia input[type="checkbox"] { accent-color: var(--acento); }
+.rango { color: var(--texto-2); font-size: 13px; white-space: nowrap; }
+.rango input {
+  background: var(--superficie-2); border: 1px solid var(--borde); color: var(--texto);
+  border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 13px;
+}
+.rango input:disabled { opacity: 0.4; }
+
+/* ---------- días ---------- */
+
+.dias {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(74px, 1fr); gap: 6px;
+  overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin;
+}
+.dia {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
+  padding: 8px 6px; cursor: pointer;
+}
+.dia:hover { border-color: var(--texto-3); }
+.dia[aria-pressed="true"] { border-color: var(--acento); background: var(--superficie-2); }
+.dia-nombre { font-size: 12px; color: var(--texto-2); text-transform: uppercase; letter-spacing: 0.05em; }
+.dia-numero { font-weight: 600; white-space: nowrap; }
+.cuenta {
+  margin-top: 3px; font-size: 12px; font-variant-numeric: tabular-nums;
+  background: var(--superficie-2); border-radius: 999px; padding: 0 8px; color: var(--texto);
+}
+.dia[aria-pressed="true"] .cuenta { background: var(--acento); color: var(--acento-texto); font-weight: 600; }
+.cuenta.cero { color: var(--texto-3); }
+
+/* ---------- tabla ---------- */
+
+.resumen { color: var(--texto-2); margin: 0 0 10px; }
+.vacio { color: var(--texto-2); padding: 24px 0; text-align: center; }
+
+.tabla-contenedor { overflow-x: auto; border: 1px solid var(--borde); border-radius: var(--radio); }
+.tabla { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabla th {
+  position: sticky; top: 0; background: var(--superficie); text-align: left;
+  border-bottom: 1px solid var(--borde); padding: 0; white-space: nowrap;
+}
+.orden {
+  background: none; border: 0; width: 100%; text-align: left; cursor: pointer;
+  padding: 9px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--texto-2);
+}
+.orden:hover { color: var(--texto); }
+th[aria-sort="ascending"] .orden, th[aria-sort="descending"] .orden { color: var(--acento); }
+.flecha { margin-left: 4px; font-size: 9px; }
+
+.tabla td { padding: 9px 10px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+.tabla tbody tr:last-child td { border-bottom: 0; }
+.tabla tbody tr:hover td { background: #16181b; }
+
+.hora { font-variant-numeric: tabular-nums; font-size: 15px; }
+.fecha { color: var(--texto-2); font-size: 13px; white-space: nowrap; }
+.cine { display: block; font-weight: 550; }
+.titulo { display: block; font-weight: 600; }
+.secundario { display: block; color: var(--texto-3); font-size: 12.5px; }
+.marca {
+  display: inline-block; margin-top: 3px; font-size: 11px; color: var(--texto-3);
+  border: 1px dashed var(--borde); border-radius: 4px; padding: 0 5px; cursor: help;
+}
+td[data-col="Año"], td[data-col="Duración"] { white-space: nowrap; font-variant-numeric: tabular-nums; }
+td[data-col="Hora"] { white-space: nowrap; }
+
+.boton-entradas {
+  display: inline-block; border: 1px solid var(--acento); color: var(--acento); border-radius: 6px;
+  padding: 2px 10px; text-decoration: none; font-weight: 600; font-size: 13px; white-space: nowrap;
+}
+.boton-entradas:hover { background: var(--acento); color: var(--acento-texto); }
+.venta { color: var(--texto-2); font-size: 13px; }
+.venta.gratis { color: var(--texto); }
+.externo { font-size: 13px; color: var(--texto-2); }
+
+/* ---------- pie ---------- */
+
+.pie { border-top: 1px solid var(--borde); margin-top: 32px; padding: 16px 0 32px; color: var(--texto-2); font-size: 13px; }
+.pie summary { cursor: pointer; color: var(--texto); }
+.estado { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 4px; }
+.estado .secundario { display: inline; }
+.alerta { color: var(--alerta); }
+.fuentes { color: var(--texto-3); }
+
+/* ---------- celular: la tabla pasa a tarjetas ---------- */
+
+@media (max-width: 760px) {
+  .tabla-contenedor { border: 0; overflow: visible; }
+  .tabla thead { display: none; }
+  .tabla, .tabla tbody, .tabla tr, .tabla td { display: block; width: 100%; }
+  /* Tarjeta: hora a la izquierda; a la derecha película / cine / ciclo / datos / botones. */
+  .tabla tr {
+    position: relative; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px;
+    background: var(--superficie); border: 1px solid var(--borde);
+    border-radius: var(--radio); padding: 10px 12px 10px 76px; margin-bottom: 8px;
+  }
+  .tabla tr::before { content: ""; flex-basis: 100%; order: 5; height: 6px; } /* salto antes de los botones */
+  .tabla tbody tr:hover td { background: none; }
+  .tabla td { border: 0; padding: 0; width: auto; }
+  .tabla td:empty { display: none; }
+  td[data-col="Hora"] { position: absolute; left: 12px; top: 10px; width: 56px; }
+  td[data-col="Hora"] .hora { font-size: 18px; display: block; }
+  td[data-col="Hora"] .fecha { display: block; }
+  td[data-col="Película"] { order: 1; flex-basis: 100%; margin-bottom: 2px; }
+  td[data-col="Cine"] { order: 2; flex-basis: 100%; }
+  td[data-col="Cine"] .cine, td[data-col="Cine"] .secundario { display: inline; margin-right: 6px; }
+  td[data-col="Ciclo"] { order: 3; flex-basis: 100%; color: var(--texto-2); font-size: 13px; }
+  td[data-col="Director"], td[data-col="Año"], td[data-col="Duración"] { order: 4; color: var(--texto-2); font-size: 13px; }
+  td[data-col="Entradas"], td[data-col="Letterboxd"] { order: 6; margin-right: 6px; }
+}

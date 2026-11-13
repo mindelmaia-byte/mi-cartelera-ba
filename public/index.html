@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Cartelera BA</title>
+  <meta name="description" content="Cartelera de cines de Buenos Aires para los próximos 10 días, filtrable por horario.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="envoltura">
+      <h1>Cartelera BA</h1>
+      <p class="bajada">Cines de Buenos Aires, próximos 10 días</p>
+    </div>
+  </header>
+
+  <main class="envoltura">
+    <!-- Hito 6: Google Calendar va acá, encima del filtro -->
+    <section id="calendario" class="bloque" hidden></section>
+
+    <section class="bloque" aria-labelledby="t-horarios">
+      <h2 id="t-horarios" class="rotulo">Horarios</h2>
+      <div class="chips" id="chips-horario" role="group" aria-label="Filtro de horarios"></div>
+      <div id="panel-personalizado" class="panel" hidden>
+        <p class="ayuda">Elegí los días y el rango de hora de inicio para cada uno.</p>
+        <div id="filas-personalizado" class="filas-dias"></div>
+      </div>
+    </section>
+
+    <section class="bloque" aria-labelledby="t-dias">
+      <h2 id="t-dias" class="rotulo">Días</h2>
+      <div class="dias" id="selector-dias" role="group" aria-label="Día"></div>
+    </section>
+
+    <section class="bloque" aria-labelledby="t-cines">
+      <div class="rotulo-fila">
+        <h2 id="t-cines" class="rotulo">Cines</h2>
+        <div class="acciones-cines">
+          <button type="button" class="enlace" id="cines-todos">todos</button>
+          <button type="button" class="enlace" id="cines-ninguno">ninguno</button>
+          <input type="checkbox" id="toggle-comerciales" class="interruptor-caja">
+          <label class="interruptor" for="toggle-comerciales">+ comerciales</label>
+        </div>
+      </div>
+      <div class="chips" id="chips-cines" role="group" aria-label="Cines"></div>
+    </section>
+
+    <!-- Hito 7: "Para vos" va acá -->
+    <section id="para-vos" class="bloque" hidden></section>
+
+    <section class="bloque" aria-live="polite">
+      <p id="resumen" class="resumen"></p>
+      <div class="tabla-contenedor">
+        <table id="tabla" class="tabla">
+          <thead><tr></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p id="vacio" class="vacio" hidden>No hay funciones con estos filtros.</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura">
+      <details id="estado-cines">
+        <summary>Actualización de los datos</summary>
+        <div id="lista-estado"></div>
+      </details>
+      <p class="fuentes">Datos de las webs oficiales de cada cine. Director, año y duración: TMDB. Proyecto educativo.</p>
+    </div>
+  </footer>
+
+  <noscript><p class="envoltura">Esta cartelera necesita JavaScript.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

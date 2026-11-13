@@ -46,6 +46,9 @@ def main(argv: list[str] | None = None) -> int:
     sg.add_argument("resultado", type=Path, help="JSON con el esquema ResultadoExtraccion")
     sg.add_argument("--por", required=True, help="quién extrajo, p. ej. 'claude-opus-5-5 (sesión de Claude Code)'")
 
+    pexp = sub.add_parser("export", help="genera public/data/cartelera.json para el sitio")
+    pexp.add_argument("--dias", type=int, default=DIAS)
+
     pl = sub.add_parser("listar", help="muestra la cartelera guardada en consola")
     pl.add_argument("--cine", action="append")
     pl.add_argument("--dias", type=int, default=DIAS)
@@ -74,6 +77,13 @@ def main(argv: list[str] | None = None) -> int:
         return _enriquecer(args)
     if args.comando == "extracciones":
         return _extracciones(args)
+    if args.comando == "export":
+        from cartelera.export import RUTA_EXPORT, exportar
+
+        datos = exportar(db.conectar(args.db), cines, dias=args.dias)
+        print(f"Exportado {RUTA_EXPORT.relative_to(RAIZ)}: {len(datos['funciones'])} funciones, "
+              f"{len(datos['peliculas'])} películas, {sum(c['activo'] for c in datos['cines'])} cines activos.")
+        return 0
     return _fixture(args, cines)
 
 
