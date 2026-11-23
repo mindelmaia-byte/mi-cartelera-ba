@@ -25,8 +25,9 @@ log = logging.getLogger(__name__)
 CINE_ID = "lorca"
 URL_HORARIOS = "https://cinelorca.wixsite.com/cine-lorca/current-production"
 # Imágenes subidas por el sitio (los íconos de redes de Wix no tienen el prefijo "<6 hex>_").
-PATRON_IMAGEN = re.compile(r"https://static\.wixstatic\.com/media/[0-9a-f]{6}_[0-9a-f]{32}~mv2\.(?:jpe?g|png)")
-EXTENSIONES = {"image/jpeg": ".jpg", "image/png": ".png"}
+# El sufijo "~mv2" y el formato varían de semana a semana (2026-11-23: la grilla vino en .webp).
+PATRON_IMAGEN = re.compile(r"https://static\.wixstatic\.com/media/[0-9a-f]{6}_[0-9a-f]{32}(?:~mv2)?\.(?:jpe?g|png|webp)")
+EXTENSIONES = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp"}
 PAUSA_SEGUNDOS = 1.0
 
 

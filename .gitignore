@@ -11,8 +11,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-# Base local de desarrollo (la de producción se decide en el hito 8)
-data/*.db
+# La base (data/cartelera.db) SÍ se commitea: el ingest diario de GitHub Actions la necesita de un día
+# para el otro (caché de TMDB, datos de los cines que fallan). Solo tiene datos públicos de los cines.
 data/*.db-journal
 
 # Sistema

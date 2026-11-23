@@ -1,0 +1,424 @@
+{
+ "cine": "lorca",
+ "hash": "a67950deb1462d09",
+ "fuente_url": "https://static.wixstatic.com/media/29f330_1dfe6be899cf4aa5a6ac14519012b8cb~mv2.webp",
+ "titulo_fuente": "Grilla semanal",
+ "extraido_por": "claude-opus-5-5 (sesion de Claude Code, sin API, lectura de imagen)",
+ "extraido_en": "2026-11-23T11:30:11-03:00",
+ "resultado": {
+  "periodo_desde": "2026-11-19",
+  "periodo_hasta": "2026-11-25",
+  "peliculas": [
+   {
+    "titulo": "CABALLO SALVAJE NUEVE",
+    "titulo_original": null,
+    "pais": null,
+    "anio": null,
+    "director": null,
+    "duracion_min": 118,
+    "idioma": "en",
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "20:30"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "16:05"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "20:30"
+     }
+    ]
+   },
+   {
+    "titulo": "EL SONIDO AL CAER",
+    "titulo_original": null,
+    "pais": null,
+    "anio": null,
+    "director": null,
+    "duracion_min": 154,
+    "idioma": "de",
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "18:15"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "13:40"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "18:15"
+     }
+    ]
+   },
+   {
+    "titulo": "YO SOY ROCKY",
+    "titulo_original": null,
+    "pais": null,
+    "anio": null,
+    "director": null,
+    "duracion_min": 128,
+    "idioma": "en",
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "22:40"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "13:45"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "22:40"
+     }
+    ]
+   },
+   {
+    "titulo": "MINOTAURO",
+    "titulo_original": null,
+    "pais": null,
+    "anio": null,
+    "director": null,
+    "duracion_min": 141,
+    "idioma": "ru",
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "22:30"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "18:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "22:30"
+     }
+    ]
+   },
+   {
+    "titulo": "TIERRA DE MI PADRE",
+    "titulo_original": null,
+    "pais": null,
+    "anio": null,
+    "director": null,
+    "duracion_min": 82,
+    "idioma": "de",
+    "ciclo": null,
+    "funciones": [
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Jueves",
+      "fecha": "2026-11-19",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Viernes",
+      "fecha": "2026-11-20",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Sábado",
+      "fecha": "2026-11-21",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Domingo",
+      "fecha": "2026-11-22",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Lunes",
+      "fecha": "2026-11-23",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Martes",
+      "fecha": "2026-11-24",
+      "hora": "21:00"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "16:25"
+     },
+     {
+      "dia_semana_texto": "Miércoles",
+      "fecha": "2026-11-25",
+      "hora": "21:00"
+     }
+    ]
+   }
+  ]
+ }
+}

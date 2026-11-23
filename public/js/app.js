@@ -506,7 +506,7 @@ function textoBloque(b, f) {
 
 function celdaCalendario(f) {
   const r = Cal.evaluar(f, estado.margenes);
-  const texto = { entra: "entra", justo: "justo", "no-entra": "no entra" }[r.estado];
+  const texto = { entra: "Libre", justo: "Depende", "no-entra": "Ocupado" }[r.estado];
   const estimada = !f.duracion_aprox ? ` (duración supuesta: ${Cal.DURACION_SUPUESTA} min)` : "";
   return el("span", { class: `cal ${r.estado}`, title: (r.bloque ? textoBloque(r.bloque, f) : "sin choques") + estimada },
     texto, r.bloque ? el("span", { class: "secundario" }, textoBloque(r.bloque, f)) : null);

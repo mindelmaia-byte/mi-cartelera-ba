@@ -1,0 +1,57 @@
+# Ingest diario: baja la programación de cada cine, cruza con TMDB, exporta el JSON del sitio
+# y lo commitea. Cada push a main hace que Vercel vuelva a publicar el sitio.
+#
+# Secrets del repo (Settings > Secrets and variables > Actions):
+#   TMDB_API_KEY       obligatorio para el cruce con TMDB
+#   ANTHROPIC_API_KEY  opcional: sin ella, los PDF o imágenes nuevos quedan en data/extracciones/*/pendientes/
+
+name: Ingest diario
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 06:00 en Buenos Aires (UTC-3)
+  workflow_dispatch: {}   # botón "Run workflow" para correrlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Dependencias
+        run: uv sync
+
+      - name: Tests
+        run: uv run pytest -q
+
+      - name: Ingest
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        # Si un cine falla, el ingest conserva sus datos anteriores y devuelve 1: no cortamos el workflow.
+        run: uv run python -m cartelera ingest || echo "::warning::algún cine falló; ver el resumen arriba"
+
+      - name: Export
+        run: uv run python -m cartelera export
+
+      - name: Commit
+        run: |
+          git config user.name "Cartelera BA (ingest)"
+          git config user.email "cartelera@localhost"
+          git add public/data data/cartelera.db data/extracciones
+          if git diff --cached --quiet; then
+            echo "Sin cambios."
+          else
+            git commit -m "Ingest diario $(TZ=America/Argentina/Buenos_Aires date +%Y-%m-%d)"
+            git push
+          fi

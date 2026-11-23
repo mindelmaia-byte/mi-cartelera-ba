@@ -75,13 +75,13 @@ export const GOOGLE_CLIENT_ID = "1234567890-abc...apps.googleusercontent.com";
 2. Abrí http://localhost:8765 y tocá **Conectar Google Calendar**.
 3. Google va a mostrar **"Google no verificó esta app"**. Es normal en modo prueba: tocá **Continuar**.
 4. Aceptá el permiso "Ver tu disponibilidad en tus calendarios".
-5. Aparece "Google Calendar conectado", y en la tabla, la columna **Calendario** con "entra", "justo" o "no entra", más el bloque ocupado que molesta.
+5. Aparece "Google Calendar conectado", y en la tabla, la columna **Calendario** con "Libre", "Depende" u "Ocupado", más el bloque ocupado que molesta.
 
 **Qué significa cada estado:**
-- **entra:** no se superpone con nada, contando los márgenes de traslado (por defecto 30 min antes y 15 después; se cambian ahí mismo).
-- **justo:** la película no se superpone con nada, pero el margen de traslado sí.
-- **no entra:** la película se superpone con un bloque ocupado.
-- **"Solo las que me entran":** oculta las que no entran y deja las justas.
+- **Libre:** no se superpone con nada, contando los márgenes de traslado (por defecto 30 min antes y 15 después; se cambian ahí mismo).
+- **Depende:** la película no se superpone con nada, pero el margen de traslado sí.
+- **Ocupado:** la película se superpone con un bloque ocupado.
+- **"Solo las que me entran":** oculta las que están en "Ocupado" y deja las que dicen "Depende".
 - Si no conocemos la duración de la película, se supone de 120 min y se aclara al pasar el mouse.
 
 **"+ agendar"** abre Google Calendar con la función ya cargada: título, cine, dirección y horario. No usa permisos de escritura; el evento lo guardás vos.

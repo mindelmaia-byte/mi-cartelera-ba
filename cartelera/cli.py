@@ -42,6 +42,8 @@ def main(argv: list[str] | None = None) -> int:
     px = sub.add_parser("extracciones", help="textos (PDF/notas) que esperan extracción estructurada")
     sx = px.add_subparsers(dest="accion", required=True)
     sx.add_parser("pendientes", help="lista los textos sin extraer")
+    sp = sx.add_parser("procesar", help="extrae los pendientes con la API de Claude (requiere ANTHROPIC_API_KEY)")
+    sp.add_argument("--cine", help="solo este cine")
     sg = sx.add_parser("guardar", help="valida y guarda una extracción hecha a mano o por Claude")
     sg.add_argument("texto", type=Path, help="el pendiente (data/extracciones/<cine>/pendientes/<hash>.txt o .jpg)")
     sg.add_argument("resultado", type=Path, help="JSON con el esquema ResultadoExtraccion")
@@ -106,6 +108,17 @@ def _extracciones(args) -> int:
             print(f"{p.relative_to(RAIZ)}  [{meta['cine']}] {meta['titulo_fuente']}  ({meta['fuente_url']})")
         print(f"{len(lista)} pendientes.")
         return 0
+    if args.accion == "procesar":
+        from cartelera import llm
+
+        if not llm.hay_api():
+            print("Falta ANTHROPIC_API_KEY en .env.")
+            return 1
+        informe = llm.procesar_pendientes(args.cine)
+        for linea in informe:
+            print(f"  {linea}")
+        print(f"{len(informe)} procesados." if informe else "No había pendientes.")
+        return 0
 
     meta = json.loads(args.texto.with_suffix(".meta.json").read_text(encoding="utf-8"))
     original = extraccion.leer_original(args.texto)
@@ -122,8 +135,15 @@ def _extracciones(args) -> int:
 
 
 def _ingest(args, cines) -> int:
+    from cartelera import llm
+
     con = db.conectar(args.db)
-    resultados = ingestar(con, cines, dias=args.dias)
+    extraer = None
+    if llm.hay_api():
+        extraer = lambda cine_id: llm.procesar_pendientes(cine_id)  # noqa: E731
+    else:
+        print("Extracciones: sin ANTHROPIC_API_KEY, los PDF o imágenes nuevos quedan pendientes.")
+    resultados = ingestar(con, cines, dias=args.dias, extraer_pendientes=extraer)
     if not resultados:
         print("No hay cines con adaptador para correr.")
         return 0

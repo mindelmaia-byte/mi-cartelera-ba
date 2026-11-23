@@ -1,0 +1,13 @@
+{
+ "cine": "lorca",
+ "hash": "3c63c3659221c1e2",
+ "fuente_url": "https://static.wixstatic.com/media/29f330_7a818319ae8e424a9cf18e619b1987b7.jpg",
+ "titulo_fuente": "Grilla semanal",
+ "extraido_por": "claude-opus-5-5 (sesion de Claude Code): foto de la sala, no es grilla",
+ "extraido_en": "2026-11-23T11:30:12-03:00",
+ "resultado": {
+  "periodo_desde": null,
+  "periodo_hasta": null,
+  "peliculas": []
+ }
+}

@@ -69,8 +69,13 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 - **Extracción de textos libres o imágenes (Lugones, Lorca, Museo del Cine)** (`cartelera/extraccion.py`):
   - Se guarda con clave = hash del original (texto o bytes de la imagen), en `data/extracciones/<cine>/<hash>.{txt|jpg,json}`. Ese directorio **sí se commitea**: guarda el original junto al resultado.
   - Un texto nuevo queda en `pendientes/` y el cine conserva sus funciones anteriores.
-  - **Hoy no hay crédito de API:** para procesar un pendiente, Claude, en una sesión de Claude Code, lee el `.txt`, arma un JSON con el esquema `ResultadoExtraccion` siguiendo `extraccion.INSTRUCCIONES` y lo guarda con `extracciones guardar ... --por "claude-opus-5-5 (sesion de Claude Code, sin API)"`.
-  - **Para la entrega:** automatizarlo con la API de Claude (`claude-opus-5-5` y structured outputs) cuando haya `ANTHROPIC_API_KEY`.
+  - **Con `ANTHROPIC_API_KEY`** (`cartelera/llm.py`):
+    - El ingest extrae solo lo pendiente con `claude-opus-5-5`, con structured outputs (`messages.parse(output_format=...)`) y esfuerzo `high`, y después vuelve a leer el cine.
+    - Si el modelo se niega, reintenta con `claude-opus-4-8`. Si no se puede, queda pendiente y nunca se inventa.
+    - Hay un tope de `CARTELERA_MAX_EXTRACCIONES` por corrida (6 por defecto).
+    - A mano: `uv run python -m cartelera extracciones procesar [--cine X]`.
+  - **Sin clave:** Claude, en una sesión de Claude Code, lee el `.txt` o la imagen, arma el JSON `ResultadoExtraccion` siguiendo `extraccion.INSTRUCCIONES` y lo guarda con `extracciones guardar ... --por "claude-opus-5-5 (sesion de Claude Code, sin API)"`.
+  - **Imágenes que no son grilla** (por ejemplo, una foto de la sala): se guardan con `peliculas: []` para que no queden pendientes.
   - **Validación:** el día de la semana tiene que coincidir con la fecha y la fecha caer dentro del período. Lo que no cumple se descarta y se reporta; nunca se corrige a mano.
   - **Título a mostrar:** en la interfaz va el **título del cine**, no el de TMDB. TMDB suele traer el título de España o de México ("Cayo Largo" en lugar de *Huracán de pasiones*).
 - **Comportamiento con los sitios:** pausas entre pedidos y un User-Agent que identifica el proyecto (`adapters/base.py`). Una corrida por día.
@@ -100,7 +105,7 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 - **Google Calendar** (`js/calendario.js`, guía en `docs/google-calendar.md`):
   - Token de GIS solo en memoria y scope `calendar.freebusy`, sobre el calendario `primary`.
   - Sin `GOOGLE_CLIENT_ID` en `public/config.js`, el bloque no aparece.
-  - Estados: "entra", "justo" (choca solo con el margen) y "no entra".
+  - Estados (internos `entra` / `justo` / `no-entra`), que en pantalla dicen "Libre", "Depende" (choca solo con el margen) y "Ocupado".
   - "Solo las que me entran" oculta las que no entran.
   - El fin de la función se calcula con `duracion_aprox`, o 120 min si no se conoce.
 - **Letterboxd** (`js/gustos.js`):
@@ -123,9 +128,9 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 3. Lugones ✅ (y la skill `agregar-cine` en `.claude/skills/`)
 4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos pendiente (el sitio oficial estaba en mantenimiento el 2026-11-13)
 5. Interfaz con datos reales y filtro de horarios ✅ (`public/`: HTML + módulos JS sin build; `js/horarios.js` tiene la lógica del filtro)
-6. Calendario ✅ (falta probar el OAuth real con el Client ID de la usuaria)
+6. Calendario ✅ (OAuth real probado por la usuaria en localhost el 2026-11-23)
 7. Letterboxd y "Para vos" ✅ (probado con el RSS y el export reales de la usuaria, sin guardarlos)
-8. Publicación
+8. Publicación (en curso: guía en `docs/publicar.md`, workflow `.github/workflows/ingest.yml`, la base `data/cartelera.db` se commitea)
 9. Tandas 4, 2 y 3
 
 Al final de cada hito se frena para que la usuaria pruebe.
