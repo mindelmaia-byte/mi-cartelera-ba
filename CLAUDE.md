@@ -62,6 +62,8 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
     - si no trae ni año ni director, las tres señales: duración ±5, idioma original y estreno reciente (regla aprobada para el Lorca).
     - Si no, no se acepta.
   - Si las dos duraciones se conocen y difieren en más de 20 minutos, se descarta. Si sobreviven varios candidatos, queda `ambiguo`.
+  - **Corroboración entre cines** (`enriquecer.corroborar`, sin pedidos a TMDB): una película `sin_match` o `ambiguo` en un cine se acepta si otro cine ya la confirmó con año o director, con el mismo título, y ese mismo `tmdb_id` fue candidato en su propia búsqueda, descartado por algo que no sea el año ni una diferencia de duración de más de 20 min. Caso de uso: el Lorca (sin año ni director) contra Multiplex (Minotauro, *El sonido al caer*). El motivo queda como `corroborada por otra fuente…`.
+  - **Director en alfabeto latino:** si TMDB da el nombre en otro alfabeto (Андрей Звягинцев, 山崎貴), se usa el primer alias latino de `/person/{id}` (`also_known_as`). Si no hay o falla el pedido, queda como vino.
   - Estados posibles: `ok`, `sin_match`, `ambiguo` (con `match_motivo`) o `pendiente`.
   - Las resueltas no se vuelven a consultar. Las `sin_match` y `ambiguo` se reintentan cada 7 días.
   - Los tests reproducen respuestas grabadas sin usar la red. Si cambia el fixture de un cine, hay que volver a grabar con `enriquecer --forzar --grabar`.

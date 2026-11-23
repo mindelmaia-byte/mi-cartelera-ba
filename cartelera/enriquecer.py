@@ -6,6 +6,7 @@ quedaron sin match o ambiguas se reintentan cada REINTENTO_DIAS (TMDB suma estre
 
 import json
 import logging
+import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -14,7 +15,7 @@ import httpx
 
 from cartelera.texto import normalizar
 from cartelera.tiempo import ahora, iso
-from cartelera.tmdb import ClienteTMDB, Pistas, resolver
+from cartelera.tmdb import TOLERANCIA_DURACION, ClienteTMDB, Pistas, es_latino, nombre_latino, resolver
 
 log = logging.getLogger(__name__)
 
@@ -101,6 +102,8 @@ def enriquecer(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: datetime | N
                  m.tmdb_id, m.titulo, m.titulo_original, m.anio, m.director, m.duracion, m.letterboxd_url,
                  m.titulo_en, ",".join(map(str, m.directores_ids)) or None, p["id"]),
             )
+    resumen.ok += corroborar(con, momento)
+    latinizar_directores(con, tmdb, momento)
     if forzar:
         with con:
             con.execute("DELETE FROM directores")
@@ -142,3 +145,70 @@ def actualizar_directores(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: d
             )
         n += 1
     return n
+
+
+def corroborar(con: sqlite3.Connection, momento: datetime) -> int:
+    """Una película sin match en un cine (p. ej. la grilla del Lorca, sin año ni director) se acepta
+    si otro cine ya la confirmó con año o director y el mismo candidato de TMDB:
+      - el título del cine coincide (normalizado) con el de la otra fuente o con alguno de TMDB;
+      - ese tmdb_id fue un candidato con título coincidente en la búsqueda propia (figura en los
+        descartes: solo se descarta después de que el título coincide);
+      - el descarte no fue por más de TOLERANCIA_DURACION minutos de diferencia ni por año.
+    No hace pedidos a TMDB."""
+    futuras = "EXISTS (SELECT 1 FROM funciones f WHERE f.pelicula_id = p.id AND f.fecha_hora >= ?)"
+    confirmadas = con.execute(
+        f"""SELECT * FROM peliculas p WHERE match_estado = 'ok' AND tmdb_id IS NOT NULL
+              AND match_motivo NOT LIKE 'corroborada%' AND {futuras}""", (iso(momento),)).fetchall()
+    sin = con.execute(
+        f"SELECT * FROM peliculas p WHERE match_estado IN ('sin_match', 'ambiguo') AND {futuras}",
+        (iso(momento),)).fetchall()
+    n = 0
+    for p in sin:
+        titulo = normalizar(p["titulo_fuente"])
+        descartes = {int(m.group(1)): m.group(2) for m in re.finditer(r"(\d+): ([^;]*)", p["match_motivo"] or "")}
+        for c in confirmadas:
+            if titulo not in {normalizar(c["titulo_fuente"]), normalizar(c["titulo"]), normalizar(c["titulo_original"])}:
+                continue
+            motivo = descartes.get(c["tmdb_id"])
+            if motivo is None or motivo.startswith("año"):
+                continue
+            dur = re.match(r"duración (\d+) vs (\d+)", motivo)
+            if dur and abs(int(dur.group(1)) - int(dur.group(2))) > TOLERANCIA_DURACION:
+                continue
+            with con:
+                con.execute(
+                    """UPDATE peliculas SET match_estado = 'ok', match_motivo = ?, tmdb_id = ?, titulo = ?,
+                           titulo_original = ?, anio = ?, director = ?, duracion_min = ?, letterboxd_url = ?,
+                           titulo_en = ?, directores_ids = ?, consultado = ? WHERE id = ?""",
+                    (f"corroborada por otra fuente con {c['match_motivo']} (película {c['id']}); acá: {motivo}",
+                     c["tmdb_id"], c["titulo"], c["titulo_original"], c["anio"], c["director"], c["duracion_min"],
+                     c["letterboxd_url"], c["titulo_en"], c["directores_ids"], iso(momento), p["id"]),
+                )
+            n += 1
+            break
+    return n
+
+
+def latinizar_directores(con: sqlite3.Connection, tmdb: ClienteTMDB, momento: datetime) -> int:
+    """Corrige los nombres de director que quedaron en otro alfabeto (matches anteriores a la regla)."""
+    filas = con.execute(
+        """SELECT id, director, directores_ids FROM peliculas p
+           WHERE match_estado = 'ok' AND director IS NOT NULL AND directores_ids IS NOT NULL
+             AND EXISTS (SELECT 1 FROM funciones f WHERE f.pelicula_id = p.id AND f.fecha_hora >= ?)""",
+        (iso(momento),)).fetchall()
+    n = 0
+    for f in filas:
+        nombres = f["director"].split(", ")
+        ids = [int(x) for x in f["directores_ids"].split(",")]
+        if all(es_latino(x) for x in nombres) or len(nombres) != len(ids):
+            continue
+        nuevos = [nombre_latino(tmdb, pid, nom) for pid, nom in zip(ids, nombres)]
+        if nuevos == nombres:
+            continue
+        with con:
+            con.execute("UPDATE peliculas SET director = ? WHERE id = ?", (", ".join(nuevos), f["id"]))
+            for pid, nom in zip(ids, nuevos):
+                con.execute("UPDATE directores SET nombre = ? WHERE persona_id = ?", (nom, pid))
+        n += 1
+    return n
+

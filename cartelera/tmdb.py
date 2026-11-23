@@ -14,6 +14,7 @@ Si no hay match confiable los campos quedan vacíos y el motivo queda registrado
 """
 
 import time as reloj
+import unicodedata
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -65,6 +66,9 @@ class ClienteTMDB:
     def detalle(self, tmdb_id: int) -> dict:
         return self._get(f"/movie/{tmdb_id}", language=IDIOMA,
                          append_to_response="credits,translations,alternative_titles")
+
+    def persona(self, persona_id: int) -> dict:
+        return self._get(f"/person/{persona_id}", language="en-US")
 
     def filmografia_director(self, persona_id: int) -> list[dict]:
         """Películas dirigidas por la persona, con título en inglés (como las nombra Letterboxd) y original."""
@@ -136,7 +140,7 @@ def resolver(tmdb: ClienteTMDB, p: Pistas) -> Match:
             titulo=_titulo_preferido(det),
             titulo_original=det.get("original_title"),
             anio=_anio(det),
-            director=", ".join(directores) or None,
+            director=", ".join(nombres_latinos(tmdb, det)) or None,
             duracion=det.get("runtime") or None,
             titulo_en=_titulo_en(det),
             directores_ids=_directores_ids(det),
@@ -229,6 +233,38 @@ def _titulos(det: dict) -> set[str]:
 def _directores(det: dict) -> list[str]:
     crew = (det.get("credits") or {}).get("crew", [])
     return list(dict.fromkeys(c["name"] for c in crew if c.get("job") == "Director"))
+
+
+def es_latino(nombre: str) -> bool:
+    """True si todas las letras son del alfabeto latino ("Paweł Pawlikowski" sí; "Андрей Звягинцев" no)."""
+    letras = [c for c in nombre if c.isalpha()]
+    return bool(letras) and all(unicodedata.name(c, "").startswith("LATIN") for c in letras)
+
+
+def nombre_latino(tmdb: "ClienteTMDB", persona_id: int, nombre: str) -> str:
+    """TMDB a veces da el nombre en su alfabeto original (Андрей Звягинцев, 山崎貴). Se busca la forma
+    latina entre los alias de la persona (also_known_as); si no hay o falla el pedido, queda como vino."""
+    if es_latino(nombre):
+        return nombre
+    try:
+        datos = tmdb.persona(persona_id)
+    except (httpx.HTTPError, KeyError, ValueError):
+        return nombre
+    for alias in [datos.get("name") or "", *(datos.get("also_known_as") or [])]:
+        alias = " ".join(alias.split())
+        if alias and es_latino(alias):
+            return alias
+    return nombre
+
+
+def nombres_latinos(tmdb: "ClienteTMDB", det: dict) -> list[str]:
+    crew = (det.get("credits") or {}).get("crew", [])
+    vistos: dict[int | str, str] = {}
+    for c in crew:
+        if c.get("job") == "Director":
+            vistos.setdefault(c.get("id") or c["name"], c["name"])
+    return list(dict.fromkeys(
+        nombre_latino(tmdb, k, n) if isinstance(k, int) else n for k, n in vistos.items()))
 
 
 def _directores_ids(det: dict) -> list[int]:
