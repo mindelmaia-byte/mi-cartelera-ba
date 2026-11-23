@@ -83,7 +83,8 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 ## Sitio (`public/`)
 - **Datos:** el sitio lee solo `data/cartelera.json`. Cada función trae `fecha`, `hora` y `dia_semana` ya calculados en hora de Buenos Aires, para que el navegador no haga cuentas de zona horaria. `inicio` (ISO) se usa para ocultar lo que ya empezó.
 - **Datos sin match:** director, año, duración y Letterboxd salen **solo de TMDB con match `ok`**. Si no hay match, las celdas quedan vacías y se muestra la marca "sin datos de TMDB".
-- **Título:** se muestra el del cine, pero **nunca todo en mayúsculas**. Si viene en mayúsculas y TMDB tiene exactamente las mismas palabras, se usa la grafía de TMDB, que trae las tildes. Si no, va en formato título ("Tierra de Mi Padre"). Ver `export.titulo_a_mostrar` y `formato_titulo`.
+- **Título:** se muestra el del cine, pero **nunca todo en mayúsculas**. Si viene en mayúsculas (o Con Cada Palabra En Mayúscula, como en Multiplex) y TMDB tiene exactamente las mismas palabras, se usa la grafía de TMDB, que trae las tildes. Si no, va en formato título ("Tierra de Mi Padre"). Ver `export.titulo_a_mostrar` y `formato_titulo`.
+- **Por película:** tocar el título (en la tabla o en "Para vos") abre un diálogo con todas las funciones que no empezaron de esa película, en todos los cines (comerciales incluidos), agrupadas por día. "Solo con mis filtros" lo limita a lo que muestra la tabla. Se agrupa por `tmdb_id` si las dos funciones lo tienen y, si no, por título normalizado; los datos de TMDB salen de cualquier función del grupo con match.
 - **Filtro de horarios:** filtra por hora de inicio.
   - Presets: "Todos", "Después del trabajo" (lun a vie desde las 18) y "Fin de semana" (sáb y dom, todo el día). Además está "Personalizar".
   - Los presets y el personalizado se suman (unión); sin ninguno activo, se muestra todo.
@@ -126,11 +127,11 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 1. Gaumont de punta a punta en consola ✅
 2. TMDB ✅
 3. Lugones ✅ (y la skill `agregar-cine` en `.claude/skills/`)
-4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos pendiente (el sitio oficial estaba en mantenimiento el 2026-11-13)
+4. Resto de la tanda 1: Lorca ✅ · MALBA ✅ (parser sin IA, por decisión de la usuaria: su robots.txt bloquea a los bots de IA) · Cosmos ✅ (2026-11-23; grilla sin fechas, jueves a miércoles: los jueves no se toma)
 5. Interfaz con datos reales y filtro de horarios ✅ (`public/`: HTML + módulos JS sin build; `js/horarios.js` tiene la lógica del filtro)
 6. Calendario ✅ (OAuth real probado por la usuaria en localhost el 2026-11-23)
 7. Letterboxd y "Para vos" ✅ (probado con el RSS y el export reales de la usuaria, sin guardarlos)
-8. Publicación (en curso: guía en `docs/publicar.md`, workflow `.github/workflows/ingest.yml`, la base `data/cartelera.db` se commitea)
-9. Tandas 4, 2 y 3
+8. Publicación ✅ https://mi-cartelera-ba.vercel.app (repo `mindelmaia-byte/mi-cartelera-ba`; guía en `docs/publicar.md`; workflow `.github/workflows/ingest.yml` probado el 2026-11-23; la base `data/cartelera.db` se commitea). **Antes de cambiar algo local: `git pull`**, porque el ingest commitea todos los días.
+9. Tandas 4, 2 y 3: Multiplex Lavalle y Belgrano ✅ (un módulo, `adapters/multiplex.py`, y uno chico por complejo). Museo del Cine sin programación vigente el 2026-11-23.
 
 Al final de cada hito se frena para que la usuaria pruebe.

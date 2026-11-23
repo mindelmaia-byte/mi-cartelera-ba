@@ -17,6 +17,10 @@ def test_titulo_a_mostrar():
     assert titulo_a_mostrar("TIERRA DE MI PADRE", None) == "Tierra de Mi Padre"
     assert titulo_a_mostrar("LS83", "LS83") == "LS83"
     assert titulo_a_mostrar("LA CASA", None) == "La Casa"
+    # Multiplex: Cada Palabra Con Mayúscula
+    assert titulo_a_mostrar("Tierra De Mi Padre", None) == "Tierra de Mi Padre"
+    assert titulo_a_mostrar("Tierra De Mi Padre", "Tierra de mi padre") == "Tierra de mi padre"
+    assert titulo_a_mostrar("Godzilla Minus Zero", None) == "Godzilla Minus Zero"
 
 
 def test_formato_titulo():

@@ -332,7 +332,7 @@ function pintarParaVos() {
           const cine = estado.cines.get(f.cine);
           const e = etiquetaDia(f.fecha);
           return el("li", { class: "recomendada papel" },
-            el("span", { class: "titulo" }, f.titulo),
+            botonPelicula(f),
             el("span", { class: "rec-cuando" },
               `${e.corto} ${e.numero} · ${f.hora}${H.finEstimado(f.hora, f.duracion_aprox) ? ` a ${H.finEstimado(f.hora, f.duracion_aprox)}` : ""} · ${cine.nombre}`),
             el("span", { class: "rec-motivo" }, motivos.join(" · ")),
@@ -574,7 +574,7 @@ function fila(f, conFecha) {
       el("span", { class: "cine" }, cine.nombre),
       cine.direccion ? el("span", { class: "secundario" }, cine.direccion) : null),
     td("Película",
-      el("span", { class: "titulo" }, f.titulo),
+      botonPelicula(f),
       f.titulo_original ? el("span", { class: "secundario" }, f.titulo_original) : null,
       sinMatch ? el("span", { class: "marca", title: "No encontramos esta película en TMDB con seguridad: no mostramos director, año ni duración para no inventar datos." }, "sin datos de TMDB") : null),
     td("Ciclo", f.ciclo ?? ""),
@@ -590,6 +590,86 @@ function fila(f, conFecha) {
     hayGustos() ? td("Vista", celdaVista(f)) : null,
     Cal.conectado() ? td("Calendario", celdaCalendario(f)) : null,
   );
+}
+
+// ---------- por película ----------
+
+// Misma película: por TMDB si las dos lo tienen; si no, por título normalizado
+// (así se juntan también las que no tienen match, sin mezclar dos "La casa" distintas de TMDB).
+function mismaPelicula(a, b) {
+  const ta = peli(a).tmdb_id, tb = peli(b).tmdb_id;
+  if (ta && tb) return ta === tb;
+  return G.normalizar(a.titulo) === G.normalizar(b.titulo);
+}
+
+function botonPelicula(f) {
+  return el("button", {
+    type: "button", class: "titulo enlace-pelicula",
+    title: "Ver todos los cines y horarios de esta película",
+    onclick: () => abrirPelicula(f),
+  }, f.titulo);
+}
+
+// Arma y abre el diálogo. Muestra todas las funciones que no empezaron, en todos los cines
+// (comerciales incluidos); "Solo con mis filtros" lo limita a lo que ya se ve en la tabla.
+function abrirPelicula(f, soloFiltros = !!leer("pelicula-solo-filtros", false)) {
+  const d = $("#por-pelicula");
+  const ahora = Date.now();
+  const todas = estado.datos.funciones.filter((x) => Date.parse(x.inicio) >= ahora && mismaPelicula(x, f));
+  const fs = (soloFiltros ? funcionesFiltradas().filter((x) => mismaPelicula(x, f)) : todas)
+    .sort((a, b) => a.inicio.localeCompare(b.inicio));
+  const total = todas.length;
+  // Si otro cine de la misma película tiene match con TMDB, sus datos sirven para todas.
+  const ref = peli(f).tmdb_id ? f : todas.find((x) => peli(x).tmdb_id) ?? f;
+  const p = peli(ref);
+  const cines = new Set(fs.map((x) => x.cine));
+
+  const porDia = new Map();
+  for (const x of fs) {
+    if (!porDia.has(x.fecha)) porDia.set(x.fecha, []);
+    porDia.get(x.fecha).push(x);
+  }
+  const datos = [p.director, p.anio, p.duracion ? `${p.duracion} min` : null].filter(Boolean).join(" · ");
+
+  reemplazar(d,
+    el("header", { class: "pp-cabecera" },
+      el("div", {},
+        el("h2", { id: "t-por-pelicula" }, f.titulo),
+        f.titulo_original ? el("p", { class: "secundario" }, f.titulo_original) : null,
+        datos ? el("p", { class: "pp-datos" }, datos) : el("p", { class: "secundario" }, "sin datos de TMDB"),
+        el("p", { class: "pp-links" },
+          p.letterboxd ? el("a", { href: p.letterboxd, target: "_blank", rel: "noopener", class: "externo" }, "Letterboxd") : null,
+          tuPuntaje(ref), celdaVista(ref) || null)),
+      el("form", { method: "dialog" }, el("button", { class: "cerrar", value: "cerrar", "aria-label": "Cerrar" }, "×"))),
+    el("label", { class: "interruptor-linea pp-filtro" },
+      el("input", {
+        type: "checkbox", class: "interruptor-caja", checked: soloFiltros,
+        onchange: (ev) => { guardar("pelicula-solo-filtros", ev.target.checked); abrirPelicula(f, ev.target.checked); },
+      }),
+      " Solo con mis filtros de horario y cines"),
+    el("p", { class: "resumen" },
+      fs.length
+        ? `${fs.length} ${fs.length === 1 ? "función" : "funciones"} en ${cines.size} ${cines.size === 1 ? "cine" : "cines"}`
+          + (soloFiltros && total > fs.length ? ` (${total} sin tus filtros)` : "")
+        : soloFiltros && total ? `Con tus filtros no queda ninguna; sin ellos hay ${total}.` : "No quedan funciones."),
+    ...[...porDia].map(([dia, lista]) => {
+      const e = etiquetaDia(dia);
+      return el("section", { class: "pp-dia" },
+        el("h3", {}, `${H.DIAS[H.DIAS_CORTOS.indexOf(e.corto)]} ${e.numero} de ${nombreMes(dia)}`),
+        el("ul", {}, ...lista.map((x) => {
+          const cine = estado.cines.get(x.cine);
+          return el("li", { class: x.id === f.id ? "pp-funcion actual" : "pp-funcion" },
+            el("span", { class: "pp-hora" }, el("strong", { class: "hora" }, x.hora), finCelda(x)),
+            el("span", { class: "pp-cine" },
+              el("span", { class: "cine" }, cine?.nombre ?? x.cine),
+              cine?.direccion ? el("span", { class: "secundario" }, cine.direccion) : null,
+              x.ciclo ? el("span", { class: "secundario" }, x.ciclo) : null),
+            Cal.conectado() ? el("span", { class: "pp-cal" }, celdaCalendario(x)) : null,
+            el("span", { class: "pp-entradas" }, entradas(x)));
+        })));
+    }),
+  );
+  if (!d.open && typeof d.showModal === "function") d.showModal();
 }
 
 // "termina 20:45" debajo de la hora de inicio (estimado, redondeado a 15 minutos).

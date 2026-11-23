@@ -73,12 +73,22 @@ Se completa **antes** de escribir cada adaptador.
 - **TMDB:** como no hay año ni director, se usa la regla de tres señales que aprobó la usuaria: duración ±5 min, idioma original (el de la grilla, pasado a ISO 639-1) y estreno de los últimos 2 años. Con esa regla cruzaron 4 de 6.
 - **Dirección:** "Av. Corrientes 1428", tal como figura en la imagen oficial.
 
-## Cosmos: sin adaptador todavía
+## Cosmos: `cartelera/adapters/cosmos.py`
 
-- **Revisado:** 2026-11-13
-- **Sitio oficial:** https://cosmos.uba.ar (cinecosmos.uba.ar redirige ahí). **Ese día respondía 503 "Sitio en mantenimiento"**, incluido robots.txt.
-- **Otras fuentes:** www.uba.ar/cosmos es una página vacía ("seguinos!!!!"). Las demás fuentes que aparecen (La Nación, agregadores, X) no son la web oficial del cine.
-- **Pendiente:** reintentar cuando vuelva el sitio. Según búsquedas anteriores, publicaba horarios por día de la semana en `?c=main&a=Detalle&idPelicula=...`.
+- **Revisado:** 2026-11-23. El 2026-11-13 el sitio estaba en mantenimiento (503); el 23 ya respondía.
+- **Sitio oficial:** https://cosmos.uba.ar (cinecosmos.uba.ar redirige ahí). Es HTML armado en el servidor, sin JSON interno.
+- **Formato:** la home tiene una sección "Cartelera" con una tarjeta por película: título, "Dirección: …", "País / NNNm" y un pie con los días y horarios de la semana, por ejemplo `Ju Vi Sá Do Lu Ma Mi | 14:50 - 19:00`.
+  - "14:50 - 19:00" son **dos funciones**, no un rango: la página `/hoy` muestra lo mismo como "14:50, 19:00", y la película dura 126 min.
+  - La ficha `/pelicula?idPelicula=N` agrega el año, que usamos como pista para TMDB.
+- **Fechas:** la grilla **no tiene fechas**. Los días son los de la semana de estrenos, de jueves a miércoles. Por eso:
+  - la cartelera de Cosmos cubre desde hoy hasta el miércoles de esa semana y no se extiende más;
+  - **los jueves no se toma la grilla**: puede seguir siendo la de la semana que terminó, y atribuirla a la nueva sería inventar. Se registra un aviso y el viernes se lee la nueva;
+  - como la fuente publica el día de la grilla, se aplica la regla de trasnoche (`tiempo.combinar`).
+  - Si el pie trae algo que no sean días y horas (por ejemplo, "sala 2"), esa película no se carga y queda un aviso, en lugar de adivinar.
+- **robots.txt:** no existe (la URL devuelve la home). No hay restricciones declaradas.
+- **Términos:** el sitio no tiene página de términos.
+- **Uso que hacemos:** 1 pedido a la home y 1 por película para el año (6 a 8 por día), con 1 s de pausa y el User-Agent del proyecto. No guardamos sinopsis ni imágenes.
+- **Campos:** `modo_venta = boleteria` (el sitio solo publica los precios de boletería), `url_entradas` null, director, año y duración como pistas para TMDB.
 
 ## MALBA: `cartelera/adapters/malba.py` (parser sin IA)
 
@@ -104,3 +114,30 @@ Se completa **antes** de escribir cada adaptador.
   - `ciclo` sale del prefijo del título del catálogo ("nocturna: …" → "Nocturna").
 - **Otros datos:** la API REST de WordPress responde 401. Hay un PDF mensual con la grilla, que no se usa.
 - **Dirección:** "Av. Figueroa Alcorta 3415", tal como figura en el sitio oficial.
+
+## Multiplex Lavalle y Multiplex Belgrano: `cartelera/adapters/multiplex.py`
+
+- **Revisado:** 2026-11-23
+- **Sitio oficial:** https://multiplex.com.ar (WordPress con Elementor y JetEngine). La venta está en ventas.cinemultiplex.com.ar.
+- **Formato:** la home trae **toda la programación embebida** en el HTML, sin pedidos extra: cada película es un `<div class='funcion-item' data-funciones='[...]'>` con un JSON de funciones de todos los complejos y de todo el mes:
+  `{"complejo": "184", "dia": "11.23.2026", "dia_real": "11.24.2026", "hora": "00:10", "formato": "2D", "idioma": "Subtitulada", "tech_code": "1", "pelicula_id": "240", "id": "228416"}`.
+  - Complejos: 184 = Lavalle, 182 = Belgrano (también 180 Canning, 187 Pilar y 190 San Juan, que no son de CABA y se ignoran).
+  - Fechas en formato MM.DD.AAAA. `dia` es el día de la grilla y `dia_real` la fecha calendario real (difieren en la trasnoche). Usamos `dia_real` con `datetime.combine`, **sin** correr la fecha.
+  - La API REST de WordPress (`/wp-json/wp/v2/peliculas`) existe pero no trae horarios.
+- **Ficha de cada película** (`/peliculas/<slug>/`): duración en minutos y fecha de estreno en la Argentina. Las usamos como pistas para TMDB (el año de estreno como `anio_fuente`).
+- **robots.txt** (multiplex.com.ar): `User-agent: * / Disallow:` (todo permitido, bloque de Yoast). En ventas.cinemultiplex.com.ar solo trae el texto de las *content signals* de Cloudflare, sin ninguna señal definida ni `Disallow`.
+- **Términos y condiciones** (https://multiplex.com.ar/terminos-y-condiciones/): tratan la compra de entradas. No mencionan robots, scraping ni acceso automatizado.
+- **Uso que hacemos:** por complejo, 1 pedido a la home y 1 por película con funciones (unos 15), con 1 s de pausa y el User-Agent del proyecto. Guardamos título, horario, duración, estreno y el link de compra. No guardamos sinopsis ni imágenes.
+- **Campos:**
+  - `modo_venta = online`
+  - `url_entradas`: el link de compra de esa función, armado igual que en el JS de la home: `https://ventas.cinemultiplex.com.ar/funcion?df={complejo}-{pelicula}-{funcion}-{AAAAMMDD}-{tech}`.
+  - `titulo_original`, `ciclo` y director: la fuente no los publica.
+  - Formato (2D, 3D, 4D, Comfort Plus) e idioma (subtitulada o castellano) vienen por función, pero el esquema no tiene dónde ponerlos y no se muestran.
+- **Detalles:** los títulos vienen Con Cada Palabra En Mayúscula ("Tierra De Mi Padre"). El export los trata como los títulos en mayúsculas: grafía de TMDB si tiene las mismas palabras y, si no, formato título.
+
+## Museo del Cine: sin adaptador todavía
+
+- **Revisado:** 2026-11-23
+- **Fuente:** las noticias de https://buenosaires.gob.ar/gcaba_historico/cultura/museos/museodelcine. La más reciente era "Octubre en nuestro auditorio" (del 1 al 15 de octubre, publicada el 22/10). No había programación vigente para noviembre, así que un adaptador hoy devolvería 0 funciones.
+- **Pendiente:** cuando publiquen la próxima quincena, sumarlo con la estrategia de extracción (como Lugones), `modo_venta = gratis`.
+

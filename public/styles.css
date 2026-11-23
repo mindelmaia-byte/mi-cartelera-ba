@@ -410,6 +410,46 @@ dialog#bienvenida p, .pasos { color: var(--texto-2); }
 .pasos strong { color: var(--texto); }
 dialog#bienvenida form { text-align: right; margin-top: 8px; }
 
+/* ---------- por película (diálogo de papel) ---------- */
+
+.enlace-pelicula {
+  background: none; border: 0; padding: 0; margin: 0; font: inherit; font-weight: 650; color: inherit;
+  text-align: left; cursor: pointer; text-decoration: underline dotted var(--texto-3); text-underline-offset: 4px;
+}
+.enlace-pelicula:hover { color: var(--acento); text-decoration-color: currentColor; }
+.recomendada .enlace-pelicula { font-weight: 400; }
+dialog#por-pelicula {
+  max-width: 680px; width: calc(100% - 32px); max-height: calc(100vh - 48px); overflow-y: auto; overflow-x: hidden;
+  background: var(--superficie); color: var(--texto);
+  border: 2px solid var(--acento); border-radius: 12px; padding: 18px 22px 22px;
+  box-shadow: 0 0 0 6px var(--superficie), 0 0 0 8px var(--texto), 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+dialog#por-pelicula::backdrop { background: rgba(0, 0, 0, 0.65); }
+.pp-cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.pp-cabecera h2 { margin: 0; font-family: var(--fuente-deco); font-weight: 400; font-size: 24px; color: var(--acento); }
+.pp-cabecera p { margin: 2px 0; }
+.pp-datos { color: var(--texto-2); }
+.pp-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.pp-links:empty { display: none; }
+.cerrar { background: none; border: 0; font-size: 28px; line-height: 1; cursor: pointer; color: var(--texto-2); padding: 0 4px; }
+.cerrar:hover { color: var(--acento); }
+.pp-filtro { margin: 12px 0 4px; font-size: 14px; }
+.pp-dia h3 {
+  margin: 14px 0 4px; font-family: var(--fuente-cartel); font-weight: 400; letter-spacing: 0.08em;
+  font-size: 17px; color: var(--texto-2); border-bottom: 2px solid var(--texto);
+}
+.pp-dia ul { list-style: none; margin: 0; padding: 0; }
+.pp-funcion {
+  display: grid; grid-template-columns: 70px 1fr auto auto; gap: 4px 14px; align-items: center;
+  padding: 7px 6px; border-bottom: 1px solid color-mix(in srgb, var(--texto) 18%, transparent);
+}
+.pp-funcion.actual { background: color-mix(in srgb, var(--acento) 10%, transparent); box-shadow: inset 3px 0 0 var(--acento); }
+.pp-cine .secundario { display: block; }
+@media (max-width: 560px) {
+  .pp-funcion { grid-template-columns: 62px 1fr; }
+  .pp-cal, .pp-entradas { grid-column: 2; }
+}
+
 /* ---------- pie ---------- */
 
 .pie { border-top: 1px solid var(--borde); margin-top: 32px; padding: 16px 0 32px; color: var(--texto-2); font-size: 13px; background: rgba(0, 0, 0, 0.2); }

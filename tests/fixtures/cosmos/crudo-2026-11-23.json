@@ -1,0 +1,55 @@
+{
+ "url": "https://cosmos.uba.ar/",
+ "hoy": "2026-11-23",
+ "dias": 10,
+ "peliculas": [
+  {
+   "id": "452",
+   "titulo": "Los colores del tiempo",
+   "director": "Cédric Klapisch",
+   "duracion": 126,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 14:50 - 19:00",
+   "anio": 2025
+  },
+  {
+   "id": "451",
+   "titulo": "Que dios perdona a todos",
+   "director": "Pif",
+   "duracion": 114,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 16:55 - 20:50",
+   "anio": 2026
+  },
+  {
+   "id": "450",
+   "titulo": "Retrato de un pianista",
+   "director": "José Luis Nacci y Elena Konieczny",
+   "duracion": 70,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 17:15",
+   "anio": 2025
+  },
+  {
+   "id": "447",
+   "titulo": "La casa",
+   "director": "Gustavo Triviño",
+   "duracion": 108,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 14:55",
+   "anio": 2025
+  },
+  {
+   "id": "446",
+   "titulo": "Una quinta en Portugal",
+   "director": "Avelina Prat",
+   "duracion": 109,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 21:10",
+   "anio": 2025
+  },
+  {
+   "id": "445",
+   "titulo": "Tiempos de ilusión",
+   "director": "Olivier Nakache, Eric Toledano",
+   "duracion": 119,
+   "horarios": "Ju Vi Sá Do Lu Ma Mi | 18:40",
+   "anio": 2026
+  }
+ ]
+}

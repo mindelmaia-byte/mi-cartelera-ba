@@ -12,7 +12,7 @@
 cines:
   # ---- Tanda 1 ----
   - {id: gaumont, nombre: Gaumont, direccion: "Av. Rivadavia 1635", verificada: true, tanda: 1, es_comercial: false, adaptador: gaumont}
-  - {id: cosmos, nombre: Cosmos, direccion: "Av. Corrientes 2046", verificada: false, tanda: 1, es_comercial: false, adaptador: null}
+  - {id: cosmos, nombre: Cosmos, direccion: "Av. Corrientes 2046", verificada: true, tanda: 1, es_comercial: false, adaptador: cosmos}
   - {id: lorca, nombre: Lorca, direccion: "Av. Corrientes 1428", verificada: true, tanda: 1, es_comercial: false, adaptador: lorca}
   - {id: malba, nombre: MALBA, direccion: "Av. Figueroa Alcorta 3415", verificada: true, tanda: 1, es_comercial: false, adaptador: malba}
   - {id: lugones, nombre: Sala Lugones, direccion: "Av. Corrientes 1530 (Teatro San Martín)", verificada: true, tanda: 1, es_comercial: false, adaptador: lugones}
@@ -56,5 +56,5 @@ cines:
   - {id: cinepolis-recoleta, nombre: Cinépolis Recoleta, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
   - {id: cinepolis-houssay, nombre: Cinépolis Houssay, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
   - {id: showcase-belgrano, nombre: Showcase Belgrano, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
-  - {id: multiplex-belgrano, nombre: Multiplex Belgrano, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
-  - {id: multiplex-lavalle, nombre: Multiplex Lavalle, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: multiplex-belgrano, nombre: Multiplex Belgrano, direccion: "Vuelta de Obligado 2199", verificada: true, tanda: 4, es_comercial: true, adaptador: multiplex_belgrano}
+  - {id: multiplex-lavalle, nombre: Multiplex Lavalle, direccion: "Lavalle 780", verificada: true, tanda: 4, es_comercial: true, adaptador: multiplex_lavalle}

@@ -5,6 +5,7 @@ en hora de Buenos Aires, además del instante ISO (para comparar con "ahora" y c
 """
 
 import json
+import re
 import sqlite3
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -106,11 +107,19 @@ def titulo_a_mostrar(titulo_fuente: str, titulo_tmdb: str | None) -> str:
     de otro país, como "Cayo Largo")."""
     letras = [c for c in titulo_fuente if c.isalpha()]
     en_mayusculas = bool(letras) and all(c.isupper() for c in letras)
-    if not en_mayusculas:
+    if not (en_mayusculas or _cada_palabra_capitalizada(titulo_fuente)):
         return titulo_fuente
     if titulo_tmdb and normalizar(titulo_tmdb) == normalizar(titulo_fuente):
         return titulo_tmdb
     return formato_titulo(titulo_fuente)
+
+
+def _cada_palabra_capitalizada(titulo: str) -> bool:
+    """ "Tierra De Mi Padre" (Multiplex): todas las palabras con mayúscula inicial, incluidas
+    las que en castellano van en minúscula. Se trata igual que un título en mayúsculas."""
+    palabras = [p for p in re.findall(r"[^\W\d_]+", titulo)]
+    return (len(palabras) > 1 and all(p[0].isupper() for p in palabras)
+            and any(p.lower() in MENORES for p in palabras[1:]))
 
 
 # Palabras que van en minúscula salvo al principio del título o después de ":".
