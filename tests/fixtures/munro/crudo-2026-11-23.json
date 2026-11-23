@@ -1,0 +1,362 @@
+{
+ "url": "https://lumiton.ar/agenda-presencial/",
+ "hoy": "2026-11-23",
+ "dias": 10,
+ "eventos": [
+  {
+   "id": "33960",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-25",
+   "hora": "18:00",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "CONVOCATORIA DE CORTOS: PROGRAMA V",
+   "url": "https://lumiton.ar/evento/convocatoria-de-cortos-programa-v/"
+  },
+  {
+   "id": "34171",
+   "tipos": [],
+   "fecha": "2026-11-25",
+   "hora": "19:00",
+   "lugares": [
+    "lumiton"
+   ],
+   "titulo": "LO QUEER EN EL CINE DE ORO ARGENTINO",
+   "url": "https://lumiton.ar/evento/lo-queer-en-el-cine-de-oro-argentino/"
+  },
+  {
+   "id": "33739",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-25",
+   "hora": "20:30",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "VLADIMIR EN BUENOS AIRES EN 35 MM",
+   "url": "https://lumiton.ar/evento/vladimir-en-buenos-aires-en-35-mm/"
+  },
+  {
+   "id": "33961",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-26",
+   "hora": "18:00",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "CONVOCATORIA DE CORTOS: PROGRAMA VI",
+   "url": "https://lumiton.ar/evento/convocatoria-de-cortos-programa-vi/"
+  },
+  {
+   "id": "34027",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-26",
+   "hora": "18:30",
+   "lugares": [
+    "centro-cultural-munro"
+   ],
+   "titulo": "OPERACIÓN ROSA ROSA",
+   "url": "https://lumiton.ar/evento/operacion-rosa-rosa/"
+  },
+  {
+   "id": "33980",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-26",
+   "hora": "20:30",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "TOKYO-GA",
+   "url": "https://lumiton.ar/evento/tokyo-ga/"
+  },
+  {
+   "id": "34008",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-27",
+   "hora": "18:00",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "LA IMAGEN SANTA",
+   "url": "https://lumiton.ar/evento/la-imagen-santa/"
+  },
+  {
+   "id": "33735",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-27",
+   "hora": "20:30",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "OLIVIA",
+   "url": "https://lumiton.ar/evento/olivia/"
+  },
+  {
+   "id": "34010",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-28",
+   "hora": "18:00",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "ALGO HA CAMBIADO: UN VIAJE QUIJOTESCO AL PAPPO'S BLUES",
+   "url": "https://lumiton.ar/evento/algo-ha-cambiado-un-viaje-quijotesco-al-pappos-blues/"
+  },
+  {
+   "id": "33982",
+   "tipos": [
+    "cine",
+    "proyecciones"
+   ],
+   "fecha": "2026-11-28",
+   "hora": "20:30",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "LAS ALAS DEL DESEO",
+   "url": "https://lumiton.ar/evento/las-alas-del-deseo/"
+  },
+  {
+   "id": "34024",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-29",
+   "hora": "16:30",
+   "lugares": [
+    "centro-cultural-munro"
+   ],
+   "titulo": "COYOTE VS. ACME",
+   "url": "https://lumiton.ar/evento/coyote-vs-acme/"
+  },
+  {
+   "id": "34018",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-29",
+   "hora": "18:00",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "LA VIDA ES BELLA",
+   "url": "https://lumiton.ar/evento/la-vida-es-bella/"
+  },
+  {
+   "id": "34028",
+   "tipos": [
+    "cine",
+    "proyecciones"
+   ],
+   "fecha": "2026-11-29",
+   "hora": "18:30",
+   "lugares": [
+    "centro-cultural-munro"
+   ],
+   "titulo": "SUBÍ QUE TE LLEVO",
+   "url": "https://lumiton.ar/evento/subi-que-te-llevo/"
+  },
+  {
+   "id": "34266",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-11-29",
+   "hora": "20:30",
+   "lugares": [
+    "cine-york"
+   ],
+   "titulo": "DRÁCULA",
+   "url": "https://lumiton.ar/evento/dracula-2-2/"
+  },
+  {
+   "id": "34026",
+   "tipos": [
+    "proyecciones",
+    "cine"
+   ],
+   "fecha": "2026-12-06",
+   "hora": "18:30",
+   "lugares": [
+    "centro-cultural-munro"
+   ],
+   "titulo": "MUCHACHO",
+   "url": "https://lumiton.ar/evento/muchacho/"
+  }
+ ],
+ "fichas": {
+  "34266": {
+   "director": "Tod Browning",
+   "ano": "1931",
+   "genero": "",
+   "pais": "EE.UU.",
+   "duracion": "75 min",
+   "clasificacion": "+13",
+   "galeria": ""
+  },
+  "34018": {
+   "director": "Roberto Benigni",
+   "ano": "1997",
+   "genero": "",
+   "pais": "Italia",
+   "duracion": "116 min",
+   "clasificacion": "+13",
+   "galeria": ""
+  },
+  "33739": {
+   "director": "Diego Gachassin",
+   "ano": "2002",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "94 min",
+   "clasificacion": "+13",
+   "galeria": ""
+  },
+  "34008": {
+   "director": "Pablo Montllau",
+   "ano": "2025",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "71 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "33735": {
+   "director": "Sofía Petersen",
+   "ano": "2025",
+   "genero": "",
+   "pais": "Argentina, España, Reino Unido ",
+   "duracion": "127 min",
+   "clasificacion": "+13",
+   "galeria": ""
+  },
+  "34010": {
+   "director": "Sergio “Chapete” Bonacci Lapalma",
+   "ano": "2026",
+   "genero": "",
+   "pais": "Argentina, EE.UU.",
+   "duracion": "130 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "33960": {
+   "director": "",
+   "ano": "2022 - 2026",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "duración total aprox. 110 min",
+   "clasificacion": "+13",
+   "galeria": [
+    33574,
+    33573,
+    33568,
+    33567,
+    33572,
+    33569,
+    33575,
+    33571,
+    33570
+   ]
+  },
+  "33961": {
+   "director": "",
+   "ano": " 2023 - 2026",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "duración total aprox. 94 min",
+   "clasificacion": "+13",
+   "galeria": [
+    33574,
+    33573,
+    33568,
+    33567,
+    33572,
+    33569,
+    33575,
+    33571,
+    33570
+   ]
+  },
+  "34024": {
+   "director": "Dave Green ",
+   "ano": "2026",
+   "genero": "",
+   "pais": "EE.UU.",
+   "duracion": "103 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "34026": {
+   "director": "Leo Fleider",
+   "ano": "1970",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "100 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "34028": {
+   "director": "Rubén Cavallotti",
+   "ano": "1990",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "100 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "34027": {
+   "director": "Leo Fleider",
+   "ano": "1974",
+   "genero": "",
+   "pais": "Argentina",
+   "duracion": "105 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "33982": {
+   "director": "Wim Wenders",
+   "ano": "1987",
+   "genero": "",
+   "pais": "Alemania Occidental, Francia",
+   "duracion": "128 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  },
+  "33980": {
+   "director": "Wim Wenders",
+   "ano": "1985",
+   "genero": "",
+   "pais": "Alemania Occidental, EE.UU.",
+   "duracion": "92 min",
+   "clasificacion": "ATP",
+   "galeria": ""
+  }
+ }
+}

@@ -141,3 +141,17 @@ Se completa **antes** de escribir cada adaptador.
 - **Fuente:** las noticias de https://buenosaires.gob.ar/gcaba_historico/cultura/museos/museodelcine. La más reciente era "Octubre en nuestro auditorio" (del 1 al 15 de octubre, publicada el 22/10). No había programación vigente para noviembre, así que un adaptador hoy devolvería 0 funciones.
 - **Pendiente:** cuando publiquen la próxima quincena, sumarlo con la estrategia de extracción (como Lugones), `modo_venta = gratis`.
 
+
+## York, Munro y Lumiton: `cartelera/adapters/agenda_vicente_lopez.py`
+
+- **Revisado:** 2026-11-23
+- **Sitio oficial:** https://lumiton.ar (Municipio de Vicente López, WordPress). La **agenda presencial** (https://lumiton.ar/agenda-presencial/) reúne las tres salas: Cine York (Juan Bautista Alberdi 895, Olivos), Centro Cultural Munro (Vélez Sarsfield 4650, Munro) y Lumiton (Sargento Cabral 2354, Munro). Las direcciones salen de las fichas de los eventos y del pie del sitio.
+- **Formato:** HTML. Cada evento es un `<article>` con `data-date="AAAA-MM-DD"`, `data-locations='["cine-york"]'`, la hora ("20:30hs"), el título, el link a la ficha y clases de tipo (`tipo-proyecciones`, `tipo-cine`). La agenda tiene una sola página (la `/page/2/` repite lo mismo) y cada evento es una sola función.
+  - **Solo se toman los eventos con `tipo-cine`.** Las charlas, talleres y visitas guiadas no llevan ese tipo. El 2026-11-23, lo único de Lumiton era una charla, así que esa sala quedó con 0 funciones.
+  - `data-date` es la fecha del evento, la misma que muestra la ficha. No hay funciones de trasnoche, así que se usa `datetime.combine`.
+- **API REST:** `/wp-json/wp/v2/evento?include=<ids>` trae los campos ACF `director`, `ano` y `duracion`, que usamos como pistas para TMDB. No trae fecha ni hora. Solo se usan si tienen el formato esperado: "87 min" y "1969" sí; "duración total aprox. 110 min" y "2022 - 2026" (programas de cortos) no.
+- **robots.txt:** responde 200 vacío. No hay restricciones declaradas.
+- **Términos:** no hay página de términos. El pie solo pide no filmar ni fotografiar lo que se proyecta.
+- **Uso que hacemos:** por sala, 1 pedido a la agenda y 1 a la API, con 1 s de pausa y el User-Agent del proyecto.
+- **Campos:** `modo_venta = gratis` ("Entrada no arancelada. Acceso por orden de llegada"), `url_entradas` null y `fuente_url` = la ficha del evento. El formato de proyección que viene pegado al título ("… EN 35 MM") pasa a `ciclo` ("En 35 mm").
+- **TMDB el 2026-11-23:** 9 ok y 4 sin match: dos programas de cortos, *Algo ha cambiado…* (no está en TMDB con ese título) y *Subí que te llevo* (la agenda dice 1990 y la película de Cavallotti es de 1980; la regla no acepta esa diferencia).
