@@ -155,3 +155,40 @@ Se completa **antes** de escribir cada adaptador.
 - **Uso que hacemos:** por sala, 1 pedido a la agenda y 1 a la API, con 1 s de pausa y el User-Agent del proyecto.
 - **Campos:** `modo_venta = gratis` ("Entrada no arancelada. Acceso por orden de llegada"), `url_entradas` null y `fuente_url` = la ficha del evento. El formato de proyección que viene pegado al título ("… EN 35 MM") pasa a `ciclo` ("En 35 mm").
 - **TMDB el 2026-11-23:** 9 ok y 4 sin match: dos programas de cortos, *Algo ha cambiado…* (no está en TMDB con ese título) y *Subí que te llevo* (la agenda dice 1990 y la película de Cavallotti es de 1980; la regla no acepta esa diferencia).
+
+## Cinemark Palermo, Abasto y Dot: `cartelera/adapters/cinemark.py`
+
+- **Revisado:** 2026-11-23
+- **Sitio oficial:** https://www.cinemark.com.ar (Next.js). Cada complejo (`/cartelera/palermo`) pide los datos a un JSON interno en `bff.cinemark.com.ar`:
+  - `GET /api/cinema/showtimes?theater=733`: las funciones (`movieName`, `corporateId`, `language`, `sessionFormat`, `sessionDateTime`, `sessionDisplayDate`, `isLateNightSession`).
+  - `GET /api/cinema/movies?theater=733`: las películas (`title` completo, `slug`, `runTime`, `openingDate`).
+  - `GET /api/cinema/theaters`: los complejos. 733 = Palermo (Beruti 3399), 103 = Abasto (Agüero 665, Abasto Shopping), 111 = DOT (Vedia 3626, Shopping DOT). Las direcciones salen de ahí.
+  - **Hace falta el encabezado `country: AR`**, como lo manda el sitio. Sin él, responde 500 "Country undefined not implemented".
+- **Hora:** `sessionDateTime` trae una "Z" (UTC), pero es la hora **local**: la página muestra 16:35 para `16:35:00.000Z`. Además ya es la fecha calendario real: la trasnoche del 15/12 a las 00:00 figura como `2026-12-16T00:00` con `sessionDisplayDate` 2026-12-15. Se toma tal cual, sin convertir ni correr la fecha.
+- **Títulos:** `movieName` puede venir cortado ("LOS JUEGOS DEL HAMBRE: AMANECER"). El título completo sale de `/movies`, por `corporateId`.
+- **robots.txt** (www.cinemark.com.ar): `User-Agent: * / Allow: /`. bff.cinemark.com.ar no tiene (502).
+- **Términos** (https://www.cinemark.com.ar/terminos-condiciones): tratan compras, Cinemark Club y bases de sorteos. No mencionan acceso automatizado ni scraping.
+- **Uso que hacemos:** 2 pedidos por complejo y por día (6 en total), con 1 s de pausa y el User-Agent del proyecto. El fixture guarda solo la ventana de días pedida.
+- **Campos:** `modo_venta = online`. `url_entradas` = la página de la película (`/pelicula/{slug}`): los horarios del sitio no son links, la compra es un flujo interactivo. El año de estreno y la duración van como pistas para TMDB.
+- **No incluidos:** Cinemark Caballito y Puerto Madero también son de CABA, pero no están en la lista original.
+
+## Showcase Belgrano: `cartelera/adapters/showcase.py`
+
+- **Revisado:** 2026-11-23
+- **Sitio oficial:** https://www.todoshowcase.com (institucional). La boletería es https://entradas.todoshowcase.com (plataforma Voy al Cine). Dirección: Monroe 1655, de la página del complejo.
+- **Formato:** no hay listado por complejo.
+  1. La home enlaza cada película como `entradas.todoshowcase.com/showcase/pelicula?filmid=N` (unas 30).
+  2. Por película, un JSON: `https://api.voyalcine.net/films/{filmid}/tree/showcase` → `days` → complejos (`id`, `name`, `ewaveId`) → formatos → `performances` (`showTime`). Belgrano es `id` 14.
+  3. La ficha HTML de la boletería trae título original, director y duración (`<li><strong>Director:</strong> …`). Solo se pide para las películas que dan en Belgrano.
+- **Ritmo:** el 2026-11-23, Belgrano tenía funciones hasta el miércoles 25 (grilla semanal).
+- **Trasnoche:** ese día no había funciones antes de las 06:00, así que no se pudo confirmar si `days` es el día de la grilla o la fecha real. Se aplica la regla general (`tiempo.combinar`). **Revisarlo cuando aparezca un caso.**
+- **robots.txt:** no existe en ninguno de los tres hosts (www.todoshowcase.com devuelve la home; entradas.todoshowcase.com y api.voyalcine.net, 404).
+- **Términos:** el sitio solo tiene una declaración de privacidad (`/site/privacidad`), que no habla de acceso automatizado.
+- **Uso que hacemos:** 1 pedido a la home, 1 por película (unos 30) y 1 ficha por película con funciones en Belgrano (unas 13), con 0,5 s de pausa.
+- **Campos:** `modo_venta = online`, `url_entradas` = la ficha de la boletería con `house_id` del complejo. `titulo_original` solo si es distinto del título (normalizado). Director y duración como pistas para TMDB; no publica el año.
+
+## Cacodelphia: sin adaptador
+
+- **Revisado:** 2026-11-23
+- **No tiene web oficial con la programación.** cacodelphia.com es la productora Cacodelphia Studios (sin cartelera), y los dominios del cine que probamos no existen. La programación sale en Instagram (@cinearte.cacodelphia) y en agregadores de terceros (IMDb, Locate Cinemas).
+- Instagram no permite la lectura automática y la regla del proyecto es no usar agregadores, así que queda pendiente hasta que publique en una web propia.

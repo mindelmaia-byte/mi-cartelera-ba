@@ -1,0 +1,4964 @@
+{
+ "theater": "111",
+ "hoy": "2026-11-23",
+ "dias": 10,
+ "showtimes": [
+  {
+   "movieId": "HO00013379",
+   "movieName": "CABALLO SALVAJE NUEVE",
+   "corporateId": "114045",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155248",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T16:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 138,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155286",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T16:50:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 197,
+    "capacity": 299,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155310",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T17:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 117,
+    "capacity": 158,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00012622",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155269",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T18:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 234,
+    "capacity": 299,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154784",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-23T18:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 1,
+    "capacity": 94,
+    "status": "LOW"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154792",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-23T19:10:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 39,
+    "capacity": 128,
+    "status": "LOW"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155331",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T19:20:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 144,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155074",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T19:30:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 118,
+    "capacity": 224,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154788",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-23T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 163,
+    "capacity": 301,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155197",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-23T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 4,
+    "capacity": 62,
+    "status": "LOW"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155287",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 132,
+    "capacity": 299,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155311",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T19:50:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 131,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013303",
+   "movieName": "WILDWOOD: EL BOSQUE SALVAJE",
+   "corporateId": "111102",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155249",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T20:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 110,
+    "capacity": 152,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155270",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T21:30:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 203,
+    "capacity": 299,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154785",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-23T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 24,
+    "capacity": 94,
+    "status": "LOW"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013220",
+   "movieName": "CLAYFACE",
+   "corporateId": "110812",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155332",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T22:10:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 151,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155312",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T22:20:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 154,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154793",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-23T22:30:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 90,
+    "capacity": 128,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155075",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 217,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155422",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T22:50:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 152,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154789",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-23T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155198",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-23T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 44,
+    "capacity": 62,
+    "status": "MEDIUM"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155288",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-23T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-23",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": true
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154802",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-24T12:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 128,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013303",
+   "movieName": "WILDWOOD: EL BOSQUE SALVAJE",
+   "corporateId": "111102",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155333",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T12:50:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 156,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154798",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-24T13:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155076",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T13:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013379",
+   "movieName": "CABALLO SALVAJE NUEVE",
+   "corporateId": "114045",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155251",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T13:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 152,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155289",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T14:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 297,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155313",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T14:10:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012622",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155271",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T14:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154795",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T15:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 94,
+    "capacity": 94,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154803",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-24T15:50:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 123,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013283",
+   "movieName": "GODZILLA MINUS ZERO",
+   "corporateId": "111103",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155334",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T16:10:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154799",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-24T16:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 291,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155230",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T16:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 55,
+    "capacity": 62,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155077",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T16:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 223,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013379",
+   "movieName": "CABALLO SALVAJE NUEVE",
+   "corporateId": "114045",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155252",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T16:40:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 150,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155290",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T16:50:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155314",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T17:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 157,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012622",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155272",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T18:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 297,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154796",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T18:40:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 78,
+    "capacity": 94,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154804",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-24T19:10:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 120,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155335",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T19:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155078",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T19:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 218,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155231",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 33,
+    "capacity": 62,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155291",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 290,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155315",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T19:50:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 156,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013303",
+   "movieName": "WILDWOOD: EL BOSQUE SALVAJE",
+   "corporateId": "111102",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155253",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T20:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 148,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155273",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T21:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 263,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154797",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 82,
+    "capacity": 94,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013220",
+   "movieName": "CLAYFACE",
+   "corporateId": "110812",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155336",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T22:10:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 156,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155316",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T22:20:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154805",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-24T22:30:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 120,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155079",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 214,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155423",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T22:50:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 152,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154801",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-24T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155232",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-24T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 60,
+    "capacity": 62,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155292",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-24T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-24",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154814",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-25T12:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 124,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013303",
+   "movieName": "WILDWOOD: EL BOSQUE SALVAJE",
+   "corporateId": "111102",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155337",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T12:50:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 155,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154810",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-25T13:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 301,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013379",
+   "movieName": "CABALLO SALVAJE NUEVE",
+   "corporateId": "114045",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155255",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T13:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 151,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155346",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T13:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155293",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T14:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155317",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T14:10:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012622",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155274",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T14:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 295,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154807",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T15:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 90,
+    "capacity": 94,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154815",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-25T15:50:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 122,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013283",
+   "movieName": "GODZILLA MINUS ZERO",
+   "corporateId": "111103",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155338",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T16:10:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154811",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-25T16:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 293,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155202",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T16:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 61,
+    "capacity": 62,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155347",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T16:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013379",
+   "movieName": "CABALLO SALVAJE NUEVE",
+   "corporateId": "114045",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155256",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T16:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 151,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155294",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T16:50:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 296,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155318",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T17:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012622",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155275",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T18:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 292,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154808",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T18:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 80,
+    "capacity": 94,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013364",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "7",
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "5",
+   "sessionId": "154816",
+   "sessionFormat": "4D 2D",
+   "sessionDateTime": "2026-11-25T19:10:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 115,
+    "capacity": 128,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00012620",
+   "movieName": "EL GATO CON SOMBRERO",
+   "corporateId": "110813",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155339",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T19:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 154,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155348",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T19:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 219,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154812",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-25T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 275,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155203",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 46,
+    "capacity": 62,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155295",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T19:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 281,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155319",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T19:50:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 153,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013303",
+   "movieName": "WILDWOOD: EL BOSQUE SALVAJE",
+   "corporateId": "111102",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155257",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T20:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 148,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "6",
+   "sessionId": "155276",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T21:30:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 290,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "2",
+   "sessionId": "154809",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 65,
+    "capacity": 94,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013220",
+   "movieName": "CLAYFACE",
+   "corporateId": "110812",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155340",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T22:10:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 156,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013388",
+   "movieName": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "corporateId": "114046",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "8",
+   "sessionId": "155320",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T22:20:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 158,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013362",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "1",
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "3",
+   "sessionId": "154813",
+   "sessionFormat": "XD 2D",
+   "sessionDateTime": "2026-11-25T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 294,
+    "capacity": 301,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013356",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "5",
+     "name": "PREMIER",
+     "shortName": "PRE"
+    },
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "1",
+   "sessionId": "155204",
+   "sessionFormat": "PREMIER 2D",
+   "sessionDateTime": "2026-11-25T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 59,
+    "capacity": 62,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013354",
+   "movieName": "LOS JUEGOS DEL HAMBRE: AMANECER",
+   "corporateId": "110814",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "7",
+   "sessionId": "155296",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 299,
+    "capacity": 299,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155349",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T22:40:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 219,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013366",
+   "movieName": "YO SOY ROCKY",
+   "corporateId": "114052",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "4",
+   "sessionId": "155424",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-25T22:50:00.000Z",
+   "sessionDisplayDate": "2026-11-25",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 152,
+    "capacity": 152,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155350",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T12:40:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155351",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T15:10:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155354",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T17:45:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 219,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155352",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T20:20:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 205,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155084",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 85,
+    "capacity": 158,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155353",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-26T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-26",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155355",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T12:40:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 223,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155356",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T15:10:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 223,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155357",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T17:45:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 222,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155358",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T20:20:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 208,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155085",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 75,
+    "capacity": 158,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155359",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-27T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-27",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 221,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155360",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T12:40:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 218,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155361",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T15:10:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155362",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T17:45:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 216,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155363",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T20:20:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 220,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155086",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 115,
+    "capacity": 158,
+    "status": "MEDIUM"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155364",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-28T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-28",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 214,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155365",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T12:40:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155366",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T15:10:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155367",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T17:45:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155368",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T20:20:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 222,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155087",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 132,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155369",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-29T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-29",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155370",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T12:40:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155371",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T15:10:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155372",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T17:45:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155373",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T20:20:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 222,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155088",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T22:00:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 149,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155374",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-11-30T23:00:00.000Z",
+   "sessionDisplayDate": "2026-11-30",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155375",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T12:40:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155376",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T15:10:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155377",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T17:45:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155378",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T20:20:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155089",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T22:00:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 157,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155379",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-01T23:00:00.000Z",
+   "sessionDisplayDate": "2026-12-01",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155380",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T12:40:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 223,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013425",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "c3beee39-d7e5-4c81-af9c-ca3a3e8bec66",
+    "name": "CASTELLANO",
+    "shortName": "CAST"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155381",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T15:10:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155382",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T17:45:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155383",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T20:20:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013413",
+   "movieName": "PUEDES VERLO TODO",
+   "corporateId": "114117",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "9",
+   "sessionId": "155090",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T22:00:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 154,
+    "capacity": 158,
+    "status": "HIGH"
+   },
+   "premiere": false
+  },
+  {
+   "movieId": "HO00013426",
+   "movieName": "LA NUEVA FOCKER",
+   "corporateId": "114312",
+   "tags": [],
+   "language": {
+    "id": "3967bae2-8288-4f36-995f-259683c67f21",
+    "name": "SUBTITULADA",
+    "shortName": "SUB"
+   },
+   "formats": [
+    {
+     "id": "3",
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "theaterId": "111",
+   "theaterRoom": "10",
+   "sessionId": "155384",
+   "sessionFormat": "2D",
+   "sessionDateTime": "2026-12-02T23:00:00.000Z",
+   "sessionDisplayDate": "2026-12-02",
+   "isLateNightSession": false,
+   "occupation": {
+    "availableSeats": 224,
+    "capacity": 224,
+    "status": "HIGH"
+   },
+   "premiere": false
+  }
+ ],
+ "movies": [
+  {
+   "id": "261aa5f8-172d-4656-bdfa-12e997b50a6b",
+   "corporateId": "110814",
+   "slug": "los-juegos-del-hambre-amanecer-en-la-cosecha",
+   "title": "LOS JUEGOS DEL HAMBRE: AMANECER EN LA COSECHA",
+   "recommended": true,
+   "openingDate": "2026-11-19T00:00:00.000Z",
+   "runTime": 158,
+   "premiere": true,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013363.jpg",
+   "rating": "R-13",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "COMFORT",
+     "shortName": "Comfort"
+    },
+    {
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    },
+    {
+     "name": "PREMIER",
+     "shortName": "PRE"
+    }
+   ],
+   "order": 1,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "53f161a4-3076-4b0d-b09e-a04eb3f21a0f",
+   "corporateId": "114052",
+   "slug": "yo-soy-rocky",
+   "title": "YO SOY ROCKY",
+   "recommended": true,
+   "openingDate": "2026-11-19T00:00:00.000Z",
+   "runTime": 127,
+   "premiere": true,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013365.jpg",
+   "rating": "SP",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": 2,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "05f924a1-e473-472a-a739-5cdbb47e11a0",
+   "corporateId": "110813",
+   "slug": "el-gato-con-sombrero",
+   "title": "EL GATO CON SOMBRERO",
+   "recommended": true,
+   "openingDate": "2026-11-05T00:00:00.000Z",
+   "runTime": 114,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013326.jpg",
+   "rating": "G",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "name": "3D",
+     "shortName": "3D"
+    },
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    }
+   ],
+   "order": 3,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    }
+   ]
+  },
+  {
+   "id": "cf75fcbd-fc76-40fa-9862-f796fd377ebb",
+   "corporateId": "114046",
+   "slug": "ebenezer-los-fantasmas-de-navidad",
+   "title": "EBENEZER: LOS FANTASMAS DE NAVIDAD",
+   "recommended": true,
+   "openingDate": "2026-11-12T00:00:00.000Z",
+   "runTime": 115,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013376.jpg",
+   "rating": "SP",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    }
+   ],
+   "order": 4,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "b077ba87-92ac-448f-b91f-9359400af912",
+   "corporateId": "109355",
+   "slug": "avengers-doomsday",
+   "title": "AVENGERS: DOOMSDAY",
+   "recommended": false,
+   "openingDate": "2026-12-17T00:00:00.000Z",
+   "runTime": 165,
+   "premiere": false,
+   "status": "PRESALE",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00012878.jpg",
+   "rating": "R-13",
+   "hasRelaxedFunctions": false,
+   "tags": [
+    {
+     "deletedBy": null,
+     "deletedAt": null,
+     "createdBy": "Solange Cutrera (scutrera@international.cinemark.com)",
+     "createdAt": "2026-11-17T13:58:29.501Z",
+     "updatedBy": "Solange Cutrera (scutrera@international.cinemark.com)",
+     "updatedAt": "2026-11-17T14:01:05.042Z",
+     "id": 11,
+     "label": "Sin promociones hasta el 21/12"
+    }
+   ],
+   "formats": [
+    {
+     "name": "3D",
+     "shortName": "3D"
+    },
+    {
+     "name": "INFINITY VISION",
+     "shortName": "IV"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    },
+    {
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "COMFORT",
+     "shortName": "Comfort"
+    },
+    {
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "name": "PREMIER",
+     "shortName": "PRE"
+    }
+   ],
+   "order": 1,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "6feab2cb-dfea-45be-a706-9b82c984ab64",
+   "corporateId": "112486",
+   "slug": "duna-parte-tres",
+   "title": "DUNA: PARTE TRES",
+   "recommended": false,
+   "openingDate": "2026-12-17T00:00:00.000Z",
+   "runTime": 150,
+   "premiere": false,
+   "status": "PRESALE",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00012914.jpg",
+   "rating": "R-13",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "4D E-MOTION",
+     "shortName": "4D"
+    },
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "COMFORT",
+     "shortName": "Comfort"
+    },
+    {
+     "name": "XD DIGITAL",
+     "shortName": "XD"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    },
+    {
+     "name": "PREMIER",
+     "shortName": "PRE"
+    }
+   ],
+   "order": 2,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "1c606762-3fb1-47ba-83bd-af5be6d37d17",
+   "corporateId": "114117",
+   "slug": "puedes-verlo-todo",
+   "title": "PUEDES VERLO TODO",
+   "recommended": false,
+   "openingDate": "2026-11-26T00:00:00.000Z",
+   "runTime": 174,
+   "premiere": false,
+   "status": "PRESALE",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013414.jpg",
+   "rating": "AC",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "08b0e2e6-2e40-487c-9d02-bb0425e578fc",
+   "corporateId": "114312",
+   "slug": "la-nueva-focker",
+   "title": "LA NUEVA FOCKER",
+   "recommended": false,
+   "openingDate": "2026-11-26T00:00:00.000Z",
+   "runTime": 105,
+   "premiere": false,
+   "status": "PRESALE",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013425.jpg",
+   "rating": "AC",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    },
+    {
+     "name": "COMFORT",
+     "shortName": "Comfort"
+    },
+    {
+     "name": "D-BOX",
+     "shortName": "DBOX"
+    },
+    {
+     "name": "PREMIER",
+     "shortName": "PRE"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "1c5cb07a-4ec6-4a24-a613-f90f2e29696f",
+   "corporateId": "114045",
+   "slug": "caballo-salvaje-nueve",
+   "title": "CABALLO SALVAJE NUEVE",
+   "recommended": false,
+   "openingDate": "2026-11-12T00:00:00.000Z",
+   "runTime": 118,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013379.jpg",
+   "rating": "R-17",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "085a9fef-c72f-4312-80fe-5e258c1108aa",
+   "corporateId": "111103",
+   "slug": "godzilla-minus-zero",
+   "title": "GODZILLA MINUS ZERO",
+   "recommended": false,
+   "openingDate": "2026-11-05T00:00:00.000Z",
+   "runTime": 135,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00012759.jpg",
+   "rating": "R-13",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "c448e9f9-8caa-4951-a4db-b1ac03ce0d69",
+   "corporateId": "111102",
+   "slug": "wildwood-el-bosque-salvaje",
+   "title": "WILDWOOD: EL BOSQUE SALVAJE",
+   "recommended": false,
+   "openingDate": "2026-10-29T00:00:00.000Z",
+   "runTime": 132,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00012754.jpg",
+   "rating": "SP",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "cbed4aff-4bf8-4384-a4c0-0729c0e0162d",
+   "corporateId": "110812",
+   "slug": "clayface",
+   "title": "CLAYFACE",
+   "recommended": false,
+   "openingDate": "2026-10-22T00:00:00.000Z",
+   "runTime": 108,
+   "premiere": false,
+   "status": "SHOWING_NOW",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00012619.jpg",
+   "rating": "R-17",
+   "hasRelaxedFunctions": false,
+   "tags": [],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "CASTELLANO",
+     "shortName": "CAST"
+    },
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  },
+  {
+   "id": "5d32ea73-5710-4c23-90cd-76b14dd896db",
+   "corporateId": "114044",
+   "slug": "bts-world-tour-arirang-in-jakarta",
+   "title": "BTS WORLD TOUR 'ARIRANG' IN JAKARTA",
+   "recommended": false,
+   "openingDate": "2026-12-29T00:00:00.000Z",
+   "runTime": 195,
+   "premiere": false,
+   "status": "PRESALE",
+   "posterUrl": "https://cdn.cinemark.com.ar/content/posters/HO00013348.jpg",
+   "rating": "AC",
+   "hasRelaxedFunctions": false,
+   "tags": [
+    {
+     "deletedBy": null,
+     "deletedAt": null,
+     "createdBy": null,
+     "createdAt": null,
+     "updatedBy": null,
+     "updatedAt": null,
+     "id": 1,
+     "label": "Contenido Alternativo"
+    },
+    {
+     "deletedBy": null,
+     "deletedAt": null,
+     "createdBy": null,
+     "createdAt": null,
+     "updatedBy": null,
+     "updatedAt": null,
+     "id": 5,
+     "label": "Sin promociones"
+    },
+    {
+     "deletedBy": null,
+     "deletedAt": null,
+     "createdBy": null,
+     "createdAt": null,
+     "updatedBy": null,
+     "updatedAt": null,
+     "id": 7,
+     "label": "Concert"
+    }
+   ],
+   "formats": [
+    {
+     "name": "2D",
+     "shortName": "2D"
+    }
+   ],
+   "order": null,
+   "languages": [
+    {
+     "name": "SUBTITULADA",
+     "shortName": "SUB"
+    }
+   ]
+  }
+ ]
+}

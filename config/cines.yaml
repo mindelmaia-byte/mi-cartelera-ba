@@ -50,11 +50,11 @@ cines:
   - {id: marechal, nombre: Marechal, direccion: null, verificada: false, tanda: 3, es_comercial: false, adaptador: null}
 
   # ---- Tanda 4 (comerciales: solo estos complejos) ----
-  - {id: cinemark-palermo, nombre: Cinemark Palermo, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
-  - {id: cinemark-abasto, nombre: Cinemark Abasto, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
-  - {id: cinemark-dot, nombre: Cinemark Dot, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: cinemark-palermo, nombre: Cinemark Palermo, direccion: "Beruti 3399", verificada: true, tanda: 4, es_comercial: true, adaptador: cinemark_palermo}
+  - {id: cinemark-abasto, nombre: Cinemark Abasto, direccion: "Agüero 665 (Abasto Shopping)", verificada: true, tanda: 4, es_comercial: true, adaptador: cinemark_abasto}
+  - {id: cinemark-dot, nombre: Cinemark Dot, direccion: "Vedia 3626 (Shopping DOT)", verificada: true, tanda: 4, es_comercial: true, adaptador: cinemark_dot}
   - {id: cinepolis-recoleta, nombre: Cinépolis Recoleta, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
   - {id: cinepolis-houssay, nombre: Cinépolis Houssay, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
-  - {id: showcase-belgrano, nombre: Showcase Belgrano, direccion: null, verificada: false, tanda: 4, es_comercial: true, adaptador: null}
+  - {id: showcase-belgrano, nombre: Showcase Belgrano, direccion: "Monroe 1655", verificada: true, tanda: 4, es_comercial: true, adaptador: showcase_belgrano}
   - {id: multiplex-belgrano, nombre: Multiplex Belgrano, direccion: "Vuelta de Obligado 2199", verificada: true, tanda: 4, es_comercial: true, adaptador: multiplex_belgrano}
   - {id: multiplex-lavalle, nombre: Multiplex Lavalle, direccion: "Lavalle 780", verificada: true, tanda: 4, es_comercial: true, adaptador: multiplex_lavalle}

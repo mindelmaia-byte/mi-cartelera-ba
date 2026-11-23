@@ -1,0 +1,1195 @@
+{
+ "complejo": 14,
+ "hoy": "2026-11-23",
+ "dias": 10,
+ "peliculas": [
+  {
+   "filmid": "6325",
+   "nombre": "Yo soy Rocky",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87742A",
+        "performances": [
+         {
+          "performanceId": 345220,
+          "showTime": "17:05"
+         },
+         {
+          "performanceId": 345354,
+          "showTime": "19:30"
+         },
+         {
+          "performanceId": 345221,
+          "showTime": "19:50"
+         },
+         {
+          "performanceId": 345355,
+          "showTime": "22:15"
+         },
+         {
+          "performanceId": 345222,
+          "showTime": "22:35"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87742A",
+        "performances": [
+         {
+          "performanceId": 345377,
+          "showTime": "14:20"
+         },
+         {
+          "performanceId": 345378,
+          "showTime": "17:05"
+         },
+         {
+          "performanceId": 345387,
+          "showTime": "19:30"
+         },
+         {
+          "performanceId": 345379,
+          "showTime": "19:50"
+         },
+         {
+          "performanceId": 345388,
+          "showTime": "22:15"
+         },
+         {
+          "performanceId": 345380,
+          "showTime": "22:35"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87742A",
+        "performances": [
+         {
+          "performanceId": 345410,
+          "showTime": "14:20"
+         },
+         {
+          "performanceId": 345411,
+          "showTime": "17:05"
+         },
+         {
+          "performanceId": 345420,
+          "showTime": "19:30"
+         },
+         {
+          "performanceId": 345412,
+          "showTime": "19:50"
+         },
+         {
+          "performanceId": 345421,
+          "showTime": "22:15"
+         },
+         {
+          "performanceId": 345413,
+          "showTime": "22:35"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "I PLAY ROCKY",
+    "Orígen": "USA",
+    "Género": "Drama",
+    "Director": "Peter Farrelly",
+    "Actores": "Anthonny Ippolito, Anna Sophia Robb, Kiki Seto, PJ Byrne, Toby Kebbell",
+    "Calificación": "SP",
+    "Duración": "127 minutos",
+    "Distribuidora": "Diamond"
+   }
+  },
+  {
+   "filmid": "6291",
+   "nombre": "Los Juegos del Hambre: amanecer en la cosecha",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87721A",
+        "performances": [
+         {
+          "performanceId": 345364,
+          "showTime": "19:00"
+         },
+         {
+          "performanceId": 344917,
+          "showTime": "19:20"
+         },
+         {
+          "performanceId": 345372,
+          "showTime": "20:00"
+         },
+         {
+          "performanceId": 345358,
+          "showTime": "22:00"
+         },
+         {
+          "performanceId": 345365,
+          "showTime": "22:20"
+         },
+         {
+          "performanceId": 344918,
+          "showTime": "22:40"
+         }
+        ]
+       },
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87720A",
+        "performances": [
+         {
+          "performanceId": 345357,
+          "showTime": "18:40"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87721A",
+        "performances": [
+         {
+          "performanceId": 345392,
+          "showTime": "14:00"
+         },
+         {
+          "performanceId": 345396,
+          "showTime": "15:40"
+         },
+         {
+          "performanceId": 344919,
+          "showTime": "16:00"
+         },
+         {
+          "performanceId": 345397,
+          "showTime": "19:00"
+         },
+         {
+          "performanceId": 344920,
+          "showTime": "19:20"
+         },
+         {
+          "performanceId": 345405,
+          "showTime": "20:00"
+         },
+         {
+          "performanceId": 345391,
+          "showTime": "22:00"
+         },
+         {
+          "performanceId": 345398,
+          "showTime": "22:20"
+         },
+         {
+          "performanceId": 344921,
+          "showTime": "22:40"
+         }
+        ]
+       },
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87720A",
+        "performances": [
+         {
+          "performanceId": 345389,
+          "showTime": "15:20"
+         },
+         {
+          "performanceId": 345390,
+          "showTime": "18:40"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87721A",
+        "performances": [
+         {
+          "performanceId": 345425,
+          "showTime": "14:00"
+         },
+         {
+          "performanceId": 345429,
+          "showTime": "15:40"
+         },
+         {
+          "performanceId": 344922,
+          "showTime": "16:00"
+         },
+         {
+          "performanceId": 344923,
+          "showTime": "19:20"
+         },
+         {
+          "performanceId": 345438,
+          "showTime": "20:00"
+         },
+         {
+          "performanceId": 345424,
+          "showTime": "22:00"
+         },
+         {
+          "performanceId": 345431,
+          "showTime": "22:20"
+         },
+         {
+          "performanceId": 344924,
+          "showTime": "22:40"
+         }
+        ]
+       },
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87720A",
+        "performances": [
+         {
+          "performanceId": 345422,
+          "showTime": "15:20"
+         },
+         {
+          "performanceId": 345423,
+          "showTime": "18:40"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "THE HUNGER GAMES: SUNRISE ON THE REAPING",
+    "Orígen": "USA",
+    "Género": "Ciencia Ficción",
+    "Director": "Francis Lawrence",
+    "Actores": "Joseph Zada, Elle Fanning, Jesse Plemons, Mckenna Grace, Kieran Culkin, Whitney Peak, Maya Hawke, Kelvin Harrison Jr., Ralph Fiennes, Glenn Close.",
+    "Calificación": "R-13",
+    "Duración": "160 minutos",
+    "Distribuidora": "BF + Paris Films"
+   }
+  },
+  {
+   "filmid": "6297",
+   "nombre": "Caballo salvaje nueve",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87723A",
+        "performances": [
+         {
+          "performanceId": 345367,
+          "showTime": "16:40"
+         },
+         {
+          "performanceId": 345368,
+          "showTime": "19:15"
+         },
+         {
+          "performanceId": 345369,
+          "showTime": "22:05"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87723A",
+        "performances": [
+         {
+          "performanceId": 345399,
+          "showTime": "14:05"
+         },
+         {
+          "performanceId": 345400,
+          "showTime": "16:40"
+         },
+         {
+          "performanceId": 345401,
+          "showTime": "19:15"
+         },
+         {
+          "performanceId": 345402,
+          "showTime": "22:05"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87723A",
+        "performances": [
+         {
+          "performanceId": 345432,
+          "showTime": "14:05"
+         },
+         {
+          "performanceId": 345433,
+          "showTime": "16:40"
+         },
+         {
+          "performanceId": 345434,
+          "showTime": "19:15"
+         },
+         {
+          "performanceId": 345435,
+          "showTime": "22:05"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "WILD HORSE NINE",
+    "Orígen": "USA",
+    "Género": "Suspenso",
+    "Director": "Martin McDonagh",
+    "Actores": "John Malkovich, Sam Rockwell, Steve Buscemi",
+    "Calificación": "R-17",
+    "Duración": "118 minutos",
+    "Distribuidora": "Disney"
+   }
+  },
+  {
+   "filmid": "6333",
+   "nombre": "Recen por mí: la historia de Francisco",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Castellano",
+        "showId": "87748A",
+        "performances": [
+         {
+          "performanceId": 345374,
+          "showTime": "17:00"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Castellano",
+        "showId": "87748A",
+        "performances": [
+         {
+          "performanceId": 345407,
+          "showTime": "17:00"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Castellano",
+        "showId": "87748A",
+        "performances": [
+         {
+          "performanceId": 345440,
+          "showTime": "17:00"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "RECEN POR MI: LA HISTORIA DE FRANCISCO",
+    "Orígen": "Argentina",
+    "Género": "Documental",
+    "Director": "Facundo Bartucci",
+    "Calificación": "G",
+    "Duración": "110 minutos",
+    "Distribuidora": "Moving Pictures"
+   }
+  },
+  {
+   "filmid": "6331",
+   "nombre": "Minotauro",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87746A",
+        "performances": [
+         {
+          "performanceId": 345375,
+          "showTime": "19:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87746A",
+        "performances": [
+         {
+          "performanceId": 345406,
+          "showTime": "14:00"
+         },
+         {
+          "performanceId": 345408,
+          "showTime": "19:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87746A",
+        "performances": [
+         {
+          "performanceId": 345439,
+          "showTime": "14:00"
+         },
+         {
+          "performanceId": 345441,
+          "showTime": "19:25"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "MINOTAUR",
+    "Orígen": "Francia",
+    "Género": "Drama",
+    "Director": "Andrey Zvyaginstev",
+    "Actores": "Dmitriy Mazurov, Iris Lebedeva",
+    "Calificación": "R-13",
+    "Duración": "141 minutos",
+    "Distribuidora": "Maco Cine"
+   }
+  },
+  {
+   "filmid": "6295",
+   "nombre": "Ebenezer: los fantasmas de Navidad",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87725A",
+        "performances": [
+         {
+          "performanceId": 345360,
+          "showTime": "17:15"
+         },
+         {
+          "performanceId": 345361,
+          "showTime": "19:55"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87725A",
+        "performances": [
+         {
+          "performanceId": 345393,
+          "showTime": "17:15"
+         },
+         {
+          "performanceId": 345394,
+          "showTime": "19:55"
+         }
+        ]
+       },
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87724A",
+        "performances": [
+         {
+          "performanceId": 345381,
+          "showTime": "14:15"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87725A",
+        "performances": [
+         {
+          "performanceId": 345426,
+          "showTime": "17:15"
+         },
+         {
+          "performanceId": 345427,
+          "showTime": "19:55"
+         }
+        ]
+       },
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87724A",
+        "performances": [
+         {
+          "performanceId": 345414,
+          "showTime": "14:15"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "EBENEZER",
+    "Orígen": "USA",
+    "Género": "Aventuras",
+    "Director": "Ti West",
+    "Actores": "Johnny Depp, Rupert Grint, Andrea Riseborough, Sam Claflin, Daisy Ridley, Arthur Conti, Ellie Bamber, Henry Lloyd-Hughes, Charlie Murphy, con Tramell Tillman e Ian McKellen",
+    "Calificación": "SP",
+    "Duración": "115 minutos",
+    "Distribuidora": "UIP"
+   }
+  },
+  {
+   "filmid": "6275",
+   "nombre": "El gato con sombrero",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87695A",
+        "performances": [
+         {
+          "performanceId": 345371,
+          "showTime": "17:20"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87695A",
+        "performances": [
+         {
+          "performanceId": 345403,
+          "showTime": "14:45"
+         },
+         {
+          "performanceId": 345404,
+          "showTime": "17:20"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87695A",
+        "performances": [
+         {
+          "performanceId": 345436,
+          "showTime": "14:45"
+         },
+         {
+          "performanceId": 345437,
+          "showTime": "17:20"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "THE CAT IN THE HAT",
+    "Orígen": "USA",
+    "Género": "Aventuras",
+    "Director": "Erica Rivinoja y Alessandro Carloni",
+    "Actores": "Voces doblaje:Alfonso Herrera y Fernando Guallar",
+    "Calificación": "G",
+    "Duración": "115 minutos",
+    "Distribuidora": "Warner Bros"
+   }
+  },
+  {
+   "filmid": "6234",
+   "nombre": "Godzilla Minus Zero",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87636A",
+        "performances": [
+         {
+          "performanceId": 345353,
+          "showTime": "16:35"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87636A",
+        "performances": [
+         {
+          "performanceId": 345386,
+          "showTime": "16:35"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87636A",
+        "performances": [
+         {
+          "performanceId": 345419,
+          "showTime": "16:35"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "GODZILLA MINUS ZERO",
+    "Orígen": "Japón",
+    "Género": "Ciencia Ficción",
+    "Director": "Takashi Yamazaki",
+    "Actores": "Minami Hamabe, Miou Tanaka, Ryûnosuke Kamiki",
+    "Calificación": "R-13",
+    "Duración": "135 minutos",
+    "Distribuidora": "BF + Paris Films"
+   }
+  },
+  {
+   "filmid": "6252",
+   "nombre": "El bosque salvaje: Wildwood",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87635A",
+        "performances": [
+         {
+          "performanceId": 345349,
+          "showTime": "16:45"
+         },
+         {
+          "performanceId": 345350,
+          "showTime": "19:35"
+         },
+         {
+          "performanceId": 345351,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87635A",
+        "performances": [
+         {
+          "performanceId": 345382,
+          "showTime": "16:45"
+         },
+         {
+          "performanceId": 345383,
+          "showTime": "19:35"
+         },
+         {
+          "performanceId": 345384,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87635A",
+        "performances": [
+         {
+          "performanceId": 345415,
+          "showTime": "16:45"
+         },
+         {
+          "performanceId": 345416,
+          "showTime": "19:35"
+         },
+         {
+          "performanceId": 345417,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "WILDWOOD",
+    "Orígen": "USA",
+    "Género": "Aventuras",
+    "Director": "Travis Knight",
+    "Actores": "Voces en doblaje: Macarena García, Emilio Treviño, Natalia Téllez, Javier Ibarreche",
+    "Calificación": "SP",
+    "Duración": "130 minutos",
+    "Distribuidora": "Imagem Films"
+   }
+  },
+  {
+   "filmid": "6209",
+   "nombre": "Clayface",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87602A",
+        "performances": [
+         {
+          "performanceId": 345362,
+          "showTime": "22:30"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87602A",
+        "performances": [
+         {
+          "performanceId": 345395,
+          "showTime": "22:30"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87602A",
+        "performances": [
+         {
+          "performanceId": 345428,
+          "showTime": "22:30"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "CLAYFACE",
+    "Orígen": "USA",
+    "Género": "Suspenso",
+    "Director": "James Watkins",
+    "Actores": "Naomi Ackie, David Dencik, Max Minghella y Eddie Marsan, junto a Nancy Carroll y Joshua James.",
+    "Calificación": "R-17",
+    "Duración": "108 minutos",
+    "Distribuidora": "Warner Bros"
+   }
+  },
+  {
+   "filmid": "6102",
+   "nombre": "Verity: la sombra de un engaño",
+   "dias": {
+    "2026-11-23": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87451A",
+        "performances": [
+         {
+          "performanceId": 345376,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87451A",
+        "performances": [
+         {
+          "performanceId": 345409,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87451A",
+        "performances": [
+         {
+          "performanceId": 345442,
+          "showTime": "22:25"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "VERITY",
+    "Orígen": "USA",
+    "Género": "Suspenso",
+    "Director": "Michael Showalter",
+    "Actores": "Anne Hathaway, Dakota Johnson, Josh Hartnett, Ismael Cruz Cordova, Brady Wagner",
+    "Calificación": "R-17",
+    "Duración": "118 minutos",
+    "Distribuidora": "UIP"
+   }
+  },
+  {
+   "filmid": "6255",
+   "nombre": "Tierra de mi padre",
+   "dias": {
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87673A",
+        "performances": [
+         {
+          "performanceId": 345447,
+          "showTime": "13:55"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Subtitulado",
+        "showId": "87673A",
+        "performances": [
+         {
+          "performanceId": 345448,
+          "showTime": "13:55"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "FATHERLAND",
+    "Orígen": "Polonia",
+    "Género": "Drama",
+    "Director": "Pawel Pawlikowski",
+    "Actores": "Sandra Hüller, Hanns Zischler",
+    "Calificación": "SP",
+    "Duración": "82 minutos",
+    "Distribuidora": "Maco Cine"
+   }
+  },
+  {
+   "filmid": "6082",
+   "nombre": "La isla olvidada",
+   "dias": {
+    "2026-11-24": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87422A",
+        "performances": [
+         {
+          "performanceId": 345385,
+          "showTime": "14:10"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "2026-11-25": [
+     {
+      "id": 14,
+      "name": "Showcase Belgrano",
+      "ewaveId": 3206,
+      "formats": [
+       {
+        "formatDescription": "2D-Doblada",
+        "showId": "87422A",
+        "performances": [
+         {
+          "performanceId": 345418,
+          "showTime": "14:10"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ficha": {
+    "Título Original": "FORGOTTEN ISLAND",
+    "Orígen": "USA",
+    "Género": "Aventuras",
+    "Director": "Joel Crawford y Januel Mercado",
+    "Actores": "Voces originales: H.E.R., Liza Soberano, Dave Franco, Jenny Slate, Manny Jacinto, Dolly de Leon, Jo Koy, Ronny Chieng, Lea Salonga",
+    "Calificación": "G",
+    "Duración": "109 minutos",
+    "Distribuidora": "UIP"
+   }
+  }
+ ]
+}

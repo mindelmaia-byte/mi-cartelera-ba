@@ -134,6 +134,6 @@ En Windows, si `uv` no aparece en una terminal nueva, hay que refrescar el PATH:
 6. Calendario ✅ (OAuth real probado por la usuaria en localhost el 2026-11-23)
 7. Letterboxd y "Para vos" ✅ (probado con el RSS y el export reales de la usuaria, sin guardarlos)
 8. Publicación ✅ https://mi-cartelera-ba.vercel.app (repo `mindelmaia-byte/mi-cartelera-ba`; guía en `docs/publicar.md`; workflow `.github/workflows/ingest.yml` probado el 2026-11-23; la base `data/cartelera.db` se commitea). **Antes de cambiar algo local: `git pull`**, porque el ingest commitea todos los días.
-9. Tandas 4, 2 y 3: Multiplex Lavalle y Belgrano ✅ (un módulo, `adapters/multiplex.py`, y uno chico por complejo). York, Munro y Lumiton ✅ (la agenda presencial de lumiton.ar; solo eventos `tipo-cine`). Museo del Cine sin programación vigente el 2026-11-23.
+9. Tandas 4, 2 y 3: Multiplex Lavalle y Belgrano ✅ (un módulo, `adapters/multiplex.py`, y uno chico por complejo). Cinemark Palermo, Abasto y Dot ✅ (JSON con encabezado `country: AR`; la "Z" de la hora es hora local) · Showcase Belgrano ✅ (api.voyalcine.net, una consulta por película) · York, Munro y Lumiton ✅ (la agenda presencial de lumiton.ar; solo eventos `tipo-cine`). Museo del Cine sin programación vigente el 2026-11-23. Cacodelphia sin web oficial (solo Instagram y agregadores).
 
 Al final de cada hito se frena para que la usuaria pruebe.
