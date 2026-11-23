@@ -18,6 +18,7 @@ from typing import Any
 import httpx
 
 from cartelera import db
+from cartelera import pistas as pistas_manuales
 from cartelera.adapters import cargar_adaptador
 from cartelera.adapters.base import Adaptador, nuevo_cliente
 from cartelera.schema import Cine
@@ -46,11 +47,13 @@ def ingestar(
     cliente: httpx.Client | None = None,
     cargar: Callable[[str], Adaptador] = cargar_adaptador,
     extraer_pendientes: Callable[[str], list[str]] | None = None,
+    pistas: dict | None = None,
 ) -> list[Resultado]:
     """`extraer_pendientes(cine_id)`: si se pasa (hay clave de API), se llama cuando un cine deja
     textos o imágenes sin extraer, y después se vuelve a parsear ese cine con lo ya extraído."""
     momento = momento or ahora()
     hoy: date = momento.date()
+    pistas = pistas_manuales.cargar() if pistas is None else pistas
     db.sincronizar_cines(con, cines)
     propio = cliente is None
     cliente = cliente or nuevo_cliente()
@@ -59,7 +62,7 @@ def ingestar(
         for cine in cines:
             if not cine.adaptador:
                 continue
-            resultados.append(_ingestar_cine(con, cine, cliente, hoy, dias, momento, cargar, extraer_pendientes))
+            resultados.append(_ingestar_cine(con, cine, cliente, hoy, dias, momento, cargar, extraer_pendientes, pistas))
     finally:
         if propio:
             cliente.close()
@@ -75,6 +78,7 @@ def _ingestar_cine(
     momento: datetime,
     cargar: Callable[[str], Adaptador],
     extraer_pendientes: Callable[[str], list[str]] | None = None,
+    pistas: dict | None = None,
 ) -> Resultado:
     informe_api: list[str] = []
     try:
@@ -85,6 +89,7 @@ def _ingestar_cine(
         if sin_extraer and extraer_pendientes is not None:
             informe_api = [f"API: {linea}" for linea in extraer_pendientes(cine.id)]
             funciones = adaptador.parse(crudo, hoy)  # ahora con lo recién extraído
+        funciones = pistas_manuales.aplicar(cine.id, funciones, pistas or {})
     except Exception as e:  # noqa: BLE001 - un cine roto no puede cortar el ingest
         log.debug("detalle del error en %s:\n%s", cine.id, traceback.format_exc())
         error = f"{type(e).__name__}: {e}"

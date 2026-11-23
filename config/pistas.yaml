@@ -1,0 +1,21 @@
+# Pistas manuales para el cruce con TMDB (ver cartelera/pistas.py).
+# Solo datos que el cine publica pero el adaptador no puede leer (por ejemplo, un póster).
+# Completan campos vacíos y TMDB los tiene que confirmar igual. Cada una dice de dónde salió.
+
+# Cacodelphia, ciclo "SOY Cine Diversidad": el director está solo en el póster de cada película.
+- cine: cacodelphia
+  titulo: PLATA QUEMADA
+  director: Marcelo Piñeyro
+  fuente: póster del cine (ciclo SOY Cine Diversidad), leído el 2026-11-23
+- cine: cacodelphia
+  titulo: LAS MIL Y UNA
+  director: Clarisa Navas
+  fuente: póster del cine (ciclo SOY Cine Diversidad), leído el 2026-11-23
+- cine: cacodelphia
+  titulo: LA MUJER SIN CABEZA
+  director: Lucrecia Martel
+  fuente: póster del cine (ciclo SOY Cine Diversidad), leído el 2026-11-23
+- cine: cacodelphia
+  titulo: YO LA PEOR DE TODAS
+  director: María Luisa Bemberg
+  fuente: póster del cine (ciclo SOY Cine Diversidad), leído el 2026-11-23

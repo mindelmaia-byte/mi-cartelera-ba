@@ -196,7 +196,7 @@ Se completa **antes** de escribir cada adaptador.
   - `GET /cinemas/86`: datos del cine; la dirección (Roque Saenz Peña 1150) sale de ahí y del pie del sitio.
 - **Hora:** `fechaHora` dice `"timezone": "UTC"`, pero es la hora **local**: la página muestra 16:10 para `16:10:00 UTC`, igual que en Cinemark. Es fecha y hora completas, así que se toma tal cual. El 2026-11-23 no había funciones de trasnoche.
 - **Ciclos:** "CICLO SOY - PLATA QUEMADA" → título "PLATA QUEMADA", ciclo "Ciclo SOY".
-- **Año:** `FechaEstreno` es cuándo el cine incorporó la película, no su año: los clásicos del ciclo figuran como 2026. Se usa como pista de año solo fuera de los ciclos. Sin año ni director, los clásicos del ciclo quedan sin match (Plata quemada, Yo la peor de todas, La mujer sin cabeza, Las mil y una).
+- **Año:** `FechaEstreno` es cuándo el cine incorporó la película, no su año: los clásicos del ciclo figuran como 2026. Se usa como pista de año solo fuera de los ciclos. El director de las películas del ciclo está solo en el póster (imagen). La usuaria lo señaló, lo confirmé en los cuatro pósters y quedó en `config/pistas.yaml` (Piñeyro, Bemberg, Martel, Navas): con eso, las cuatro cruzan con TMDB por director.
 - **robots.txt:** cineartecacodelphia.com.ar: `User-agent: * / Disallow:` (todo permitido). apiv2.gaf.adro.studio no tiene (404).
 - **Términos:** el sitio no tiene página de términos; solo la de devoluciones.
 - **Uso que hacemos:** 1 pedido a la lista y 1 por película (unas 15), con 0,5 s de pausa y el User-Agent del proyecto.
