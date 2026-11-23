@@ -18,7 +18,7 @@ cines:
   - {id: lugones, nombre: Sala Lugones, direccion: "Av. Corrientes 1530 (Teatro San Martín)", verificada: true, tanda: 1, es_comercial: false, adaptador: lugones}
 
   # ---- Tanda 2 ----
-  - {id: cacodelphia, nombre: Cacodelphia, direccion: "Av. Roque Sáenz Peña 1150", verificada: false, tanda: 2, es_comercial: false, adaptador: null}
+  - {id: cacodelphia, nombre: Cacodelphia, direccion: "Av. Roque Sáenz Peña 1150", verificada: true, tanda: 2, es_comercial: false, adaptador: cacodelphia}
   - {id: york, nombre: York, direccion: "Juan Bautista Alberdi 895, Olivos", verificada: true, tanda: 2, es_comercial: false, adaptador: york}
   - {id: munro, nombre: Munro, direccion: "Vélez Sarsfield 4650, Munro", verificada: true, tanda: 2, es_comercial: false, adaptador: munro}
   - {id: lumiton, nombre: Lumiton, direccion: "Sargento Cabral 2354, Munro", verificada: true, tanda: 2, es_comercial: false, adaptador: lumiton}

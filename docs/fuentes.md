@@ -187,8 +187,18 @@ Se completa **antes** de escribir cada adaptador.
 - **Uso que hacemos:** 1 pedido a la home, 1 por película (unos 30) y 1 ficha por película con funciones en Belgrano (unas 13), con 0,5 s de pausa.
 - **Campos:** `modo_venta = online`, `url_entradas` = la ficha de la boletería con `house_id` del complejo. `titulo_original` solo si es distinto del título (normalizado). Director y duración como pistas para TMDB; no publica el año.
 
-## Cacodelphia: sin adaptador
+## Cacodelphia: `cartelera/adapters/cacodelphia.py`
 
-- **Revisado:** 2026-11-23
-- **No tiene web oficial con la programación.** cacodelphia.com es la productora Cacodelphia Studios (sin cartelera), y los dominios del cine que probamos no existen. La programación sale en Instagram (@cinearte.cacodelphia) y en agregadores de terceros (IMDb, Locate Cinemas).
-- Instagram no permite la lectura automática y la regla del proyecto es no usar agregadores, así que queda pendiente hasta que publique en una web propia.
+- **Revisado:** 2026-11-23. La usuaria pasó la web oficial: https://cineartecacodelphia.com.ar. Antes la habíamos dado por inexistente: cacodelphia.com es otra empresa (la productora Cacodelphia Studios) y la búsqueda solo devolvía Instagram y agregadores.
+- **Formato:** aplicación Vue de la plataforma de venta adro.studio, con JSON interno:
+  - `GET https://apiv2.gaf.adro.studio/nowPlaying/86`: las películas en cartelera (`pref`, `nombre`).
+  - `GET https://apiv2.gaf.adro.studio/movie/86/{pref}`: la ficha (`Duracion`, `FechaEstreno`) y las funciones (`showtimes[].fechaHora.date`, `mostrar`).
+  - `GET /cinemas/86`: datos del cine; la dirección (Roque Saenz Peña 1150) sale de ahí y del pie del sitio.
+- **Hora:** `fechaHora` dice `"timezone": "UTC"`, pero es la hora **local**: la página muestra 16:10 para `16:10:00 UTC`, igual que en Cinemark. Es fecha y hora completas, así que se toma tal cual. El 2026-11-23 no había funciones de trasnoche.
+- **Ciclos:** "CICLO SOY - PLATA QUEMADA" → título "PLATA QUEMADA", ciclo "Ciclo SOY".
+- **Año:** `FechaEstreno` es cuándo el cine incorporó la película, no su año: los clásicos del ciclo figuran como 2026. Se usa como pista de año solo fuera de los ciclos. Sin año ni director, los clásicos del ciclo quedan sin match (Plata quemada, Yo la peor de todas, La mujer sin cabeza, Las mil y una).
+- **robots.txt:** cineartecacodelphia.com.ar: `User-agent: * / Disallow:` (todo permitido). apiv2.gaf.adro.studio no tiene (404).
+- **Términos:** el sitio no tiene página de términos; solo la de devoluciones.
+- **Uso que hacemos:** 1 pedido a la lista y 1 por película (unas 15), con 0,5 s de pausa y el User-Agent del proyecto.
+- **Campos:** `modo_venta = online`, `url_entradas` = la página de la película en el sitio del cine (los horarios no son links; la compra es un flujo interactivo).
+
